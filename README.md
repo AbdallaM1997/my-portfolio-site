@@ -4,22 +4,36 @@ A single-page portfolio. No build step, no framework, no dependencies to install
 
 ```
 index.html                     the whole site
-media/                         10 clips + poster images (23 MB total)
+media/                         28 clips + poster images (31 MB total)
 Abdallah_Shabaan_Resume.pdf    linked from "Download CV"
 ```
 
 ## Put it online
 
-**Netlify Drop** — easiest. Go to https://app.netlify.com/drop and drag this
-whole folder onto the page. You get a live URL in about ten seconds. Free.
-Add your own domain later in Site settings → Domain management.
+This repo deploys itself to GitHub Pages. The workflow in
+`.github/workflows/pages.yml` publishes the repo root on every push to `main`.
 
-**GitHub Pages** — good if you want the URL tied to your GitHub account.
-Create a repo, upload these files to the root, then Settings → Pages → Deploy
-from branch → `main` / `root`. Your site appears at
-`https://abdallam1997.github.io/<repo-name>/`.
+**One-time setup** — on github.com, open the repo, then
+**Settings → Pages → Build and deployment → Source** and choose
+**GitHub Actions**. Then push (or open the Actions tab and run
+"Deploy to GitHub Pages" manually). Roughly a minute later the site is at:
 
-**Cloudflare Pages** or **Vercel** work the same way. Any static host will do.
+    https://abdallam1997.github.io/my-portfolio-site/
+
+Every later `git push` republishes it automatically. The Actions tab shows
+whether a deploy succeeded.
+
+If you'd rather not use the workflow, **Settings → Pages → Source →
+Deploy from a branch → `main` / `root`** also works; the `.nojekyll` file in the
+repo root stops GitHub trying to run the site through Jekyll.
+
+**A custom domain** goes in Settings → Pages → Custom domain. If you set one,
+update the three absolute URLs at the top of `index.html` (`og:image`, `og:url`,
+`canonical`) to match — they're only used for link previews and search engines,
+so the site works either way, but stale ones look sloppy when you share it.
+
+**Other hosts.** Netlify Drop (https://app.netlify.com/drop), Cloudflare Pages
+and Vercel all take this folder as-is. Any static host will do.
 
 ## Buy a domain
 
@@ -67,3 +81,32 @@ refuse to autoplay it.
 - Replace `media/ar-tiger.mp4` in the hero with your strongest clip if you'd
   rather lead with something else.
 - Check it on your own phone, not just a desktop browser.
+
+## Preview it locally before pushing
+
+From this folder:
+
+```
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000. Use a server rather than double-clicking
+`index.html` — opening the file directly makes some browsers block the videos.
+
+## Browser support
+
+The site is plain HTML, CSS and one small script, and it has been checked to
+work in current Chrome, Safari, Firefox and Edge on desktop, and on iOS and
+Android, down to a 320px-wide screen. Specifically:
+
+- Every clip is H.264 / yuv420p in an MP4 with the index at the front, which is
+  the one combination every browser and phone can play and start streaming
+  before the whole file has arrived.
+- Newer CSS (`color-mix`, `aspect-ratio`, `:focus-visible`, `backdrop-filter`)
+  each has a fallback, so older Safari and Edge degrade rather than break.
+- The script avoids `NodeList.forEach` and `Element.closest`, which older
+  browsers don't have.
+- Fonts load without blocking the page, so it still appears immediately on
+  networks where Google Fonts is slow or blocked.
+- If a browser refuses to autoplay (iOS Low Power Mode, for instance), that
+  clip gets ordinary play controls instead of a frozen image.

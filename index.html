@@ -7,10 +7,20 @@
 <meta name="description" content="Unity AR and VR developer in Cairo. Six years building education, training and event experiences for clients across Egypt, the UAE, Saudi Arabia and Kuwait.">
 <meta property="og:title" content="Abdallah Shabaan — Unity AR/VR Developer">
 <meta property="og:description" content="AR and VR built in Unity, shipped to the App Store, Google Play and live event floors.">
-<meta property="og:image" content="media/ar-tiger.jpg">
+<meta property="og:image" content="https://abdallam1997.github.io/my-portfolio-site/media/ar-tiger.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abdallam1997.github.io/my-portfolio-site/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://abdallam1997.github.io/my-portfolio-site/">
+<meta name="theme-color" content="#E4E7E4">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<!-- Fonts load without blocking paint, so the page still appears instantly on
+     networks where fonts.googleapis.com is slow or blocked. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap"></noscript>
 <style>
 :root{
   --ground:#E4E7E4;
@@ -40,14 +50,17 @@ body{
 img,video{display:block;max-width:100%}
 a{color:inherit}
 
-.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+.wrap{width:min(1180px,100% - 2.5rem);max-width:100%;
+  margin-left:auto;margin-right:auto;margin-inline:auto}
 
 /* ---------- masthead ---------- */
 .masthead{
   border-bottom:1px solid var(--line);
   position:sticky;top:0;z-index:20;
+  /* opaque first: browsers without color-mix keep this and stay readable */
+  background:var(--ground);
   background:color-mix(in srgb,var(--ground) 92%,transparent);
-  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
 }
 .masthead .wrap{
   display:flex;align-items:baseline;gap:1.25rem;
@@ -105,6 +118,11 @@ a{color:inherit}
 }
 .screen.wide{aspect-ratio:16/9}
 .screen.wide video{width:100%;height:100%;object-fit:contain}
+/* padding-ratio fallback for browsers without aspect-ratio (Safari < 15) */
+@supports not (aspect-ratio:16/9){
+  .screen.wide{position:relative;padding-top:56.25%;height:0}
+  .screen.wide video{position:absolute;inset:0;top:0;left:0;width:100%;height:100%}
+}
 .screen.tall video{width:auto;height:min(540px,68vh);max-width:100%}
 
 /* portrait clips sit in a phone-width column so the frame hugs the video */
@@ -189,6 +207,9 @@ a{color:inherit}
 footer{border-top:1px solid var(--line);padding:1.4rem 0 2.5rem;font-size:.86rem;color:var(--mute)}
 
 :focus-visible{outline:3px solid var(--clay);outline-offset:3px}
+@supports not selector(:focus-visible){
+  a:focus,button:focus{outline:3px solid var(--clay);outline-offset:3px}
+}
 
 @media (max-width:880px){
   .hero .wrap{grid-template-columns:1fr;gap:2.25rem}
@@ -197,7 +218,7 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0 2.5rem;font-size:.86rem
   .project.flip .media{order:0}
 }
 @media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
@@ -532,39 +553,62 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0 2.5rem;font-size:.86rem
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Small helpers so this works on older Safari/Edge too: NodeList.forEach and
+  // Element.closest are missing on browsers older than about 2017.
+  function each(list, fn){ Array.prototype.forEach.call(list, fn); }
+  function closestButton(el, root){
+    while (el && el !== root) {
+      if (el.nodeType === 1 && el.tagName === 'BUTTON') return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var vids = Array.prototype.slice.call(document.querySelectorAll('video[data-lazy]'));
+
+  function tryPlay(v){
+    var p;
+    try { p = v.play(); } catch (err) { v.setAttribute('controls',''); return; }
+    // Autoplay can still be refused (iOS Low Power Mode, strict settings) —
+    // fall back to a normal play button rather than a frozen poster.
+    if (p && p.then) p.catch(function(){ v.setAttribute('controls',''); });
+  }
 
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
+      each(entries, function(e){
         var v = e.target;
         if (e.isIntersecting) {
           if (v.preload === 'none') { v.preload = 'auto'; v.load(); }
-          var p = v.play();
-          if (p && p.catch) p.catch(function(){ v.setAttribute('controls',''); });
-        } else {
+          tryPlay(v);
+        } else if (!v.paused) {
           v.pause();
         }
       });
     }, { threshold: 0.35 });
-    vids.forEach(function(v){ io.observe(v); });
+    each(vids, function(v){ io.observe(v); });
   } else {
-    vids.forEach(function(v){ v.setAttribute('controls',''); });
+    // No IntersectionObserver, or the visitor asked for reduced motion:
+    // load the poster and give everyone ordinary controls.
+    each(vids, function(v){ v.setAttribute('controls',''); });
   }
 
-  document.querySelectorAll('.clips').forEach(function(group){
+  each(document.querySelectorAll('.clips'), function(group){
     group.addEventListener('click', function(ev){
-      var btn = ev.target.closest('button');
+      var btn = closestButton(ev.target, group);
       if (!btn) return;
-      var video = group.parentElement.querySelector('video');
-      group.querySelectorAll('button').forEach(function(b){
-        b.setAttribute('aria-pressed', String(b === btn));
+      var video = group.parentNode.querySelector('video');
+      if (!video) return;
+      each(group.getElementsByTagName('button'), function(b){
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
       });
-      video.poster = btn.dataset.poster;
-      video.src = btn.dataset.src;
+      video.poster = btn.getAttribute('data-poster');
+      video.preload = 'auto';
+      video.src = btn.getAttribute('data-src');
       video.load();
-      if (!reduce) { var p = video.play(); if (p && p.catch) p.catch(function(){}); }
+      if (reduce || video.hasAttribute('controls')) return;
+      tryPlay(video);
     });
   });
 })();
