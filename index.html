@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdallah Shabaan — Unity AR/VR Developer</title>
+<meta name="description" content="Unity AR and VR developer in Cairo. Six years building education, training and event experiences for clients across Egypt, the UAE, Saudi Arabia and Kuwait.">
+<meta property="og:title" content="Abdallah Shabaan — Unity AR/VR Developer">
+<meta property="og:description" content="AR and VR built in Unity, shipped to the App Store, Google Play and live event floors.">
+<meta property="og:image" content="media/ar-tiger.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#E4E7E4;
+  --ground-2:#DADEDA;
+  --ink:#16211C;
+  --teal:#0E6E70;
+  --clay:#B4522E;
+  --mute:#6F7A74;
+  --screen:#0C1512;
+  --line:#C3C9C4;
+  --measure:34rem;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,"Segoe UI",sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:1.0625rem;
+  line-height:1.62;
+  font-weight:400;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--ground) 92%,transparent);
+  backdrop-filter:blur(8px);
+}
+.masthead .wrap{
+  display:flex;align-items:baseline;gap:1.25rem;
+  padding:.85rem 0;flex-wrap:wrap;
+}
+.wordmark{
+  font-family:var(--display);font-weight:600;letter-spacing:-.02em;
+  font-size:1.0625rem;margin:0;
+}
+.masthead .where{font-size:.9rem;color:var(--mute);margin:0}
+.masthead .spring{margin-left:auto}
+.masthead a.mail{
+  font-family:var(--display);font-size:.9rem;font-weight:500;
+  text-decoration:none;border-bottom:2px solid var(--teal);
+  padding-bottom:1px;color:var(--teal);
+}
+.masthead a.mail:hover{background:var(--teal);color:var(--ground);border-color:var(--teal)}
+
+/* ---------- hero ---------- */
+.hero .wrap{
+  display:grid;grid-template-columns:1fr minmax(280px,400px);
+  gap:3.5rem;align-items:center;
+  padding:clamp(3rem,7vw,6rem) 0 clamp(2.5rem,5vw,4rem);
+}
+.hero h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2.35rem,5.6vw,4.05rem);
+  line-height:1.02;letter-spacing:-.035em;
+  margin:0 0 1.4rem;text-wrap:balance;
+}
+.hero p{max-width:30rem;margin:0 0 1.15rem;font-size:1.15rem}
+.hero p.sub{color:var(--mute);font-size:1rem}
+.hero .cta{
+  display:inline-block;margin-top:1rem;
+  font-family:var(--display);font-weight:600;font-size:.95rem;
+  text-decoration:none;background:var(--ink);color:var(--ground);
+  padding:.72rem 1.3rem;
+}
+.hero .cta:hover{background:var(--teal)}
+
+/* ---------- viewport (the AR bracket motif) ---------- */
+.viewport{position:relative;padding:11px}
+.viewport::before,.viewport::after{
+  content:"";position:absolute;width:26px;height:26px;pointer-events:none;
+}
+.viewport::before{top:0;left:0;border-top:2px solid var(--teal);border-left:2px solid var(--teal)}
+.viewport::after{bottom:0;right:0;border-bottom:2px solid var(--teal);border-right:2px solid var(--teal)}
+.viewport .brk{position:absolute;width:26px;height:26px;pointer-events:none}
+.viewport .brk.tr{top:0;right:0;border-top:2px solid var(--teal);border-right:2px solid var(--teal)}
+.viewport .brk.bl{bottom:0;left:0;border-bottom:2px solid var(--teal);border-left:2px solid var(--teal)}
+.screen{
+  background:var(--screen);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.screen.wide{aspect-ratio:16/9}
+.screen.wide video{width:100%;height:100%;object-fit:contain}
+.screen.tall video{width:auto;height:min(540px,68vh);max-width:100%}
+
+/* portrait clips sit in a phone-width column so the frame hugs the video */
+.media.phone{display:flex;flex-direction:column;align-items:flex-start}
+.media.phone .viewport{display:inline-block}
+
+/* ---------- section framing ---------- */
+.band{padding:clamp(2.75rem,6vw,4.75rem) 0;border-top:1px solid var(--line)}
+.band-head{margin:0 0 2rem}
+.band-head h2{
+  font-family:var(--display);font-weight:600;letter-spacing:-.02em;
+  font-size:1.5rem;margin:0 0 .35rem;
+}
+.band-head p{margin:0;color:var(--mute);max-width:var(--measure);font-size:1rem}
+
+/* ---------- live links ---------- */
+.live{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.live article{background:var(--ground);padding:1.5rem 1.35rem 1.35rem;display:flex;flex-direction:column}
+.live h3{font-family:var(--display);font-weight:600;font-size:1.15rem;margin:0 0 .2rem;letter-spacing:-.015em}
+.live .role{font-size:.88rem;color:var(--mute);margin:0 0 .7rem}
+.live p.blurb{margin:0 0 1.1rem;font-size:.99rem}
+.live .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:.45rem}
+.live .links a{
+  font-family:var(--display);font-size:.82rem;font-weight:500;text-decoration:none;
+  border:1px solid var(--ink);padding:.34rem .68rem;
+}
+.live .links a:hover{background:var(--ink);color:var(--ground)}
+
+/* ---------- project rows ---------- */
+.project{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(1.75rem,4vw,3.5rem);align-items:start;
+  padding:clamp(2rem,4vw,3.25rem) 0;border-top:1px solid var(--line);
+}
+.project:first-of-type{border-top:0;padding-top:0}
+.project.flip .media{order:2}
+.project h3{
+  font-family:var(--display);font-weight:600;letter-spacing:-.02em;
+  font-size:clamp(1.45rem,2.6vw,1.85rem);margin:0 0 .3rem;
+}
+.meta{font-size:.9rem;color:var(--mute);margin:0 0 1rem}
+.meta span+span::before{content:" / ";color:var(--line)}
+.project p.desc{margin:0 0 1.1rem;max-width:var(--measure)}
+.stack{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.1rem;padding:0;list-style:none}
+.stack li{
+  font-family:var(--display);font-size:.78rem;font-weight:500;
+  color:var(--teal);border:1px solid var(--teal);padding:.22rem .55rem;
+}
+.outlinks{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
+.outlinks a{
+  font-family:var(--display);font-size:.84rem;font-weight:500;text-decoration:none;
+  border-bottom:2px solid var(--clay);padding-bottom:1px;
+}
+.outlinks a:hover{color:var(--clay)}
+
+/* clip switcher */
+.clips{display:flex;gap:.5rem;margin-top:.7rem;flex-wrap:wrap}
+.clips button{
+  font-family:var(--display);font-size:.78rem;font-weight:500;
+  background:none;border:1px solid var(--line);color:var(--mute);
+  padding:.28rem .6rem;cursor:pointer;
+}
+.clips button:hover{border-color:var(--ink);color:var(--ink)}
+.clips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+
+/* ---------- capability list ---------- */
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.75rem 2.5rem}
+.caps h3{font-family:var(--display);font-weight:600;font-size:1.02rem;margin:0 0 .3rem}
+.caps p{margin:0;font-size:.99rem;color:var(--mute);max-width:26rem}
+.caps div{border-top:2px solid var(--teal);padding-top:.75rem}
+
+/* ---------- contact ---------- */
+.contact{border-top:1px solid var(--line);padding:clamp(3rem,7vw,5.5rem) 0 3.5rem}
+.contact h2{
+  font-family:var(--display);font-weight:700;letter-spacing:-.03em;
+  font-size:clamp(1.9rem,4.5vw,3rem);margin:0 0 1rem;max-width:20ch;line-height:1.05;
+}
+.contact p{max-width:var(--measure);margin:0 0 1.75rem}
+.contact ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.6rem 1.75rem}
+.contact ul a{font-family:var(--display);font-weight:500;font-size:1rem;text-decoration:none;border-bottom:2px solid var(--teal)}
+.contact ul a:hover{color:var(--teal)}
+footer{border-top:1px solid var(--line);padding:1.4rem 0 2.5rem;font-size:.86rem;color:var(--mute)}
+
+:focus-visible{outline:3px solid var(--clay);outline-offset:3px}
+
+@media (max-width:880px){
+  .hero .wrap{grid-template-columns:1fr;gap:2.25rem}
+  .hero .media{max-width:340px}
+  .project{grid-template-columns:1fr;gap:1.5rem}
+  .project.flip .media{order:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="wordmark">Abdallah Shabaan</p>
+    <p class="where">Unity AR/VR developer &middot; Cairo</p>
+    <span class="spring"></span>
+    <a class="mail" href="mailto:abdalla1997@yandex.com">abdalla1997@yandex.com</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Six years putting 3D worlds on top of real ones.</h1>
+      <p>I build augmented and virtual reality in Unity — classroom lessons you can walk around, safety training that runs on a headset, and games that ship to real app stores.</p>
+      <p class="sub">Work delivered for clients in Egypt, the UAE, Saudi Arabia and Kuwait. Available for remote contract and freelance projects.</p>
+      <a class="cta" href="#work">See the work</a>
+    </div>
+    <div class="media phone">
+      <div class="viewport">
+        <span class="brk tr"></span><span class="brk bl"></span>
+        <div class="screen tall">
+          <video data-lazy src="media/ar-tiger.mp4" poster="media/ar-tiger.jpg" muted loop playsinline preload="none"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Live now</h2>
+      <p>Products you can download or visit today.</p>
+    </div>
+    <div class="live">
+      <article>
+        <h3>Shara71</h3>
+        <p class="role">ExaRoll Studio &middot; iOS and Android</p>
+        <p class="blurb">A tile-matching puzzle game that travels across all seven emirates of the UAE, built on illustrated Emirati landmarks, dress, food and cultural symbols. I took it from design through store submission and post-launch updates.</p>
+        <div class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.ExaRollStudio.Shara71">Google Play</a>
+          <a href="https://apps.apple.com/eg/app/shara71-%D8%B4%D8%A7%D8%B1%D8%A9-71/id6746771073">App Store</a>
+        </div>
+      </article>
+      <article>
+        <h3>Kuwaitar</h3>
+        <p class="role">Gigaverse &middot; AR education</p>
+        <p class="blurb">Augmented reality built to the Kuwaiti primary curriculum, covering Islamic education and English for Grade 1. Lesson content is driven by ScriptableObjects so teachers and content staff can add material without touching code.</p>
+        <div class="links">
+          <a href="https://www.youtube.com/@kuwaitar5577">Watch on YouTube</a>
+        </div>
+      </article>
+      <article>
+        <h3>Ignite Virtual</h3>
+        <p class="role">VR education platform</p>
+        <p class="blurb">Secondary-school Biology and History units, children's soft-skills programmes and Quran modules delivered through VR headsets, alongside full VR lab installations for schools and universities.</p>
+        <div class="links">
+          <a href="https://ignite-virtual.com">ignite-virtual.com</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Selected work</h2>
+      <p>Recorded from live builds. Clips play without sound.</p>
+    </div>
+
+    <article class="project">
+      <div class="media">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen wide">
+            <video data-lazy src="media/vr-360-clinic.mp4" poster="media/vr-360-clinic.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="clips" role="group" aria-label="Clips for patient education VR">
+          <button aria-pressed="true" data-src="media/vr-360-clinic.mp4" data-poster="media/vr-360-clinic.jpg">Dialysis centre</button>
+          <button aria-pressed="false" data-src="media/vr-quest-clinic.mp4" data-poster="media/vr-quest-clinic.jpg">Headset build</button>
+          <button aria-pressed="false" data-src="media/vr-hikma.mp4" data-poster="media/vr-hikma.jpg">Clinical walkthrough</button>
+        </div>
+      </div>
+      <div>
+        <h3>Patient-education VR</h3>
+        <p class="meta"><span>VR</span><span>Unity</span><span>Pharmaceutical clients</span></p>
+        <p class="desc">Branching scenarios that put a patient inside their own treatment journey — a dialysis centre, the daily burden of living with the condition, the fatigue that follows a session. Every branch is authored in the Unity Editor rather than hard-coded, so the client's medical team can change the script without a developer. A five-star rating at the end posts straight to an admin panel, so the people funding the project can see what audiences actually thought.</p>
+        <ul class="stack">
+          <li>Unity</li><li>C#</li><li>360&deg; video</li><li>Meta Quest</li><li>ScriptableObjects</li><li>REST API</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project flip">
+      <div class="media phone">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen tall">
+            <video data-lazy src="media/webar-doctor.mp4" poster="media/webar-doctor.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="clips" role="group" aria-label="Clips for web AR">
+          <button aria-pressed="true" data-src="media/webar-doctor.mp4" data-poster="media/webar-doctor.jpg">3D presenter</button>
+          <button aria-pressed="false" data-src="media/webar-drugprep.mp4" data-poster="media/webar-drugprep.jpg">Preparation guide</button>
+          <button aria-pressed="false" data-src="media/webar-brilinta.mp4" data-poster="media/webar-brilinta.jpg">Clinical data</button>
+          <button aria-pressed="false" data-src="media/webar-soliqua.mp4" data-poster="media/webar-soliqua.jpg">Product launch</button>
+        </div>
+      </div>
+      <div>
+        <h3>AR that runs in the browser</h3>
+        <p class="meta"><span>Web AR</span><span>Pharmaceutical clients</span></p>
+        <p class="desc">A doctor scans a QR code and 3D content appears on the table in front of them. No app store, no install, no IT approval — which is the whole point when your audience is a consultant with four minutes between patients. Built for product launches, step-by-step preparation guides, and walking through trial data as objects you move around rather than slides you sit through.</p>
+        <ul class="stack">
+          <li>Web AR</li><li>3D optimisation</li><li>Mobile browsers</li><li>QR entry</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="media">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen wide">
+            <video data-lazy src="media/booth-gsk.mp4" poster="media/booth-gsk.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="clips" role="group" aria-label="Clips for event booth games">
+          <button aria-pressed="true" data-src="media/booth-gsk.mp4" data-poster="media/booth-gsk.jpg">Clinical quiz</button>
+          <button aria-pressed="false" data-src="media/booth-asclear.mp4" data-poster="media/booth-asclear.jpg">Timed challenge</button>
+          <button aria-pressed="false" data-src="media/booth-peptamen.mp4" data-poster="media/booth-peptamen.jpg">Nutrition game</button>
+          <button aria-pressed="false" data-src="media/booth-sanofi.mp4" data-poster="media/booth-sanofi.jpg">Photo activation</button>
+          <button aria-pressed="false" data-src="media/booth-valeurs.mp4" data-poster="media/booth-valeurs.jpg">Hologram stage</button>
+          <button aria-pressed="false" data-src="media/nestle-touch.mp4" data-poster="media/nestle-touch.jpg">Kiosk game</button>
+        </div>
+      </div>
+      <div>
+        <h3>Games for event floors and booths</h3>
+        <p class="meta"><span>Event activation</span><span>Unity</span></p>
+        <p class="desc">Conference stands are a hostile place for software. Nobody reads instructions, nobody asks for help, and the thing has to survive eight hours of strangers hammering it. These are timed quizzes, scored challenges, lead-capture forms and photo activations built for that reality: readable across a room, self-resetting between players, and stable all day. Several run as two-player head-to-head to pull a crowd.</p>
+        <ul class="stack">
+          <li>Unity</li><li>C#</li><li>Touch and kiosk</li><li>DOTween</li><li>Lead capture</li><li>Arduino input</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project flip">
+      <div class="media">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen wide">
+            <video data-lazy src="media/vr-eva-booth.mp4" poster="media/vr-eva-booth.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="clips" role="group" aria-label="Clips for virtual stands">
+          <button aria-pressed="true" data-src="media/vr-eva-booth.mp4" data-poster="media/vr-eva-booth.jpg">Virtual stand</button>
+          <button aria-pressed="false" data-src="media/vr-data-panels.mp4" data-poster="media/vr-data-panels.jpg">Anatomy and data</button>
+        </div>
+      </div>
+      <div>
+        <h3>Virtual stands and 3D clinical data</h3>
+        <p class="meta"><span>Real-time 3D</span><span>Unity</span></p>
+        <p class="desc">Exhibition stands rebuilt as spaces you can walk through, and trial results turned into 3D anatomy you can move around instead of a chart on a slide. Each panel carries a QR code so a visitor can leave with the reference material on their own phone.</p>
+        <ul class="stack">
+          <li>Unity</li><li>Real-time 3D</li><li>Environment art</li><li>UI systems</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="media phone">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen tall">
+            <video data-lazy src="media/diorama-2.mp4" poster="media/diorama-2.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="clips" role="group" aria-label="Clips for AR dioramas">
+          <button aria-pressed="true" data-src="media/diorama-2.mp4" data-poster="media/diorama-2.jpg">Workshop</button>
+          <button aria-pressed="false" data-src="media/diorama-1.mp4" data-poster="media/diorama-1.jpg">Reception</button>
+          <button aria-pressed="false" data-src="media/diorama-3.mp4" data-poster="media/diorama-3.jpg">Field</button>
+          <button aria-pressed="false" data-src="media/diorama-4.mp4" data-poster="media/diorama-4.jpg">Bank</button>
+        </div>
+      </div>
+      <div>
+        <h3>AR story dioramas</h3>
+        <p class="meta"><span>Mobile AR</span><span>Unity</span></p>
+        <p class="desc">Illustrated scenes that unfold off a flat page like a pop-up book — a reception desk, a workshop, a bank counter — each with characters acting out a short scene the reader walks around. Built so a printed page and a phone together do something neither can do alone.</p>
+        <ul class="stack">
+          <li>Unity</li><li>C#</li><li>Marker tracking</li><li>Character animation</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project flip">
+      <div class="media phone">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen tall">
+            <video data-lazy src="media/ar-tiger.mp4" poster="media/ar-tiger.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="clips" role="group" aria-label="Clips for AR animal book">
+          <button aria-pressed="true" data-src="media/ar-tiger.mp4" data-poster="media/ar-tiger.jpg">Tiger</button>
+          <button aria-pressed="false" data-src="media/ar-hippo.mp4" data-poster="media/ar-hippo.jpg">Hippo</button>
+          <button aria-pressed="false" data-src="media/ar-bird.mp4" data-poster="media/ar-bird.jpg">Bird</button>
+          <button aria-pressed="false" data-src="media/ar-book.mp4" data-poster="media/ar-book.jpg">Printed page</button>
+        </div>
+      </div>
+      <div>
+        <h3>AR animal book</h3>
+        <p class="meta"><span>Mobile AR</span><span>Unity</span><span>2020</span></p>
+        <p class="desc">Point a phone at a printed page and the illustration stands up off the paper. Animals are instantiated at runtime with their own audio, and children can orbit the model, drop it onto any nearby surface, and photograph it. Built to bridge a physical textbook with 3D content rather than replace it.</p>
+        <ul class="stack">
+          <li>Unity</li><li>C#</li><li>Vuforia</li><li>AssetBundles</li><li>Android</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="media">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen wide">
+            <video data-lazy src="media/liworld-combat.mp4" poster="media/liworld-combat.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="clips" role="group" aria-label="Clips for LiWorld">
+          <button aria-pressed="true" data-src="media/liworld-combat.mp4" data-poster="media/liworld-combat.jpg">Combat</button>
+          <button aria-pressed="false" data-src="media/liworld-menus.mp4" data-poster="media/liworld-menus.jpg">Progression</button>
+          <button aria-pressed="false" data-src="media/knight-proto.mp4" data-poster="media/knight-proto.jpg">Early build</button>
+        </div>
+      </div>
+      <div>
+        <h3>LiWorld</h3>
+        <p class="meta"><span>Mobile game</span><span>Unity</span></p>
+        <p class="desc">A third-person action game with a full progression loop: character select, weapon and health upgrades, a coin and key economy, and waves of enemies through dark corridor levels. Touch controls, damage feedback and the death and revive flow were all built in Unity.</p>
+        <ul class="stack">
+          <li>Unity</li><li>C#</li><li>Game economy</li><li>Mobile input</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project flip">
+      <div class="media">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen wide">
+            <video data-lazy src="media/adhd-vr.mp4" poster="media/adhd-vr.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>ADHD VR</h3>
+        <p class="meta"><span>Mobile VR</span><span>Graduation project</span><span>2020</span></p>
+        <p class="desc">A virtual bedroom a child explores through a Cardboard headset, with interactive tasks designed to surface attention and hyperactivity indicators. Rendered stereoscopically with a plain viewer mode for adults watching alongside. Graded excellent at the Higher Technological Institute.</p>
+        <ul class="stack">
+          <li>Unity</li><li>C#</li><li>Google Cardboard</li><li>Stereoscopic rendering</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="media">
+        <div class="viewport">
+          <span class="brk tr"></span><span class="brk bl"></span>
+          <div class="screen wide">
+            <video data-lazy src="media/astrolabe.mp4" poster="media/astrolabe.jpg" muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Astrolabe viewer</h3>
+        <p class="meta"><span>Web 3D and AR</span></p>
+        <p class="desc">A historical astrolabe presented as a 3D object in the browser, free to rotate and inspect from any angle, with a single tap to place it in the room through the phone's camera. Built so a museum or publisher can drop a real artefact into a page without asking anyone to install an app.</p>
+        <ul class="stack">
+          <li>3D on the web</li><li>WebXR</li><li>Model optimisation</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>What I take on</h2>
+    </div>
+    <div class="caps">
+      <div>
+        <h3>VR training and simulation</h3>
+        <p>Branching scenarios, scoring and performance feedback on Meta Quest, OpenXR and SteamVR.</p>
+      </div>
+      <div>
+        <h3>AR for products and learning</h3>
+        <p>Marker and surface tracking, runtime 3D, interactive lessons with AR Foundation, Vuforia and ARCore.</p>
+      </div>
+      <div>
+        <h3>Installations and events</h3>
+        <p>Touch-screen games, multi-device setups and mobile-to-PC experiences linked over a local network.</p>
+      </div>
+      <div>
+        <h3>Unity systems work</h3>
+        <p>Arabic and English localisation with full right-to-left layout, Addressables, DOTween interfaces, Photon multiplayer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact wrap" id="contact">
+  <h2>Tell me what you're building.</h2>
+  <p>Send the rough idea and I'll tell you honestly whether it's a fit, what it would take, and where the hard parts are. I'm in Cairo, which overlaps a full working day with Europe and mornings with the US East Coast.</p>
+  <ul>
+    <li><a href="mailto:abdalla1997@yandex.com">abdalla1997@yandex.com</a></li>
+    <li><a href="https://wa.me/201009634712">WhatsApp</a></li>
+    <li><a href="https://www.linkedin.com/in/abdalla-mahmoud-8b60b8194/">LinkedIn</a></li>
+    <li><a href="https://github.com/AbdallaM1997">GitHub</a></li>
+    <li><a href="Abdallah_Shabaan_Resume.pdf">Download CV</a></li>
+  </ul>
+</section>
+
+<footer class="wrap">
+  <p>Abdallah Mahmoud Shabaan &middot; Cairo, Egypt</p>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids = Array.prototype.slice.call(document.querySelectorAll('video[data-lazy]'));
+
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var v = e.target;
+        if (e.isIntersecting) {
+          if (v.preload === 'none') { v.preload = 'auto'; v.load(); }
+          var p = v.play();
+          if (p && p.catch) p.catch(function(){ v.setAttribute('controls',''); });
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(function(v){ io.observe(v); });
+  } else {
+    vids.forEach(function(v){ v.setAttribute('controls',''); });
+  }
+
+  document.querySelectorAll('.clips').forEach(function(group){
+    group.addEventListener('click', function(ev){
+      var btn = ev.target.closest('button');
+      if (!btn) return;
+      var video = group.parentElement.querySelector('video');
+      group.querySelectorAll('button').forEach(function(b){
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      video.poster = btn.dataset.poster;
+      video.src = btn.dataset.src;
+      video.load();
+      if (!reduce) { var p = video.play(); if (p && p.catch) p.catch(function(){}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
