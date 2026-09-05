@@ -1,4 +1,4 @@
-# Portfolio site — Abdallah Shabaan
+# Portfolio site — Abdallah Mahmoud
 
 A single-page portfolio. No build step, no framework, no dependencies to install.
 
