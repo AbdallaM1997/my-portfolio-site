@@ -5,7 +5,7 @@ A single-page portfolio. No build step, no framework, no dependencies to install
 ```
 index.html                     the whole site
 media/                         28 clips + poster images (31 MB total)
-Abdallah_Shabaan_Resume.pdf    linked from "Download CV"
+Abdallah_Mahmoud_Resume.pdf    linked from "Download CV"
 ```
 
 ## Put it online
