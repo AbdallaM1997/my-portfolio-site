@@ -493,13 +493,15 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
   /* row 1 is the wordmark and the toggle, row 2 the section links: the two
      together need 372px against the 350px a 390px phone gives */
   .mainnav{flex-basis:100%;order:3;gap:.05rem;margin-left:-.55rem}
-  .mainnav a{font-size:.78rem;padding:.5rem .58rem}
+  /* six items need 352px against the 350px a 390px phone gives, so the
+     horizontal padding comes in rather than letting Contact wrap */
+  .mainnav a{font-size:.76rem;padding:.5rem .4rem}
   .masthead .theme{order:2;height:38px;padding:0 .75rem;margin-left:0}
 }
 /* below 360px the five 44px taps plus the labelled pill need 335px against
    292px of usable width, so the toggle drops to icon only */
 @media (max-width:360px){
-  .mainnav a{font-size:.74rem;padding:.55rem .45rem}
+  .mainnav a{font-size:.72rem;padding:.55rem .3rem}
   .masthead .theme{padding:0;width:40px}
   .masthead .theme .lab{display:none}
 }
