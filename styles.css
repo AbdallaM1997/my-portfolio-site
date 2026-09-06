@@ -10,6 +10,7 @@
   --measure:38rem;
   --shadow:rgba(10,10,10,.07);
   --r:10px;                /* corner radius */
+  --tint:#EEEEFB;          /* accent wash behind pills and icon tiles */
   color-scheme:light;
   --display:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --body:"Newsreader",Georgia,"Times New Roman",serif;
@@ -28,6 +29,7 @@
     --screen:#000000;
     --line:#26262B;
     --shadow:rgba(0,0,0,.6);
+    --tint:#191A2E;
     color-scheme:dark;
   }
 }
@@ -41,6 +43,7 @@
   --screen:#000000;
   --line:#26262B;
   --shadow:rgba(0,0,0,.6);
+  --tint:#191A2E;
   color-scheme:dark;
 }
 
@@ -158,7 +161,7 @@ a{color:inherit}
 .tags li{
   font-family:var(--display);font-size:.78rem;font-weight:500;color:var(--teal);
   border:1px solid var(--teal);border-radius:999px;padding:.45rem 1.05rem;
-  background:color-mix(in srgb,var(--teal) 12%,transparent);
+  background:var(--tint);
 }
 
 .hero .lede{
@@ -200,7 +203,7 @@ a{color:inherit}
 .viewport .brk{position:absolute;width:26px;height:26px;pointer-events:none}
 .viewport .brk.tr{top:0;right:0;border-top:2px solid var(--teal);border-right:2px solid var(--teal)}
 .viewport .brk.bl{bottom:0;left:0;border-bottom:2px solid var(--teal);border-left:2px solid var(--teal)}
-.viewport>.screen{border-radius:var(--r)}
+.viewport>.screen{border-radius:12px;overflow:hidden}
 .screen{
   background:var(--screen);
   display:flex;align-items:center;justify-content:center;
@@ -226,7 +229,10 @@ a{color:inherit}
   font-family:var(--display);font-weight:700;letter-spacing:-.03em;
   font-size:1.28rem;margin:0 0 .45rem;
 }
-.band-head h2::before{content:"// ";color:var(--teal);font-weight:400}
+.band-head h2{display:inline-flex;align-items:center;gap:.55rem}
+.ico{width:1.05em;height:1.05em;fill:currentColor;flex:none}
+.band-head h2 .ico{color:var(--teal)}
+.contact h2 .ico{width:.82em;height:.82em;color:var(--teal);margin-right:.5rem;flex:none}
 .band-head p{margin:0;color:var(--mute);max-width:var(--measure);font-size:.96rem}
 
 /* ---------- live links ---------- */
@@ -248,10 +254,19 @@ a{color:inherit}
 /* ---------- project rows ---------- */
 .project{
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(1.75rem,4vw,3.5rem);align-items:start;
-  padding:clamp(2rem,4vw,3.25rem) 0;border-top:1px solid var(--line);
+  gap:clamp(1.5rem,3vw,2.5rem);align-items:center;
+  padding:clamp(1.25rem,2.5vw,1.75rem);
+  border:1px solid var(--line);border-radius:14px;
+  background:var(--ground-2);
+  margin-bottom:1.1rem;
+  transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
 }
-.project:first-of-type{border-top:0;padding-top:0}
+.project:hover{
+  border-color:color-mix(in srgb,var(--teal) 55%,var(--line));
+  transform:translateY(-3px);
+  box-shadow:0 14px 34px var(--shadow);
+}
+.project:last-of-type{margin-bottom:0}
 .project.flip .media{order:2}
 .project h3{
   font-family:var(--display);font-weight:700;letter-spacing:-.03em;
@@ -286,7 +301,13 @@ a{color:inherit}
 /* ---------- capability list ---------- */
 .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
 .caps h3{font-family:var(--display);font-weight:700;font-size:.92rem;margin:0 0 .4rem;letter-spacing:-.02em}
-.caps h3::before{content:"> ";color:var(--teal)}
+.caps h3{display:flex;align-items:center;gap:.6rem}
+.cap-ico{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:8px;flex:none;
+  background:var(--tint);color:var(--teal);
+}
+.cap-ico .ico{width:17px;height:17px}
 .caps p{margin:0;font-size:.94rem;color:var(--mute);max-width:26rem}
 .caps div{
   border:1px solid var(--line);border-radius:var(--r);
@@ -315,12 +336,20 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0 2.5rem;font-family:var(
 html:not(.anim) .progress{display:none}
 
 .anim .reveal{
-  opacity:0;transform:translateY(20px);
-  transition:opacity .62s cubic-bezier(.22,.61,.36,1),
-             transform .62s cubic-bezier(.22,.61,.36,1);
+  opacity:0;transform:translateY(22px) scale(.985);
+  transition:opacity .66s cubic-bezier(.22,.61,.36,1),
+             transform .66s cubic-bezier(.22,.61,.36,1);
   transition-delay:var(--d,0ms);
 }
 .anim .reveal.in{opacity:1;transform:none}
+/* project halves slide in from their own side */
+@media (min-width:881px){
+  .anim .project .media.reveal{transform:translateX(-26px) translateY(14px)}
+  .anim .project .copy.reveal{transform:translateX(26px) translateY(14px)}
+  .anim .project.flip .media.reveal{transform:translateX(26px) translateY(14px)}
+  .anim .project.flip .copy.reveal{transform:translateX(-26px) translateY(14px)}
+  .anim .project .media.reveal.in,.anim .project .copy.reveal.in{transform:none}
+}
 
 /* AR brackets draw themselves in when the frame arrives */
 .anim .reveal .viewport::before,.anim .reveal .viewport::after,
