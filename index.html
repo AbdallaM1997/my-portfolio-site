@@ -48,6 +48,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </header>
 
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <video src="media/hero-reel.mp4" poster="media/hero-reel.jpg" muted loop playsinline autoplay preload="auto" tabindex="-1"></video>
+  </div>
   <div class="wrap">
     <button type="button" class="avatar" aria-pressed="false" aria-label="Show illustrated avatar">
       <span class="avatar-inner">
@@ -720,7 +723,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     });
   }
 
+  // project clips run a little quick so a loop reads at a glance
+  var SPEED = 1.4;
+  function setSpeed(v){ try { v.playbackRate = SPEED; } catch (e) {} }
+
   function tryPlay(v){
+    setSpeed(v);
     var p;
     try { p = v.play(); } catch (err) { v.setAttribute('controls',''); return; }
     // Autoplay can still be refused (iOS Low Power Mode, strict settings) —
@@ -740,7 +748,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         }
       });
     }, { threshold: 0.35 });
-    each(vids, function(v){ io.observe(v); });
+    each(vids, function(v){
+      v.addEventListener('loadedmetadata', function(){ setSpeed(v); });
+      io.observe(v);
+    });
   } else {
     // No IntersectionObserver, or the visitor asked for reduced motion:
     // load the poster and give everyone ordinary controls.

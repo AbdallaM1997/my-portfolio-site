@@ -11,6 +11,7 @@
   --shadow:rgba(10,10,10,.07);
   --r:10px;                /* corner radius */
   --tint:#EEEEFB;          /* accent wash behind pills and icon tiles */
+  --scrim:rgba(255,255,255,.90);
   color-scheme:light;
   --display:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --body:"Newsreader",Georgia,"Times New Roman",serif;
@@ -30,6 +31,7 @@
     --line:#26262B;
     --shadow:rgba(0,0,0,.6);
     --tint:#191A2E;
+    --scrim:rgba(10,10,10,.87);
     color-scheme:dark;
   }
 }
@@ -44,6 +46,7 @@
   --line:#26262B;
   --shadow:rgba(0,0,0,.6);
   --tint:#191A2E;
+  --scrim:rgba(10,10,10,.87);
   color-scheme:dark;
 }
 
@@ -120,7 +123,22 @@ section[id]{scroll-margin-top:78px}
 }
 
 /* ---------- hero ---------- */
-.hero .wrap{
+.hero{position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none}
+.hero-bg video{
+  width:100%;height:100%;object-fit:cover;display:block;
+  /* a little blur hides compression in a clip encoded for size, and keeps
+     the montage from competing with the copy on top of it */
+  filter:blur(2px) saturate(.9);transform:scale(1.05);
+}
+.hero-bg::after{
+  content:"";position:absolute;top:0;left:0;right:0;bottom:0;
+  /* flat scrim for a guaranteed contrast floor, plus a gradient that closes
+     the top and bottom edges into the page */
+  background:linear-gradient(var(--ground), transparent 18%, transparent 82%, var(--ground)), var(--scrim);
+}
+@media (prefers-reduced-motion:reduce){ .hero-bg{display:none} }
+.hero .wrap{position:relative;z-index:1;
   min-height:calc(100svh - 62px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;gap:0;
