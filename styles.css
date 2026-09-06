@@ -229,10 +229,10 @@ a{color:inherit}
   font-family:var(--display);font-weight:700;letter-spacing:-.03em;
   font-size:1.28rem;margin:0 0 .45rem;
 }
-.band-head h2{display:inline-flex;align-items:center;gap:.55rem}
+.band-head h2{display:inline-flex;align-items:center;gap:.62rem}
 .ico{width:1.05em;height:1.05em;fill:currentColor;flex:none}
 .band-head h2 .ico{color:var(--teal)}
-.contact h2 .ico{width:.82em;height:.82em;color:var(--teal);margin-right:.5rem;flex:none}
+.contact h2 .ico{width:.8em;height:.8em;color:var(--teal);margin-right:.55rem;vertical-align:-.02em;flex:none}
 .band-head p{margin:0;color:var(--mute);max-width:var(--measure);font-size:.96rem}
 
 /* ---------- live links ---------- */
@@ -277,7 +277,7 @@ a{color:inherit}
 .project p.desc{margin:0 0 1.1rem;max-width:var(--measure);font-size:.97rem}
 .stack{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.1rem;padding:0;list-style:none}
 .stack li{
-  display:inline-flex;align-items:center;gap:.38rem;
+  display:inline-flex;align-items:center;gap:.46rem;
   font-family:var(--display);font-size:.71rem;font-weight:500;
   color:var(--teal);border:1px solid var(--line);padding:.26rem .68rem .26rem .58rem;
   border-radius:999px;background:var(--ground-2);
@@ -305,7 +305,7 @@ a{color:inherit}
 /* ---------- capability list ---------- */
 .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
 .caps h3{font-family:var(--display);font-weight:700;font-size:.92rem;margin:0 0 .4rem;letter-spacing:-.02em}
-.caps h3{display:flex;align-items:center;gap:.6rem}
+.caps h3{display:flex;align-items:center;gap:.68rem}
 .cap-ico{
   display:inline-flex;align-items:center;justify-content:center;
   width:32px;height:32px;border-radius:8px;flex:none;
@@ -385,7 +385,7 @@ html:not(.anim) .progress{display:none}
 .anim .hero-cta{animation-delay:.46s}
 
 /* the rule under each section heading draws across */
-.band-head h2{position:relative;display:inline-block;padding-bottom:.3rem}
+.band-head h2{position:relative;padding-bottom:.34rem}
 .band-head h2::after{
   content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;
   background:var(--teal);transform:scaleX(0);transform-origin:0 50%;
