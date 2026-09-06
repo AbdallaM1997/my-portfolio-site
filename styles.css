@@ -130,10 +130,34 @@ a{color:inherit}
 }
 .avatar{
   width:clamp(116px,15vw,168px);aspect-ratio:1;border-radius:50%;
-  overflow:hidden;border:3px solid var(--teal);background:var(--ground-2);
+  border:3px solid var(--teal);background:var(--ground-2);
   margin:0 0 clamp(1.2rem,3vw,1.9rem);flex:none;
+  padding:0;cursor:pointer;perspective:750px;
+  transition:border-color .2s ease,transform .2s ease;
 }
-.avatar video{width:100%;height:100%;object-fit:cover;display:block}
+.avatar:hover{transform:translateY(-2px);border-color:var(--clay)}
+.avatar-inner{
+  display:block;position:relative;width:100%;height:100%;border-radius:50%;
+  transform-style:preserve-3d;
+  transition:transform .75s cubic-bezier(.3,.85,.3,1);
+}
+.avatar[aria-pressed="true"] .avatar-inner{transform:rotateY(180deg)}
+.face{
+  position:absolute;top:0;left:0;right:0;bottom:0;display:block;
+  border-radius:50%;overflow:hidden;
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+}
+.face.back{transform:rotateY(180deg)}
+.face img,.face svg{width:100%;height:100%;display:block;object-fit:cover}
+/* a small hint that the circle does something */
+.avatar::after{
+  content:"";position:absolute;right:2px;bottom:2px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--teal);border:2px solid var(--ground);
+  transition:background .2s ease;
+}
+.avatar{position:relative}
+.avatar:hover::after{background:var(--clay)}
 
 .hero h1{
   font-family:var(--display);font-weight:700;

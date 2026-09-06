@@ -49,9 +49,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <section class="hero">
   <div class="wrap">
-    <div class="avatar">
-      <video src="media/ar-tiger.mp4" poster="media/ar-tiger.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true" tabindex="-1"></video>
-    </div>
+    <button type="button" class="avatar" aria-pressed="false" aria-label="Show illustrated avatar">
+      <span class="avatar-inner">
+        <span class="face front"><img src="media/avatar.jpg" width="440" height="440" alt="Abdallah Mahmoud"></span>
+        <span class="face back"><svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><linearGradient id="avbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7C24B"/><stop offset="1" stop-color="#E08A2E"/></linearGradient><clipPath id="avc"><circle cx="100" cy="100" r="100"/></clipPath></defs><g clip-path="url(#avc)"><rect width="200" height="200" fill="url(#avbg)"/>  <path d="M14 200c0-42 38-64 86-64s86 22 86 64z" fill="#23232E"/>  <path d="M100 136l-20 8 20 56 20-56z" fill="#15151C"/>  <path d="M80 144l20 8-14 48z" fill="#2E2E3A"/><path d="M120 144l-20 8 14 48z" fill="#2E2E3A"/>  <path d="M88 112h24v24a12 12 0 0 1-24 0z" fill="#D89A6F"/>  <ellipse cx="100" cy="86" rx="37" ry="41" fill="#EDB489"/>  <circle cx="63" cy="90" r="7" fill="#E0A377"/><circle cx="137" cy="90" r="7" fill="#E0A377"/>  <path d="M62 82c-2-30 16-46 38-46s40 16 38 46c-3-13-10-20-19-23-9 7-29 9-42 2-8 4-13 11-15 21z" fill="#1D1917"/><path d="M74 44c10-9 34-11 47 1-13-5-33-5-47-1z" fill="#2A2522"/>  <rect x="72" y="76" width="20" height="4" rx="2" fill="#241F1C"/><rect x="108" y="76" width="20" height="4" rx="2" fill="#241F1C"/>  <g fill="none" stroke="#CFD2D8" stroke-width="3"><rect x="68" y="82" width="26" height="20" rx="9"/><rect x="106" y="82" width="26" height="20" rx="9"/><path d="M94 90h12M68 89l-8 3M132 89l8 3"/></g><circle cx="81" cy="92" r="3.2" fill="#241F1C"/><circle cx="119" cy="92" r="3.2" fill="#241F1C"/>  <path d="M86 111c5 7 23 7 28 0" fill="none" stroke="#8A5637" stroke-width="3.4" stroke-linecap="round"/></g></svg></span>
+      </span>
+    </button>
 
     <h1>Hi, I&rsquo;m<br><span class="typed" aria-live="polite"><span class="typed-out">Abdallah Mahmoud</span><span class="caret" aria-hidden="true"></span></span></h1>
 
@@ -457,6 +460,16 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     setTimeout(onScroll, 0);
     setTimeout(onScroll, 150);
     setTimeout(onScroll, 600);
+  }
+
+  // ---- avatar flip ------------------------------------------------------
+  var av = document.querySelector('.avatar');
+  if (av) {
+    av.addEventListener('click', function(){
+      var on = av.getAttribute('aria-pressed') === 'true';
+      av.setAttribute('aria-pressed', on ? 'false' : 'true');
+      av.setAttribute('aria-label', on ? 'Show illustrated avatar' : 'Show photo');
+    });
   }
 
   // ---- typed headline ---------------------------------------------------
