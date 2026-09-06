@@ -3,7 +3,8 @@
 A single-page portfolio. No build step, no framework, no dependencies to install.
 
 ```
-index.html                     the whole site
+index.html                     markup and the one small script
+styles.css                     all the styling
 media/                         28 clips + poster images (31 MB total)
 Abdallah_Mahmoud_Resume.pdf    linked from "Download CV"
 ```
@@ -43,8 +44,12 @@ materially more professional than a `.netlify.app` subdomain. Worth the money.
 
 ## Editing
 
-Everything is in `index.html` — HTML at the top, CSS in the `<style>` block,
-one small script at the bottom. Open it in any text editor (VS Code is free).
+Markup lives in `index.html`, styling in `styles.css`, and one small script sits
+at the bottom of `index.html`. Open them in any text editor (VS Code is free).
+
+Colours, fonts and the corner radius are the `:root` variables at the top of
+`styles.css`; the dark palette is the two blocks right below it. Change
+`--teal` (the accent) and the whole site follows.
 
 **To change a project's text:** find its `<article class="project">` block and
 edit the `<h3>`, `<p class="desc">`, and the `<ul class="stack">` items.
@@ -64,8 +69,7 @@ To make a poster image from a video, if you have ffmpeg installed:
 ffmpeg -ss 12 -i media/yourclip.mp4 -frames:v 1 -q:v 4 media/yourclip.jpg
 ```
 
-**Colours and fonts** are the `:root` variables at the top of the `<style>`
-block. Change `--teal` and `--clay` and the whole page follows.
+**Colours and fonts** are the `:root` variables at the top of `styles.css`.
 
 ## How the videos behave
 
