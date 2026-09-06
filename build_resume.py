@@ -73,7 +73,7 @@ F.append(Paragraph('English: Professional working proficiency &nbsp;&bull;&nbsp;
 F.append(Spacer(1, 5))
 
 head('PROFILE')
-body('Unity developer with 6+ years building AR and VR applications for education, enterprise training, '
+body('Unity developer with 8+ years building AR and VR applications for education, enterprise training, '
      'and brand activations. I take projects from prototype through store deployment: XR interaction systems, '
      'AR marker and plane-based experiences, multi-language RTL/LTR interfaces, and modular architectures that '
      'clients can extend after handover. Shipped work for publishing, advertising, and enterprise clients across '

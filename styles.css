@@ -77,14 +77,22 @@ a{color:inherit}
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
 }
 .masthead .wrap{
-  display:flex;align-items:baseline;gap:1.25rem;
-  padding:.85rem 0;flex-wrap:wrap;
+  display:flex;align-items:center;gap:1.25rem;
+  padding:.7rem 0;flex-wrap:wrap;
 }
+.brand{
+  display:flex;flex-direction:column;gap:.1rem;
+  text-decoration:none;color:inherit;
+  border-radius:8px;padding:.15rem .3rem;margin-left:-.3rem;
+  transition:background .14s ease;
+}
+.brand:hover{background:var(--ground-2)}
 .wordmark{
   font-family:var(--display);font-weight:600;letter-spacing:-.02em;
-  font-size:.98rem;margin:0;
+  font-size:.98rem;margin:0;line-height:1.2;
 }
-.masthead .where{font-family:var(--display);font-size:.78rem;color:var(--mute);margin:0}
+.masthead .where{font-family:var(--display);font-size:.72rem;color:var(--mute);margin:0;line-height:1.2}
+.brand:hover .where{color:var(--teal)}
 .masthead .spring{margin-left:auto}
 /* ---------- header nav ---------- */
 .mainnav{display:flex;align-items:center;gap:.15rem;align-self:center;flex-wrap:wrap}
@@ -479,10 +487,7 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
    share the first row, the role drops underneath, and the tap targets grow. */
 @media (max-width:640px){
   .masthead .wrap{gap:.3rem .7rem;padding:.5rem 0}
-  /* wordmark + role need 346px and a 375px phone gives 335px, so the role
-     drops here rather than adding a third row to a sticky bar. The hero
-     states it immediately below. */
-  .masthead .where{display:none}
+  .masthead .where{font-size:.68rem}
   /* icons get their own row; the negative margin optically lines the first
      glyph up with the wordmark rather than the 44px tap box */
   /* row 1 is the wordmark and the toggle, row 2 the section links: the two

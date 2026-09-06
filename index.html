@@ -33,8 +33,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <header class="masthead">
   <div class="wrap">
-    <p class="wordmark">Abdallah Mahmoud</p>
-    <p class="where">Senior Unity AR/VR developer</p>
+    <a class="brand" href="#top">
+      <span class="wordmark">Abdallah Mahmoud</span>
+      <span class="where">Senior Unity AR/VR developer</span>
+    </a>
     <span class="spring"></span>
     <nav class="mainnav" aria-label="Sections">
       <a href="#live">Live</a>
@@ -47,7 +49,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true">
     <video src="media/hero-reel.mp4" poster="media/hero-reel.jpg" muted loop playsinline autoplay preload="auto" tabindex="-1"></video>
   </div>
@@ -61,7 +63,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
     <h1>Hi, I&rsquo;m<br><span class="typed" aria-live="polite"><span class="typed-out">Abdallah Mahmoud</span><span class="caret" aria-hidden="true"></span></span></h1>
 
-    <p class="welcome">// Six years putting 3D worlds on top of real ones</p>
+    <p class="welcome">// Eight years putting 3D worlds on top of real ones</p>
 
     <ul class="tags">
       <li>Unity Developer</li>
@@ -674,7 +676,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   }
 
   // ---- theme toggle -----------------------------------------------------
-  var themeBtn = document.querySelector('.social .theme');
+  var themeBtn = document.querySelector('.masthead .theme');
   if (themeBtn) {
     var sysDark = function(){
       return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
