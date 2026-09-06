@@ -83,42 +83,40 @@ a{color:inherit}
 }
 .masthead .where{font-family:var(--display);font-size:.78rem;color:var(--mute);margin:0}
 .masthead .spring{margin-left:auto}
-/* icon links: square hit targets that match the bracket motif */
-.social{display:flex;align-items:center;gap:.2rem;align-self:center;flex-wrap:wrap}
-.social a{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:34px;height:34px;color:var(--teal);
-  text-decoration:none;
-  transition:background .12s ease,color .12s ease;
+/* ---------- header nav ---------- */
+.mainnav{display:flex;align-items:center;gap:.15rem;align-self:center;flex-wrap:wrap}
+.mainnav a{
+  font-family:var(--display);font-size:.8rem;font-weight:500;
+  text-decoration:none;color:var(--mute);
+  padding:.42rem .68rem;border-radius:999px;
+  transition:color .14s ease,background .14s ease;
 }
-.social a svg{width:17px;height:17px;fill:currentColor;display:block}
-.social a:hover{background:var(--teal);color:var(--ground)}
-.social a.cv{color:var(--clay)}
-.social a.cv:hover{background:var(--clay);color:var(--ground)}
-.social .theme{
+.mainnav a:hover{color:var(--ink);background:var(--ground-2)}
+.mainnav a.here{color:var(--teal);background:var(--tint)}
+/* the masthead is sticky, so anchors must not land under it */
+section[id]{scroll-margin-top:78px}
+@media (max-width:640px){section[id]{scroll-margin-top:96px}}
+.masthead .theme{
   display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
-  height:38px;padding:0 .8rem;margin-left:.6rem;
+  height:34px;padding:0 .8rem;margin-left:.5rem;
   font-family:var(--display);font-size:.74rem;font-weight:500;
   background:var(--ground-2);border:1px solid var(--line);color:var(--ink);
   border-radius:999px;cursor:pointer;white-space:nowrap;
   transition:background .14s ease,color .14s ease,border-color .14s ease,transform .14s ease;
 }
-.social .theme:hover{background:var(--teal);color:var(--ground);border-color:var(--teal);transform:translateY(-1px)}
-.social .theme svg{width:16px;height:16px;fill:currentColor;display:block;flex:none}
-.social .theme .lab{display:inline-block}
-.social .theme .lab-dark{display:none}
-:root[data-theme="dark"] .social .theme .lab-light{display:none}
-:root[data-theme="dark"] .social .theme .lab-dark{display:inline-block}
+.masthead .theme:hover{background:var(--teal);color:var(--ground);border-color:var(--teal);transform:translateY(-1px)}
+.masthead .theme svg{width:15px;height:15px;fill:currentColor;display:block;flex:none}
+.masthead .theme .lab-dark{display:none}
+:root[data-theme="dark"] .masthead .theme .lab-light{display:none}
+:root[data-theme="dark"] .masthead .theme .lab-dark{display:inline-block}
+.masthead .theme .i-sun{display:none}
+:root[data-theme="dark"] .masthead .theme .i-sun{display:block}
+:root[data-theme="dark"] .masthead .theme .i-moon{display:none}
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .social .theme .lab-light{display:none}
-  :root:not([data-theme="light"]) .social .theme .lab-dark{display:inline-block}
-}
-.social .theme .i-sun{display:none}
-:root[data-theme="dark"] .social .theme .i-sun{display:block}
-:root[data-theme="dark"] .social .theme .i-moon{display:none}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .social .theme .i-sun{display:block}
-  :root:not([data-theme="light"]) .social .theme .i-moon{display:none}
+  :root:not([data-theme="light"]) .masthead .theme .lab-light{display:none}
+  :root:not([data-theme="light"]) .masthead .theme .lab-dark{display:inline-block}
+  :root:not([data-theme="light"]) .masthead .theme .i-sun{display:block}
+  :root:not([data-theme="light"]) .masthead .theme .i-moon{display:none}
 }
 
 /* ---------- hero ---------- */
@@ -348,7 +346,16 @@ a{color:inherit}
   font-family:var(--display);font-weight:700;letter-spacing:-.045em;
   font-size:clamp(1.6rem,3.6vw,2.4rem);margin:0 0 1rem;max-width:20ch;line-height:1.18;
 }
-.contact p{max-width:var(--measure);margin:0}
+.contact p{max-width:var(--measure);margin:0 0 1.6rem}
+.contact-links{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.7rem 1.6rem}
+.contact-links a{
+  font-family:var(--display);font-weight:500;font-size:.85rem;text-decoration:none;
+  padding-bottom:2px;
+  background-image:linear-gradient(var(--teal),var(--teal));
+  background-size:100% 2px;background-repeat:no-repeat;background-position:0 100%;
+  transition:background-size .28s cubic-bezier(.22,.61,.36,1);
+}
+.contact-links a:hover{background-size:0% 2px;background-position:100% 100%}
 footer{border-top:1px solid var(--line);padding:1.4rem 0 2.5rem;font-family:var(--display);font-size:.76rem;color:var(--mute)}
 
 
@@ -434,8 +441,6 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 
 .clips button{transition:background .16s ease,color .16s ease,border-color .16s ease}
 
-.social a:hover{transform:translateY(-1px)}
-.social a{transition:background .12s ease,color .12s ease,transform .12s ease}
 
 /* underline sweep on the text links */
 .outlinks a,.contact ul a{
@@ -462,17 +467,18 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
   .masthead .where{display:none}
   /* icons get their own row; the negative margin optically lines the first
      glyph up with the wordmark rather than the 44px tap box */
-  .social{flex-basis:100%;margin-left:-12px}
-  .social a{width:44px;height:44px}
-  .social a svg{width:20px;height:20px}
-  .social .theme{height:44px;padding:0 .9rem;font-size:.76rem}
-  .social .theme svg{width:18px;height:18px}
+  /* row 1 is the wordmark and the toggle, row 2 the section links: the two
+     together need 372px against the 350px a 390px phone gives */
+  .mainnav{flex-basis:100%;order:3;gap:.05rem;margin-left:-.55rem}
+  .mainnav a{font-size:.78rem;padding:.5rem .58rem}
+  .masthead .theme{order:2;height:38px;padding:0 .75rem;margin-left:0}
 }
 /* below 360px the five 44px taps plus the labelled pill need 335px against
    292px of usable width, so the toggle drops to icon only */
 @media (max-width:360px){
-  .social .theme{padding:0;width:44px;margin-left:.3rem}
-  .social .theme .lab{display:none}
+  .mainnav a{font-size:.74rem;padding:.55rem .45rem}
+  .masthead .theme{padding:0;width:40px}
+  .masthead .theme .lab{display:none}
 }
 @media (max-width:880px){
   .project{grid-template-columns:1fr;gap:1.5rem}
