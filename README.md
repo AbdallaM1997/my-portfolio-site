@@ -5,7 +5,7 @@ A single-page portfolio. No build step, no framework, no dependencies to install
 ```
 index.html                     markup and the one small script
 styles.css                     all the styling
-media/                         44 clips + poster images (57 MB total)
+media/                         48 clips + poster images (62 MB total)
 Abdallah_Mahmoud_Resume.pdf    linked from "Download CV"
 ```
 
