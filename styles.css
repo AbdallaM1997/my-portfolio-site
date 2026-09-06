@@ -84,7 +84,7 @@ a{color:inherit}
 .masthead .where{font-family:var(--display);font-size:.78rem;color:var(--mute);margin:0}
 .masthead .spring{margin-left:auto}
 /* icon links: square hit targets that match the bracket motif */
-.social{display:flex;align-items:center;gap:.2rem;align-self:center}
+.social{display:flex;align-items:center;gap:.2rem;align-self:center;flex-wrap:wrap}
 .social a{
   display:inline-flex;align-items:center;justify-content:center;
   width:34px;height:34px;color:var(--teal);
@@ -277,10 +277,14 @@ a{color:inherit}
 .project p.desc{margin:0 0 1.1rem;max-width:var(--measure);font-size:.97rem}
 .stack{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.1rem;padding:0;list-style:none}
 .stack li{
+  display:inline-flex;align-items:center;gap:.38rem;
   font-family:var(--display);font-size:.71rem;font-weight:500;
-  color:var(--teal);border:1px solid var(--line);padding:.26rem .66rem;
+  color:var(--teal);border:1px solid var(--line);padding:.26rem .68rem .26rem .58rem;
   border-radius:999px;background:var(--ground-2);
 }
+/* brand marks are the official Simple Icons glyphs (CC0); the rest are
+   generic category glyphs so every pill reads the same weight */
+.tico{width:13px;height:13px;fill:currentColor;flex:none;opacity:.9}
 .outlinks{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
 .outlinks a{
   font-family:var(--display);font-size:.76rem;font-weight:500;text-decoration:none;
@@ -439,6 +443,12 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
   .social a svg{width:20px;height:20px}
   .social .theme{height:44px;padding:0 .9rem;font-size:.76rem}
   .social .theme svg{width:18px;height:18px}
+}
+/* below 360px the five 44px taps plus the labelled pill need 335px against
+   292px of usable width, so the toggle drops to icon only */
+@media (max-width:360px){
+  .social .theme{padding:0;width:44px;margin-left:.3rem}
+  .social .theme .lab{display:none}
 }
 @media (max-width:880px){
   .project{grid-template-columns:1fr;gap:1.5rem}
