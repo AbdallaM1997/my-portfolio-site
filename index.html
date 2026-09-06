@@ -53,8 +53,29 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true">
-    <video src="media/hero-reel.mp4" poster="media/hero-reel.jpg" muted loop playsinline autoplay preload="auto" tabindex="-1"></video>
+    <video poster="media/hero-reel.jpg" muted loop playsinline autoplay preload="auto" tabindex="-1"
+           data-sm="media/hero-reel-sm.mp4" data-lg="media/hero-reel.mp4"></video>
   </div>
+  <script>
+  // Pick the reel before the browser has a src to fetch, so a phone never
+  // pulls the desktop file. No src at all if the visitor asked to save data;
+  // the poster still shows.
+  (function(){
+    var v = document.querySelector('.hero-bg video');
+    if (!v) return;
+    try {
+      // Only saveData, which the visitor sets deliberately. effectiveType is
+      // a browser estimate and reports "3g" even on a local server, so using
+      // it would drop the reel for plenty of people on fine connections.
+      var c = navigator.connection;
+      if (c && c.saveData) return;
+      var small = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+      v.src = small ? v.getAttribute('data-sm') : v.getAttribute('data-lg');
+    } catch (e) {
+      v.src = v.getAttribute('data-lg');
+    }
+  })();
+  </script>
   <div class="wrap">
     <button type="button" class="avatar" aria-pressed="false" aria-label="Show illustrated avatar">
       <span class="avatar-inner">
