@@ -39,7 +39,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <span class="where">Senior Unity AR/VR developer</span>
     </a>
     <span class="spring"></span>
-    <nav class="mainnav" aria-label="Sections">
+    <button type="button" class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="bar1" d="M4 7h16"/><path class="bar2" d="M4 12h16"/><path class="bar3" d="M4 17h16"/></svg></button>
+    <nav class="mainnav" id="mainnav" aria-label="Sections">
       <a href="#live">Live</a>
       <a href="#ar">AR</a>
       <a href="#vr">VR</a>
@@ -825,6 +826,36 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   }
 
   // ---- theme toggle -----------------------------------------------------
+  // ---- mobile dropdown nav ---------------------------------------------
+  var navBtn = document.querySelector('.navtoggle');
+  var nav = document.getElementById('mainnav');
+  if (navBtn && nav) {
+    var setNav = function(open){
+      nav.classList.toggle('open', open);
+      navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    navBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      setNav(navBtn.getAttribute('aria-expanded') !== 'true');
+    });
+    // a link closes it; the anchor scroll still runs
+    nav.addEventListener('click', function(e){
+      if (e.target.closest && e.target.closest('a')) setNav(false);
+    });
+    document.addEventListener('click', function(e){
+      if (!nav.contains(e.target) && !navBtn.contains(e.target)) setNav(false);
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' || e.keyCode === 27) setNav(false);
+    });
+    // widening past the breakpoint puts the nav back in the header row, where
+    // the .open class would otherwise be a stale no-op class on a flex row
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 640) setNav(false);
+    });
+  }
+
   var themeBtn = document.querySelector('.masthead .theme');
   if (themeBtn) {
     var sysDark = function(){

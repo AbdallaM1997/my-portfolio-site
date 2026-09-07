@@ -104,6 +104,8 @@ a{color:inherit}
 }
 .mainnav a:hover{color:var(--ink);background:var(--ground-2)}
 .mainnav a.here{color:var(--teal);background:var(--tint)}
+/* the hamburger only exists on phones; see the 640px block below */
+.navtoggle{display:none}
 /* the masthead is sticky, so anchors must not land under it */
 section[id]{scroll-margin-top:78px}
 @media (max-width:640px){section[id]{scroll-margin-top:96px}}
@@ -486,24 +488,53 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 /* On a phone the masthead is sticky, so keep it short: wordmark and icons
    share the first row, the role drops underneath, and the tap targets grow. */
 @media (max-width:640px){
-  .masthead .wrap{gap:.3rem .7rem;padding:.5rem 0}
+  /* one row only: wordmark, theme, hamburger. The dropdown carries the links */
+  .masthead .wrap{gap:.3rem .5rem;padding:.5rem 0;flex-wrap:nowrap}
+  .brand{min-width:0}
   .masthead .where{font-size:.68rem}
   /* icons get their own row; the negative margin optically lines the first
      glyph up with the wordmark rather than the 44px tap box */
-  /* row 1 is the wordmark and the toggle, row 2 the section links: the two
-     together need 372px against the 350px a 390px phone gives */
-  .mainnav{flex-basis:100%;order:3;gap:.05rem;margin-left:-.55rem}
-  /* six items need 352px against the 350px a 390px phone gives, so the
-     horizontal padding comes in rather than letting Contact wrap */
-  .mainnav a{font-size:.76rem;padding:.5rem .4rem}
-  .masthead .theme{order:2;height:38px;padding:0 .75rem;margin-left:0}
+  /* six links will not fit a phone row at a 44px tap size, so they fold into
+     a dropdown hung off the sticky header instead of taking a second row */
+  .navtoggle{
+    display:inline-flex;align-items:center;justify-content:center;
+    order:3;flex:none;width:40px;height:38px;margin-left:0;
+    background:var(--ground-2);border:1px solid var(--line);color:var(--ink);
+    border-radius:999px;cursor:pointer;
+    transition:background .14s ease,color .14s ease,border-color .14s ease;
+  }
+  .navtoggle svg{
+    width:20px;height:20px;display:block;fill:none;
+    stroke:currentColor;stroke-width:2;stroke-linecap:round;
+  }
+  .navtoggle path{transition:transform .2s ease,opacity .14s ease;transform-origin:center}
+  .navtoggle[aria-expanded="true"]{background:var(--teal);color:var(--ground);border-color:var(--teal)}
+  .navtoggle[aria-expanded="true"] .bar1{transform:translateY(5px) rotate(45deg)}
+  .navtoggle[aria-expanded="true"] .bar2{opacity:0}
+  .navtoggle[aria-expanded="true"] .bar3{transform:translateY(-5px) rotate(-45deg)}
+
+  .mainnav{
+    position:absolute;top:100%;right:0;left:0;
+    flex-direction:column;align-items:stretch;gap:.1rem;
+    padding:.4rem;margin:0;
+    background:var(--ground);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 14px 28px rgba(0,0,0,.14);
+    /* hidden by default; display:none would skip the transition */
+    opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .16s ease,transform .16s ease,visibility 0s linear .16s;
+  }
+  .mainnav.open{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  .mainnav a{font-size:.88rem;padding:.6rem .8rem;border-radius:8px}
+  .masthead .theme{order:2;flex:none;height:38px;padding:0 .7rem;margin-left:auto}
 }
 /* below 360px the five 44px taps plus the labelled pill need 335px against
    292px of usable width, so the toggle drops to icon only */
 @media (max-width:360px){
-  .mainnav a{font-size:.72rem;padding:.55rem .3rem}
   .masthead .theme{padding:0;width:40px}
-  .masthead .theme .lab{display:none}
+  /* the :root[data-theme] rules above re-show .lab-dark, so this needs the
+     weight or the label overflows the 40px icon-only pill */
+  .masthead .theme .lab{display:none!important}
 }
 @media (max-width:880px){
   .project{grid-template-columns:1fr;gap:1.5rem}
