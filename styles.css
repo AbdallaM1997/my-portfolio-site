@@ -507,11 +507,19 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
     width:20px;height:20px;display:block;fill:none;
     stroke:currentColor;stroke-width:2;stroke-linecap:round;
   }
-  .navtoggle path{transition:transform .2s ease,opacity .14s ease;transform-origin:center}
+  /* all three bars are the same centred line, spread apart by a translate.
+     The X is then a plain rotation about the shared centre, so the two arms
+     cross exactly in the middle of the button. */
+  .navtoggle path{
+    transition:transform .2s ease,opacity .14s ease;
+    transform-box:view-box;transform-origin:12px 12px;
+  }
+  .navtoggle .bar1{transform:translateY(-5px)}
+  .navtoggle .bar3{transform:translateY(5px)}
   .navtoggle[aria-expanded="true"]{background:var(--teal);color:var(--ground);border-color:var(--teal)}
-  .navtoggle[aria-expanded="true"] .bar1{transform:translateY(5px) rotate(45deg)}
+  .navtoggle[aria-expanded="true"] .bar1{transform:rotate(45deg)}
   .navtoggle[aria-expanded="true"] .bar2{opacity:0}
-  .navtoggle[aria-expanded="true"] .bar3{transform:translateY(-5px) rotate(-45deg)}
+  .navtoggle[aria-expanded="true"] .bar3{transform:rotate(-45deg)}
 
   .mainnav{
     position:absolute;top:100%;right:0;left:0;
