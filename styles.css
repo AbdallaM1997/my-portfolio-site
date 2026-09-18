@@ -369,43 +369,78 @@ section[id],article[id]{scroll-margin-top:78px}
 }
 
 /* ---------- journey ---------- */
-.steps{list-style:none;margin:0;padding:0;position:relative;max-width:46rem}
+.steps{list-style:none;margin:0;padding:1rem 0 .5rem;position:relative}
+.trail{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+.trail path{fill:none;stroke-width:2;stroke-linecap:round}
+.trail-bg{stroke:var(--line)}
+.trail-ink{stroke:var(--teal);stroke-dasharray:1;stroke-dashoffset:1}
+.trail-dot{fill:var(--teal);stroke:var(--ground);stroke-width:3;opacity:0;transition:opacity .2s ease}
+.steps.riding .trail-dot{opacity:1}
+html:not(.anim) .trail-ink{stroke-dashoffset:0!important}
+html:not(.anim) .trail-dot{display:none}
+
 .steps li{
-  display:grid;grid-template-columns:5.5rem 1fr;gap:0 1.6rem;
-  position:relative;padding:0 0 2rem;
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(6rem,18vw,14rem);
+  padding:0 0 3.2rem;
 }
-.steps li:last-child{padding-bottom:0}
-/* the spine, drawn per item so it starts and ends with the list */
-.steps li::before{
-  content:"";position:absolute;left:5.5rem;top:.55rem;bottom:-.55rem;width:2px;
-  margin-left:-1px;background:var(--line);
-}
-.steps li:last-child::before{display:none}
-.steps li::after{
-  content:"";position:absolute;left:5.5rem;top:.25rem;width:12px;height:12px;
-  margin-left:-6px;border-radius:50%;
-  background:var(--ground);border:2px solid var(--teal);box-sizing:border-box;
-}
-.steps li.now::after{background:var(--teal);box-shadow:0 0 0 5px var(--tint)}
+.steps li:last-child{padding-bottom:1rem}
+.steps li:nth-of-type(even) .card{grid-column:2}
+.steps li:nth-of-type(odd) .card{grid-column:1}
+/* year chip pinned to the path's bend; JS sets left */
 .steps .when{
-  font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.02em;
-  color:var(--teal);text-align:right;padding-right:1.6rem;line-height:1.5;margin-top:.05rem;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.04em;
+  color:var(--ground);background:var(--teal);border-radius:999px;
+  padding:.3rem .7rem;white-space:nowrap;box-shadow:0 0 0 4px var(--ground);
 }
-.steps .what{padding-left:1.4rem}
+.steps li.now .when{background:var(--clay)}
+
+.steps .card{
+  position:relative;
+  border:1px solid var(--line);border-radius:var(--r);
+  background:var(--ground-2);padding:1.1rem 1.2rem 1.15rem;
+  box-shadow:0 12px 30px var(--shadow);
+  transform-style:preserve-3d;backface-visibility:hidden;
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.steps .card:hover{transform:translateY(-3px);box-shadow:0 18px 38px var(--shadow)}
+.steps .pic{
+  position:absolute;top:-1.1rem;width:92px;height:92px;border-radius:50%;object-fit:cover;
+  border:4px solid var(--ground);box-shadow:0 8px 20px var(--shadow);background:var(--ground-2);
+}
+.steps li:nth-of-type(odd) .pic{right:-2.2rem}
+.steps li:nth-of-type(even) .pic{left:-2.2rem}
+.steps li:nth-of-type(odd) .what{padding-right:2.6rem}
+.steps li:nth-of-type(even) .what{padding-left:2.6rem}
 .steps h3{
-  font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.02em;
-  margin:0 0 .4rem;line-height:1.35;
+  font-family:var(--display);font-weight:700;font-size:.98rem;letter-spacing:-.02em;
+  margin:0 0 .45rem;line-height:1.35;
 }
-.steps p{margin:0;font-size:.98rem;color:var(--mute);max-width:var(--measure)}
-.steps p a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px;font-family:var(--display);font-size:.82rem;white-space:nowrap}
+.steps p{margin:0;font-size:.95rem;color:var(--mute)}
+.steps p a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px;font-family:var(--display);font-size:.8rem;white-space:nowrap}
 .steps p a:hover{color:var(--teal)}
+
+/* the cards flip in from their own side of the path */
+.anim .steps .card.reveal{
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);
+  transition-delay:var(--d,0ms);
+}
+.anim .steps li:nth-of-type(odd) .card.reveal{transform:perspective(1100px) rotateY(-70deg) translateX(-30px);transform-origin:100% 50%}
+.anim .steps li:nth-of-type(even) .card.reveal{transform:perspective(1100px) rotateY(70deg) translateX(30px);transform-origin:0 50%}
+.anim .steps li:nth-of-type(n) .card.reveal.in{transform:none}
+
 @media (max-width:640px){
-  .steps li{grid-template-columns:1fr;gap:.3rem;padding-left:1.6rem}
-  .steps li::before,.steps li::after{left:0}
-  .steps li::before{margin-left:-1px}
-  .steps li::after{margin-left:-6px}
-  .steps .when{text-align:left;padding:0}
-  .steps .what{padding-left:0}
+  .steps{padding-left:0}
+  .steps li{padding:0 0 2.4rem 2.6rem}
+  .steps li:nth-of-type(odd) .card,.steps li:nth-of-type(even) .card{grid-column:1}
+  .steps .when{top:0;transform:translate(-12px,-30%);font-size:.7rem;padding:.25rem .6rem}
+  .steps .card{padding:1rem 1rem 1rem;margin-top:1.1rem}
+  .steps .pic{width:64px;height:64px;top:-1.6rem;right:.8rem!important;left:auto!important}
+  .steps li:nth-of-type(n) .what{padding:0}
+  .steps h3{padding-right:3.6rem}
+  .anim .steps li:nth-of-type(odd) .card.reveal,.anim .steps li:nth-of-type(even) .card.reveal{transform:perspective(900px) rotateX(-40deg) translateY(20px);transform-origin:50% 0}
+  .anim .steps li:nth-of-type(n) .card.reveal.in{transform:none}
 }
 
 /* ---------- contact ---------- */
