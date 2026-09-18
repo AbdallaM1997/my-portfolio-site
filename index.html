@@ -849,7 +849,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     var cx = narrow ? 26 : W / 2, amp = narrow ? 14 : Math.max(24, gap / 2 - 14);
     var pts = [[cx, 0]];
     each(items, function(li, i){
-      var y = li.offsetTop + (narrow ? 28 : li.offsetHeight / 2);
+      var y = li.offsetTop + (narrow ? 0 : li.offsetHeight / 2);
       pts.push([cx + (i % 2 ? -amp : amp), y]);
     });
     pts.push([cx, H]);
@@ -873,7 +873,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       var w = li.querySelector('.when');
       if (!w) return;
       w.style.left = pts[i+1][0] + 'px';
-      chips.push({ el: w, y: pts[i+1][1] });
+      chips.push({ el: w, y: pts[i+1][1], card: li.querySelector('.card'), top: li.offsetTop, bottom: li.offsetTop + li.offsetHeight - 30 });
     });
     moveTrail();
   }
@@ -893,6 +893,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       var dy = pt.y - c.y;
       c.el.classList.toggle('lit', dy >= -6);
       c.el.classList.toggle('near', Math.abs(dy) < 60);
+      // the card glows while the dot is alongside it
+      if (c.card) c.card.classList.toggle('lit', pt.y >= c.top && pt.y < c.bottom);
     });
     // the glow flares while the dot is travelling and settles once it stops
     steps.classList.add('moving');
