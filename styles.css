@@ -107,8 +107,8 @@ a{color:inherit}
 /* the hamburger only exists on phones; see the 640px block below */
 .navtoggle{display:none}
 /* the masthead is sticky, so anchors must not land under it */
-section[id]{scroll-margin-top:78px}
-@media (max-width:640px){section[id]{scroll-margin-top:96px}}
+section[id],article[id]{scroll-margin-top:78px}
+@media (max-width:640px){section[id],article[id]{scroll-margin-top:96px}}
 .masthead .theme{
   display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
   height:34px;padding:0 .8rem;margin-left:.5rem;
@@ -366,6 +366,46 @@ section[id]{scroll-margin-top:78px}
 .caps div{
   border:1px solid var(--line);border-radius:var(--r);
   background:var(--ground-2);padding:1.1rem 1.15rem;
+}
+
+/* ---------- journey ---------- */
+.steps{list-style:none;margin:0;padding:0;position:relative;max-width:46rem}
+.steps li{
+  display:grid;grid-template-columns:5.5rem 1fr;gap:0 1.6rem;
+  position:relative;padding:0 0 2rem;
+}
+.steps li:last-child{padding-bottom:0}
+/* the spine, drawn per item so it starts and ends with the list */
+.steps li::before{
+  content:"";position:absolute;left:5.5rem;top:.55rem;bottom:-.55rem;width:2px;
+  margin-left:-1px;background:var(--line);
+}
+.steps li:last-child::before{display:none}
+.steps li::after{
+  content:"";position:absolute;left:5.5rem;top:.25rem;width:12px;height:12px;
+  margin-left:-6px;border-radius:50%;
+  background:var(--ground);border:2px solid var(--teal);box-sizing:border-box;
+}
+.steps li.now::after{background:var(--teal);box-shadow:0 0 0 5px var(--tint)}
+.steps .when{
+  font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.02em;
+  color:var(--teal);text-align:right;padding-right:1.6rem;line-height:1.5;margin-top:.05rem;
+}
+.steps .what{padding-left:1.4rem}
+.steps h3{
+  font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.02em;
+  margin:0 0 .4rem;line-height:1.35;
+}
+.steps p{margin:0;font-size:.98rem;color:var(--mute);max-width:var(--measure)}
+.steps p a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px;font-family:var(--display);font-size:.82rem;white-space:nowrap}
+.steps p a:hover{color:var(--teal)}
+@media (max-width:640px){
+  .steps li{grid-template-columns:1fr;gap:.3rem;padding-left:1.6rem}
+  .steps li::before,.steps li::after{left:0}
+  .steps li::before{margin-left:-1px}
+  .steps li::after{margin-left:-6px}
+  .steps .when{text-align:left;padding:0}
+  .steps .what{padding-left:0}
 }
 
 /* ---------- contact ---------- */
