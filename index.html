@@ -121,7 +121,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <p>From a Cardboard headset built for a university grade to safety training running on real sites. The thread through all of it: education first, then a marketing agency, and a game studio on the side.</p>
     </div>
     <ol class="steps">
-      <svg class="trail" aria-hidden="true" focusable="false"><path class="trail-bg"/><path class="trail-ink"/><circle class="trail-dot" r="7"/></svg>
+      <svg class="trail" aria-hidden="true" focusable="false"><path class="trail-bg"/><path class="trail-ink"/><circle class="trail-halo" r="18"/><circle class="trail-dot" r="9"/></svg>
       <li>
         <span class="when">2019</span>
         <div class="card">
@@ -838,7 +838,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   // positions so it survives reflow.
   var steps = document.querySelector('.steps');
   var trail = steps && steps.querySelector('.trail');
-  var trailLen = 0, trailInk, trailDot;
+  var trailLen = 0, trailInk, trailDot, trailHalo, moveTimer;
   function buildTrail(){
     if (!trail) return;
     var items = steps.querySelectorAll('li');
@@ -864,6 +864,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     trailInk = trail.querySelector('.trail-ink');
     trailInk.setAttribute('d', d);
     trailDot = trail.querySelector('.trail-dot');
+    trailHalo = trail.querySelector('.trail-halo');
     trailLen = trailInk.getTotalLength();
     trailInk.style.strokeDasharray = trailLen;
     // the year chips sit on the path at their step's bend
@@ -883,6 +884,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     trailInk.style.strokeDashoffset = trailLen - len;
     var pt = trailInk.getPointAtLength(len);
     trailDot.setAttribute('cx', pt.x); trailDot.setAttribute('cy', pt.y);
+    trailHalo.setAttribute('cx', pt.x); trailHalo.setAttribute('cy', pt.y);
+    // the glow flares while the dot is travelling and settles once it stops
+    steps.classList.add('moving');
+    clearTimeout(moveTimer);
+    moveTimer = setTimeout(function(){ steps.classList.remove('moving'); }, 260);
     steps.classList.toggle('riding', t > 0 && t < 1);
   }
   if (trail) {

@@ -375,10 +375,20 @@ section[id],article[id]{scroll-margin-top:78px}
 .trail-bg{stroke:var(--line);opacity:.9}
 @media (max-width:640px){.trail path{stroke-width:2.5}.trail-bg{stroke:var(--mute);opacity:.35}}
 .trail-ink{stroke:var(--teal);stroke-dasharray:1;stroke-dashoffset:1}
-.trail-dot{fill:var(--teal);stroke:var(--ground);stroke-width:3;opacity:0;transition:opacity .2s ease}
+.trail-dot{
+  fill:var(--teal);stroke:var(--ground);stroke-width:3;opacity:0;
+  filter:drop-shadow(0 0 4px var(--teal));
+  transition:opacity .2s ease,filter .3s ease,r .3s ease;
+}
+.trail-halo{fill:var(--teal);opacity:0;transition:opacity .3s ease,r .3s ease}
 .steps.riding .trail-dot{opacity:1}
+.steps.riding .trail-halo{opacity:.18}
+.steps.riding.moving .trail-dot{filter:drop-shadow(0 0 10px var(--teal)) drop-shadow(0 0 22px var(--teal));r:11}
+.steps.riding.moving .trail-halo{opacity:.35;r:26}
+@keyframes halo{0%,100%{opacity:.14}50%{opacity:.28}}
+.steps.riding:not(.moving) .trail-halo{animation:halo 2.2s ease-in-out infinite}
 html:not(.anim) .trail-ink{stroke-dashoffset:0!important}
-html:not(.anim) .trail-dot{display:none}
+html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
 
 .steps li{
   position:relative;z-index:1;
