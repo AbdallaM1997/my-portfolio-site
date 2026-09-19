@@ -17,6 +17,8 @@ LINKEDIN = 'https://www.linkedin.com/in/abdalla-mahmoud-8b60b8194/'
 GITHUB   = 'https://github.com/AbdallaM1997'
 SITE     = 'https://abdallam1997.github.io/my-portfolio-site/'
 PLAY     = 'https://play.google.com/store/apps/details?id=com.ExaRollStudio.Shara71'
+XENON_DEMO = 'https://chillmaze.itch.io/xenon-blade-demo'
+XENON_KS   = 'https://www.kickstarter.com/projects/chillmaze/xenon-blade-survival-hack-and-slash'
 APPSTORE = 'https://apps.apple.com/eg/app/shara71-%D8%B4%D8%A7%D8%B1%D8%A9-71/id6746771073'
 YOUTUBE  = 'https://www.youtube.com/@kuwaitar5577'
 IGNITE   = 'https://ignite-virtual.com'
@@ -171,8 +173,9 @@ bul('<b>Kuwaitar</b> — Augmented reality education app built to the Kuwaiti pr
 bul('<b>Ignite Virtual</b> — VR and AR education platform delivering secondary-school Biology and History '
     'curriculum units, children’s soft-skills programs, and Quran modules through VR headsets, alongside '
     'turnkey VR lab installations for schools and universities. ' + L(IGNITE, 'ignite-virtual.com'))
-bul('<b>Xenon Blade</b> — 2D top-down hack-and-slash shipped to Google Play, with upgradeable weapons and '
-    'wave-based enemy AI.')
+bul('<b>Xenon Blade</b> (ChillMaze) — survival hack-and-slash shipped to Google Play, with upgradeable weapons, '
+    'a run-based upgrade economy and wave-based enemy AI. Free demo on itch.io; full game on Kickstarter. '
+    + L(XENON_DEMO, 'Play the demo') + ' | ' + L(XENON_KS, 'Kickstarter'))
 bul('<b>Wise Project</b> — interactive 2D physics games (Unity + Vyond) teaching electricity concepts to '
     '10th and 11th graders.')
 bul('<b>ADHD VR</b> (graduation project, graded Excellent) — mobile VR room with interactive IQ tests '
