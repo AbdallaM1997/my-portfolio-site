@@ -899,6 +899,48 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     window.addEventListener('resize', railState);
     window.addEventListener('load', railState);
     railState();
+
+    // Drift slowly on its own while nobody is touching it. Pauses on hover,
+    // touch, keyboard focus and while off screen; a user scroll or an arrow
+    // press holds it for a few seconds. At the end it glides back to the start.
+    if (!reduce) {
+      var hold = 0, hovering = false, visible = false, last = 0, pos = 0, rewinding = false;
+      var DRIFT = 18; // px per second
+      var pause = function(ms){ hold = Date.now() + (ms || 4000); };
+      rail.addEventListener('mouseenter', function(){ hovering = true; });
+      rail.addEventListener('mouseleave', function(){ hovering = false; });
+      rail.addEventListener('focusin', function(){ hovering = true; });
+      rail.addEventListener('focusout', function(){ hovering = false; });
+      track.addEventListener('touchstart', function(){ pause(6000); }, { passive: true });
+      track.addEventListener('wheel', function(){ pause(6000); }, { passive: true });
+      track.addEventListener('pointerdown', function(){ pause(6000); });
+      prevBtn.addEventListener('click', function(){ pause(6000); });
+      nextBtn.addEventListener('click', function(){ pause(6000); });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, { threshold: 0.2 }).observe(rail);
+      } else { visible = true; }
+      var drift = function(now){
+        window.requestAnimationFrame(drift);
+        var dt = last ? Math.min(200, now - last) : 0;
+        last = now;
+        var max = track.scrollWidth - track.clientWidth;
+        if (max <= 4 || !visible || hovering || Date.now() < hold || rewinding) { pos = track.scrollLeft; return; }
+        // a user scroll moved it elsewhere: continue from there
+        if (Math.abs(track.scrollLeft - pos) > 2) pos = track.scrollLeft;
+        pos = Math.min(max, pos + DRIFT * dt / 1000);
+        rail.classList.add('drifting');
+        track.scrollLeft = pos;
+        if (pos >= max - 0.5) {
+          rewinding = true;
+          setTimeout(function(){
+            rail.classList.remove('drifting');
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+            setTimeout(function(){ pos = 0; rewinding = false; pause(2500); }, 900);
+          }, 2500);
+        }
+      };
+      window.requestAnimationFrame(drift);
+    }
   }
 
   // ---- journey trail ----------------------------------------------------
