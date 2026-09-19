@@ -286,10 +286,38 @@ section[id],article[id]{scroll-margin-top:78px}
 .band-head p{margin:0;color:var(--mute);max-width:var(--measure);font-size:.96rem}
 
 /* ---------- live links ---------- */
-.live{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1rem;background:none;border:0}
+.rail{position:relative}
+.live{
+  display:flex;gap:1rem;background:none;border:0;
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;padding:.25rem .25rem 1rem;margin:-.25rem -.25rem 0;
+}
+.live::-webkit-scrollbar{display:none}
 .live article{
+  flex:0 0 clamp(255px,30%,320px);scroll-snap-align:start;
   background:var(--ground-2);border:1px solid var(--line);border-radius:var(--r);
   padding:1.4rem 1.3rem 1.25rem;display:flex;flex-direction:column;
+}
+.rail-btn{
+  position:absolute;top:50%;transform:translateY(-60%);z-index:2;
+  width:42px;height:42px;border-radius:50%;display:none;align-items:center;justify-content:center;
+  background:var(--ground);border:1px solid var(--line);color:var(--ink);cursor:pointer;
+  box-shadow:0 8px 20px var(--shadow);
+  transition:background .16s ease,color .16s ease,border-color .16s ease,opacity .16s ease;
+}
+.rail.overflowing .rail-btn{display:inline-flex}
+.rail-btn svg{width:22px;height:22px;fill:currentColor}
+.rail-btn.prev{left:-12px}
+.rail-btn.next{right:-12px}
+.rail-btn:hover{background:var(--teal);border-color:var(--teal);color:var(--ground)}
+.rail-btn:disabled{opacity:.35;cursor:default}
+.rail-btn:disabled:hover{background:var(--ground);border-color:var(--line);color:var(--ink)}
+@media (max-width:640px){
+  .live article{flex-basis:82%}
+  .rail-btn{top:auto;bottom:-8px;transform:none;width:38px;height:38px}
+  .rail-btn.prev{left:auto;right:48px}
+  .rail-btn.next{right:0}
+  .rail.overflowing .live{padding-bottom:3.4rem}
 }
 .live h3{font-family:var(--display);font-weight:700;font-size:1.02rem;margin:0 0 .2rem;letter-spacing:-.02em}
 .live .role{font-family:var(--display);font-size:.76rem;color:var(--mute);margin:0 0 .7rem}

@@ -123,12 +123,22 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <ol class="steps">
       <svg class="trail" aria-hidden="true" focusable="false"><path class="trail-bg"/><path class="trail-ink"/><circle class="trail-halo" r="18"/><circle class="trail-dot" r="9"/></svg>
       <li>
+        <span class="when">2018</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/xenon-blade.mp4" data-sm="media/xenon-blade-sm.mp4" poster="media/xenon-blade.jpg" muted loop playsinline preload="none" aria-label="Xenon Blade gameplay"></video>
+          <div class="what">
+            <h3>The first game: Xenon Blade</h3>
+            <p>Before any client work there was a game made for its own sake. With ChillMaze I built a survival hack-and-slash &mdash; a blade-wielding robot against waves of machines, upgrades between runs &mdash; and got it onto Google Play. It was where I learned to finish something and ship it. <a href="#p-xenon">See the game</a></p>
+          </div>
+        </div>
+      </li>
+      <li>
         <span class="when">2019</span>
         <div class="card">
           <video class="pic" data-lazy src="media/ar-tiger.mp4" poster="media/ar-tiger.jpg" muted loop playsinline preload="none" aria-label="AR tiger standing on a printed page"></video>
           <div class="what">
             <h3>First job, still a student</h3>
-            <p>Arabtesting hired me while I was finishing my degree. I built an AR colouring book with Vuforia and OpenCV that turned a child&rsquo;s scanned drawing into a live 3D model, and shipped a Cardboard VR animals app to Google Play &mdash; my first thing on a store. <a href="#p-animals">See the animal book</a></p>
+            <p>Arabtesting hired me while I was finishing my degree, on the strength of that game. I built an AR colouring book with Vuforia and OpenCV that turned a child&rsquo;s scanned drawing into a live 3D model, and shipped a Cardboard VR animals app to Google Play &mdash; my first thing on a store. <a href="#p-animals">See the animal book</a></p>
           </div>
         </div>
       </li>
@@ -212,7 +222,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33.26zM11.17 17s3.74-1.55 5.89-3.7c5.4-5.4 4.5-9.62 4.21-10.57-.95-.3-5.17-1.19-10.57 4.21C8.55 9.09 7 12.83 7 12.83L11.17 17zm6.48-2.19c-2.29 2.04-5.58 3.44-5.89 3.57L13.31 22l4.05-4.05c.47-.47.68-1.15.55-1.81l-.26-1.33z"/></svg>Live now</h2>
       <p>Products you can download or visit today.</p>
     </div>
-    <div class="live">
+    <div class="rail">
+      <button type="button" class="rail-btn prev" aria-label="Scroll left"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.4 7.4L14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg></button>
+      <div class="live">
       <article>
         <h3>Shara71</h3>
         <p class="role">ExaRoll Studio &middot; iOS and Android</p>
@@ -247,6 +259,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
           <a href="https://ignite-virtual.com">ignite-virtual.com</a>
         </div>
       </article>
+      </div>
+      <button type="button" class="rail-btn next" aria-label="Scroll right"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></button>
     </div>
   </div>
 </section>
@@ -861,6 +875,30 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         pending.splice(i, 1);
       }
     }
+  }
+
+  // ---- live rail ---------------------------------------------------------
+  var rail = document.querySelector('.rail');
+  if (rail) {
+    var track = rail.querySelector('.live');
+    var prevBtn = rail.querySelector('.prev'), nextBtn = rail.querySelector('.next');
+    var stepBy = function(dir){
+      var card = track.querySelector('article');
+      var w = card ? card.getBoundingClientRect().width + 16 : track.clientWidth * 0.8;
+      track.scrollBy({ left: dir * w, behavior: reduce ? 'auto' : 'smooth' });
+    };
+    prevBtn.addEventListener('click', function(){ stepBy(-1); });
+    nextBtn.addEventListener('click', function(){ stepBy(1); });
+    var railState = function(){
+      var max = track.scrollWidth - track.clientWidth;
+      prevBtn.disabled = track.scrollLeft <= 2;
+      nextBtn.disabled = track.scrollLeft >= max - 2;
+      rail.classList.toggle('overflowing', max > 4);
+    };
+    track.addEventListener('scroll', railState, { passive: true });
+    window.addEventListener('resize', railState);
+    window.addEventListener('load', railState);
+    railState();
   }
 
   // ---- journey trail ----------------------------------------------------
