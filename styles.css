@@ -365,9 +365,30 @@ section[id],article[id]{scroll-margin-top:78px}
   border-radius:5px;cursor:default;user-select:none;
 }
 .stack li .tico{color:var(--teal)}
+/* brand marks carry their own colour; the generic category glyphs stay accent */
+.stack li[data-b="unity"] .tico{color:var(--ink)}
+.stack li[data-b="unreal"] .tico{color:var(--ink)}
+.stack li[data-b="csharp"] .tico{color:#7C4DE0}
+.stack li[data-b="android"] .tico{color:#3DDC84}
+.stack li[data-b="meta"] .tico{color:#1877F2}
+.stack li[data-b="arduino"] .tico{color:#00979D}
+.stack li[data-b="vuforia"] .tico{color:#00A3E0}
+.stack li[data-b="google"] .tico{color:#4285F4}
+.stack li[data-b="webxr"] .tico{color:#EA4C4C}
+.stack li[data-b="rest"] .tico{color:#F59E0B}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .stack li[data-b="csharp"] .tico{color:#A98BF5}
+  :root:not([data-theme="light"]) .stack li[data-b="meta"] .tico{color:#4599FF}
+  :root:not([data-theme="light"]) .stack li[data-b="arduino"] .tico{color:#25C6CD}
+  :root:not([data-theme="light"]) .stack li[data-b="google"] .tico{color:#6FA8FF}
+}
+:root[data-theme="dark"] .stack li[data-b="csharp"] .tico{color:#A98BF5}
+:root[data-theme="dark"] .stack li[data-b="meta"] .tico{color:#4599FF}
+:root[data-theme="dark"] .stack li[data-b="arduino"] .tico{color:#25C6CD}
+:root[data-theme="dark"] .stack li[data-b="google"] .tico{color:#6FA8FF}
 /* brand marks are the official Simple Icons glyphs (CC0); the rest are
    generic category glyphs so every pill reads the same weight */
-.tico{width:16px;height:16px;fill:currentColor;flex:none;opacity:.95}
+.tico{width:16px;height:16px;fill:currentColor;flex:none;opacity:1}
 .outlinks{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
 .outlinks a{
   font-family:var(--display);font-size:.76rem;font-weight:500;text-decoration:none;
