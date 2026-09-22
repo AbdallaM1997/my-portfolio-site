@@ -360,14 +360,14 @@ section[id],article[id]{scroll-margin-top:78px}
 /* plain labels, not buttons: square-ish, no border, no hover, muted ink */
 .stack li{
   display:inline-flex;align-items:center;gap:.42rem;
-  font-family:var(--display);font-size:.7rem;font-weight:500;letter-spacing:.01em;
-  color:var(--mute);background:var(--tint);padding:.24rem .55rem .24rem .48rem;
+  font-family:var(--display);font-size:.72rem;font-weight:500;letter-spacing:.01em;
+  color:var(--mute);background:var(--tint);padding:.28rem .6rem .28rem .5rem;
   border-radius:5px;cursor:default;user-select:none;
 }
 .stack li .tico{color:var(--teal)}
 /* brand marks are the official Simple Icons glyphs (CC0); the rest are
    generic category glyphs so every pill reads the same weight */
-.tico{width:13px;height:13px;fill:currentColor;flex:none;opacity:.9}
+.tico{width:16px;height:16px;fill:currentColor;flex:none;opacity:.95}
 .outlinks{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
 .outlinks a{
   font-family:var(--display);font-size:.76rem;font-weight:500;text-decoration:none;
@@ -382,7 +382,12 @@ section[id],article[id]{scroll-margin-top:78px}
   background:var(--ground-2);border:1px solid var(--line);color:var(--mute);
   padding:.3rem .7rem;cursor:pointer;border-radius:999px;
 }
-.clips button:hover{border-color:var(--ink);color:var(--ink)}
+.clips button:hover{
+  border-color:var(--teal);color:var(--teal);background:var(--tint);
+  transform:translateY(-2px);box-shadow:0 5px 14px var(--shadow);
+}
+.clips button:active{transform:translateY(0) scale(.97);box-shadow:none}
+.clips button[aria-pressed="true"]:hover{background:var(--teal);color:var(--ground)}
 .clips button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:var(--ground)}
 
 /* ---------- capability list ---------- */
@@ -600,7 +605,7 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 .screen video{transition:transform .5s cubic-bezier(.22,.61,.36,1)}
 .media:hover .screen video{transform:scale(1.02)}
 
-.clips button{transition:background .16s ease,color .16s ease,border-color .16s ease}
+.clips button{transition:background .16s ease,color .16s ease,border-color .16s ease,transform .16s cubic-bezier(.22,.61,.36,1),box-shadow .16s ease}
 
 
 /* underline sweep on the text links */
