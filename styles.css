@@ -369,23 +369,27 @@ section[id],article[id]{scroll-margin-top:78px}
 .stack li[data-b="unity"] .tico{color:var(--ink)}
 .stack li[data-b="unreal"] .tico{color:var(--ink)}
 .stack li[data-b="csharp"] .tico{color:#7C4DE0}
-.stack li[data-b="android"] .tico{color:#3DDC84}
+.stack li[data-b="android"] .tico{color:#12874A}
 .stack li[data-b="meta"] .tico{color:#1877F2}
 .stack li[data-b="arduino"] .tico{color:#00979D}
 .stack li[data-b="vuforia"] .tico{color:#00A3E0}
 .stack li[data-b="google"] .tico{color:#4285F4}
 .stack li[data-b="webxr"] .tico{color:#EA4C4C}
-.stack li[data-b="rest"] .tico{color:#F59E0B}
+.stack li[data-b="rest"] .tico{color:#A55B06}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]) .stack li[data-b="csharp"] .tico{color:#A98BF5}
   :root:not([data-theme="light"]) .stack li[data-b="meta"] .tico{color:#4599FF}
   :root:not([data-theme="light"]) .stack li[data-b="arduino"] .tico{color:#25C6CD}
   :root:not([data-theme="light"]) .stack li[data-b="google"] .tico{color:#6FA8FF}
+  :root:not([data-theme="light"]) .stack li[data-b="android"] .tico{color:#3DDC84}
+  :root:not([data-theme="light"]) .stack li[data-b="rest"] .tico{color:#F5A524}
 }
 :root[data-theme="dark"] .stack li[data-b="csharp"] .tico{color:#A98BF5}
 :root[data-theme="dark"] .stack li[data-b="meta"] .tico{color:#4599FF}
 :root[data-theme="dark"] .stack li[data-b="arduino"] .tico{color:#25C6CD}
 :root[data-theme="dark"] .stack li[data-b="google"] .tico{color:#6FA8FF}
+:root[data-theme="dark"] .stack li[data-b="android"] .tico{color:#3DDC84}
+:root[data-theme="dark"] .stack li[data-b="rest"] .tico{color:#F5A524}
 /* brand marks are the official Simple Icons glyphs (CC0); the rest are
    generic category glyphs so every pill reads the same weight */
 .tico{width:16px;height:16px;fill:currentColor;flex:none;opacity:1}
@@ -449,14 +453,14 @@ section[id],article[id]{scroll-margin-top:78px}
 html:not(.anim) .trail-ink{stroke-dashoffset:0!important}
 html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
 
-.steps li{
+.steps > li{
   position:relative;z-index:1;
   display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(6rem,18vw,14rem);
   padding:0 0 3.2rem;
 }
-.steps li:last-child{padding-bottom:1rem}
-.steps li:nth-of-type(even) .card{grid-column:2}
-.steps li:nth-of-type(odd) .card{grid-column:1}
+.steps > li:last-child{padding-bottom:1rem}
+.steps > li:nth-of-type(even) .card{grid-column:2}
+.steps > li:nth-of-type(odd) .card{grid-column:1}
 /* year chip pinned to the path's bend; JS sets left */
 .steps .when{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -464,19 +468,19 @@ html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
   color:var(--ground);background:var(--teal);border-radius:999px;
   padding:.3rem .7rem;white-space:nowrap;box-shadow:0 0 0 4px var(--ground);
 }
-.steps li.now .when{background:var(--clay)}
+.steps > li.now .when{background:var(--clay)}
 /* chips start dim and light up as the dot reaches them */
 .anim .steps .when{
   background:var(--ground-2);color:var(--mute);border:1px solid var(--line);
   transition:background .35s ease,color .35s ease,border-color .35s ease,box-shadow .45s ease,transform .35s ease;
 }
 .anim .steps .when.lit{background:var(--teal);color:var(--ground);border-color:var(--teal)}
-.anim .steps li.now .when.lit{background:var(--clay);border-color:var(--clay)}
+.anim .steps > li.now .when.lit{background:var(--clay);border-color:var(--clay)}
 .anim .steps .when.lit.near{
   transform:translate(-50%,-50%) scale(1.12);
   box-shadow:0 0 0 4px var(--ground),0 0 18px 4px var(--teal);
 }
-.anim .steps li.now .when.lit.near{box-shadow:0 0 0 4px var(--ground),0 0 18px 4px var(--clay)}
+.anim .steps > li.now .when.lit.near{box-shadow:0 0 0 4px var(--ground),0 0 18px 4px var(--clay)}
 
 .steps .card{
   position:relative;
@@ -489,15 +493,15 @@ html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
 .steps .card:hover{transform:translateY(-3px);box-shadow:0 18px 38px var(--shadow)}
 .steps .card{transition:transform .22s ease,box-shadow .5s ease,border-color .5s ease}
 .steps .card.lit{border-color:var(--teal);box-shadow:0 12px 30px var(--shadow),0 0 0 1px var(--teal),0 0 28px 2px var(--tint),0 0 40px -6px var(--teal)}
-.steps li.now .card.lit{border-color:var(--clay);box-shadow:0 12px 30px var(--shadow),0 0 0 1px var(--clay),0 0 28px 2px var(--tint),0 0 40px -6px var(--clay)}
+.steps > li.now .card.lit{border-color:var(--clay);box-shadow:0 12px 30px var(--shadow),0 0 0 1px var(--clay),0 0 28px 2px var(--tint),0 0 40px -6px var(--clay)}
 .steps .pic{
   position:absolute;object-position:center;top:-1.1rem;width:92px;height:92px;border-radius:50%;object-fit:cover;
   border:4px solid var(--ground);box-shadow:0 8px 20px var(--shadow);background:var(--ground-2);
 }
-.steps li:nth-of-type(odd) .pic{right:-2.2rem}
-.steps li:nth-of-type(even) .pic{left:-2.2rem}
-.steps li:nth-of-type(odd) .what{padding-right:2.6rem}
-.steps li:nth-of-type(even) .what{padding-left:2.6rem}
+.steps > li:nth-of-type(odd) .pic{right:-2.2rem}
+.steps > li:nth-of-type(even) .pic{left:-2.2rem}
+.steps > li:nth-of-type(odd) .what{padding-right:2.6rem}
+.steps > li:nth-of-type(even) .what{padding-left:2.6rem}
 .steps h3{
   font-family:var(--display);font-weight:700;font-size:.98rem;letter-spacing:-.02em;
   margin:0 0 .45rem;line-height:1.35;
@@ -505,28 +509,31 @@ html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
 .steps p{margin:0;font-size:.95rem;color:var(--mute)}
 .steps p a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px;font-family:var(--display);font-size:.8rem;white-space:nowrap}
 .steps p a:hover{color:var(--teal)}
+.steps .stack{margin:.8rem 0 0;gap:.35rem}
+.steps .stack li{font-size:.67rem;padding:.22rem .5rem .22rem .42rem}
+.steps .stack .tico{width:14px;height:14px}
 
 /* the cards flip in from their own side of the path */
 .anim .steps .card.reveal{
   transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);
   transition-delay:var(--d,0ms);
 }
-.anim .steps li:nth-of-type(odd) .card.reveal{transform:perspective(1100px) rotateY(-70deg) translateX(-30px);transform-origin:100% 50%}
-.anim .steps li:nth-of-type(even) .card.reveal{transform:perspective(1100px) rotateY(70deg) translateX(30px);transform-origin:0 50%}
-.anim .steps li:nth-of-type(n) .card.reveal.in{transform:none}
+.anim .steps > li:nth-of-type(odd) .card.reveal{transform:perspective(1100px) rotateY(-70deg) translateX(-30px);transform-origin:100% 50%}
+.anim .steps > li:nth-of-type(even) .card.reveal{transform:perspective(1100px) rotateY(70deg) translateX(30px);transform-origin:0 50%}
+.anim .steps > li:nth-of-type(n) .card.reveal.in{transform:none}
 
 @media (max-width:640px){
   .steps{padding-left:0}
-  .steps li{grid-template-columns:1fr;column-gap:0;padding:.6rem 0 2.6rem 3.1rem}
-  .steps li:nth-of-type(odd) .card,.steps li:nth-of-type(even) .card{grid-column:1}
+  .steps > li{grid-template-columns:1fr;column-gap:0;padding:.6rem 0 2.6rem 3.1rem}
+  .steps > li:nth-of-type(odd) .card,.steps > li:nth-of-type(even) .card{grid-column:1}
   .steps .when{top:0;transform:translate(-14px,-50%);font-size:.7rem;padding:.25rem .6rem}
   .anim .steps .when.lit.near{transform:translate(-14px,-50%) scale(1.12)}
   .steps .card{padding:1rem 1rem 1rem;margin-top:2.2rem}
   .steps .pic{width:64px;height:64px;top:-1.6rem;right:.8rem!important;left:auto!important}
-  .steps li:nth-of-type(n) .what{padding:0}
+  .steps > li:nth-of-type(n) .what{padding:0}
   .steps h3{padding-right:3.6rem}
-  .anim .steps li:nth-of-type(odd) .card.reveal,.anim .steps li:nth-of-type(even) .card.reveal{transform:perspective(900px) rotateX(-40deg) translateY(20px);transform-origin:50% 0}
-  .anim .steps li:nth-of-type(n) .card.reveal.in{transform:none}
+  .anim .steps > li:nth-of-type(odd) .card.reveal,.anim .steps > li:nth-of-type(even) .card.reveal{transform:perspective(900px) rotateX(-40deg) translateY(20px);transform-origin:50% 0}
+  .anim .steps > li:nth-of-type(n) .card.reveal.in{transform:none}
 }
 
 /* ---------- contact ---------- */
