@@ -366,6 +366,14 @@ section[id],article[id]{scroll-margin-top:78px}
 }
 .stack li .tico{color:var(--teal)}
 /* brand marks carry their own colour; the generic category glyphs stay accent */
+/* category glyphs: a small fixed palette so a card without brand marks
+   still reads as more than one colour */
+.stack li[data-c="ar"] .tico{color:#0E7490}
+.stack li[data-c="vr"] .tico{color:#7C3AED}
+.stack li[data-c="gfx"] .tico{color:#B45309}
+.stack li[data-c="ui"] .tico{color:#BE185D}
+.stack li[data-c="sys"] .tico{color:#0F766E}
+.stack li[data-c="game"] .tico{color:#047857}
 .stack li[data-b="unity"] .tico{color:var(--ink)}
 .stack li[data-b="unreal"] .tico{color:var(--ink)}
 .stack li[data-b="csharp"] .tico{color:#7C4DE0}
@@ -377,6 +385,12 @@ section[id],article[id]{scroll-margin-top:78px}
 .stack li[data-b="webxr"] .tico{color:#EA4C4C}
 .stack li[data-b="rest"] .tico{color:#A55B06}
 @media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .stack li[data-c="ar"] .tico{color:#22D3EE}
+  :root:not([data-theme="light"]) .stack li[data-c="vr"] .tico{color:#B79CFA}
+  :root:not([data-theme="light"]) .stack li[data-c="gfx"] .tico{color:#F5A524}
+  :root:not([data-theme="light"]) .stack li[data-c="ui"] .tico{color:#F472B6}
+  :root:not([data-theme="light"]) .stack li[data-c="sys"] .tico{color:#2DD4BF}
+  :root:not([data-theme="light"]) .stack li[data-c="game"] .tico{color:#34D399}
   :root:not([data-theme="light"]) .stack li[data-b="csharp"] .tico{color:#A98BF5}
   :root:not([data-theme="light"]) .stack li[data-b="meta"] .tico{color:#4599FF}
   :root:not([data-theme="light"]) .stack li[data-b="arduino"] .tico{color:#25C6CD}
@@ -384,6 +398,12 @@ section[id],article[id]{scroll-margin-top:78px}
   :root:not([data-theme="light"]) .stack li[data-b="android"] .tico{color:#3DDC84}
   :root:not([data-theme="light"]) .stack li[data-b="rest"] .tico{color:#F5A524}
 }
+:root[data-theme="dark"] .stack li[data-c="ar"] .tico{color:#22D3EE}
+:root[data-theme="dark"] .stack li[data-c="vr"] .tico{color:#B79CFA}
+:root[data-theme="dark"] .stack li[data-c="gfx"] .tico{color:#F5A524}
+:root[data-theme="dark"] .stack li[data-c="ui"] .tico{color:#F472B6}
+:root[data-theme="dark"] .stack li[data-c="sys"] .tico{color:#2DD4BF}
+:root[data-theme="dark"] .stack li[data-c="game"] .tico{color:#34D399}
 :root[data-theme="dark"] .stack li[data-b="csharp"] .tico{color:#A98BF5}
 :root[data-theme="dark"] .stack li[data-b="meta"] .tico{color:#4599FF}
 :root[data-theme="dark"] .stack li[data-b="arduino"] .tico{color:#25C6CD}
