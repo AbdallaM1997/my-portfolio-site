@@ -520,6 +520,31 @@ html.cursoring,html.cursoring *{cursor:none!important}
 .clips button[aria-pressed="true"]:hover{background:var(--teal);color:var(--ground)}
 .clips button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:var(--ground)}
 
+/* ---------- websites ---------- */
+.sites{display:grid;gap:1.4rem}
+.sites article{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:1.6rem;align-items:center;
+  background:var(--ground-2);border:1px solid var(--line);border-radius:var(--r);
+  padding:1.1rem;
+  transition:border-color .22s ease,transform .22s ease,box-shadow .22s ease;
+}
+.sites article:hover{
+  border-color:color-mix(in srgb,var(--teal) 55%,var(--line));
+  transform:translateY(-3px);box-shadow:0 14px 34px var(--shadow);
+}
+.sites .shot{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--ground)}
+.sites .shot img{display:block;width:100%;height:auto;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.sites article:hover .shot img{transform:scale(1.03)}
+.sites .copy{padding:.2rem .3rem .2rem 0}
+.sites h3{margin:0 0 .2rem}
+.sites .role{font-size:.8rem;font-weight:500;color:var(--mute);margin:0 0 .8rem}
+.sites .blurb{margin:0 0 1.1rem;font-size:.96rem;max-width:var(--measure)}
+.sites .links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+@media (max-width:760px){
+  .sites article{grid-template-columns:1fr;gap:1.1rem}
+  .sites .copy{padding:0}
+}
+
 /* ---------- capability list ---------- */
 .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
 .caps h3{margin:0 0 .4rem}
