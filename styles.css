@@ -308,6 +308,43 @@ section[id],article[id]{scroll-margin-top:78px}
   padding:0 .07em;
 }
 
+/* ---------- journey cursor ---------- */
+/* Only ever shown to a mouse: the script adds .cursoring on pointermove and
+   never runs for touch or reduced motion. */
+.journey{position:relative}
+.jcursor{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .2s ease;overflow:hidden}
+.steps{cursor:default}
+.journey.cursoring{cursor:none}
+.journey.cursoring .jcursor{opacity:1}
+.jcursor span{position:absolute;top:0;left:0;border-radius:999px;pointer-events:none}
+.jring{
+  width:38px;height:38px;margin:-19px 0 0 -19px;
+  border:1.5px solid var(--teal);background:color-mix(in srgb,var(--teal) 10%,transparent);
+  transform:translate(var(--rx,0),var(--ry,0));
+  transition:width .25s ease,height .25s ease,margin .25s ease,border-color .25s ease,background .25s ease;
+}
+.jdot{
+  width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--teal);
+  transform:translate(var(--x,0),var(--y,0));
+}
+.jlabel{
+  top:0;left:0;transform:translate(var(--rx,0),var(--ry,0)) translate(26px,-8px);
+  font-family:var(--display);font-size:.62rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ground);background:var(--teal);
+  padding:.18rem .45rem;border-radius:4px;white-space:nowrap;
+  opacity:0;transition:opacity .2s ease;
+}
+/* over a card the ring opens up and names itself; over a link it tightens */
+.jcursor.on-card .jring{width:64px;height:64px;margin:-32px 0 0 -32px}
+.jcursor.on-card .jlabel{opacity:1}
+.jcursor.on-link .jring{
+  width:26px;height:26px;margin:-13px 0 0 -13px;
+  border-color:var(--clay);background:color-mix(in srgb,var(--clay) 22%,transparent);
+}
+.jcursor.on-link .jdot{background:var(--clay)}
+.jcursor.on-link .jlabel{opacity:0}
+@media (hover:none){.jcursor{display:none}.journey.cursoring{cursor:auto}}
+
 /* ---------- live links ---------- */
 .rail{position:relative}
 .live{

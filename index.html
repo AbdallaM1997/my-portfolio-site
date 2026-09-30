@@ -6,11 +6,18 @@
 <title>Abdallah Mahmoud — Senior Unity AR/VR Developer</title>
 <meta name="description" content="Senior Unity AR and VR developer. Six years building education, training and event experiences for clients across Egypt, the UAE, Saudi Arabia and Kuwait.">
 <meta property="og:title" content="Abdallah Mahmoud — Senior Unity AR/VR Developer">
-<meta property="og:description" content="AR and VR built in Unity, shipped to the App Store, Google Play and live event floors.">
-<meta property="og:image" content="https://abdallam1997.github.io/my-portfolio-site/media/ar-tiger.jpg">
+<meta property="og:description" content="Senior Unity AR/VR developer in Egypt. Eight years of AR, VR and games shipped to the App Store, Google Play and live event floors.">
+<meta property="og:image" content="https://abdallam1997.github.io/my-portfolio-site/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Abdallah Mahmoud — Unity AR/VR developer">
+<meta property="og:site_name" content="Abdallah Mahmoud">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abdallam1997.github.io/my-portfolio-site/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abdallah Mahmoud — Senior Unity AR/VR Developer">
+<meta name="twitter:description" content="Senior Unity AR/VR developer in Egypt. Eight years of AR, VR and games shipped to the App Store, Google Play and live event floors.">
+<meta name="twitter:image" content="https://abdallam1997.github.io/my-portfolio-site/share-card.png">
 <link rel="canonical" href="https://abdallam1997.github.io/my-portfolio-site/">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -1130,6 +1137,43 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     setTimeout(onScroll, 0);
     setTimeout(onScroll, 150);
     setTimeout(onScroll, 600);
+  }
+
+  // ---- journey cursor ---------------------------------------------------
+  // A ring that trails the pointer inside the journey, with a dot at the
+  // exact position. Mouse-only: touch and reduced-motion never see it.
+  var jr = document.getElementById('journey');
+  if (jr && motion && window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+    var cur = document.createElement('div');
+    cur.className = 'jcursor';
+    cur.setAttribute('aria-hidden', 'true');
+    cur.innerHTML = '<span class="jring"></span><span class="jdot"></span><span class="jlabel">explore</span>';
+    jr.appendChild(cur);
+    var jx = 0, jy = 0, rx = 0, ry = 0, riding = false, raf = 0;
+    var loop = function(){
+      rx += (jx - rx) * 0.18;
+      ry += (jy - ry) * 0.18;
+      cur.style.setProperty('--rx', rx.toFixed(1) + 'px');
+      cur.style.setProperty('--ry', ry.toFixed(1) + 'px');
+      cur.style.setProperty('--x', jx + 'px');
+      cur.style.setProperty('--y', jy + 'px');
+      if (riding || Math.abs(jx - rx) > .4 || Math.abs(jy - ry) > .4) raf = window.requestAnimationFrame(loop);
+      else raf = 0;
+    };
+    jr.addEventListener('pointermove', function(e){
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      var r = jr.getBoundingClientRect();
+      jx = e.clientX - r.left; jy = e.clientY - r.top;
+      if (!riding) { riding = true; rx = jx; ry = jy; jr.classList.add('cursoring'); }
+      if (!raf) raf = window.requestAnimationFrame(loop);
+      var over = e.target.closest && e.target.closest('.steps .card');
+      cur.classList.toggle('on-card', !!over);
+      var link = e.target.closest && e.target.closest('a');
+      cur.classList.toggle('on-link', !!link);
+    });
+    jr.addEventListener('pointerleave', function(){
+      riding = false; jr.classList.remove('cursoring');
+    });
   }
 
   // ---- hero polish ------------------------------------------------------
