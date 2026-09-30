@@ -32,8 +32,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Fonts load without blocking paint, so the page still appears instantly on
      networks where fonts.googleapis.com is slow or blocked. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&amp;display=swap" media="print" onload="this.media='all';this.onload=null">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&amp;display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -1139,41 +1139,56 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     setTimeout(onScroll, 600);
   }
 
-  // ---- journey cursor ---------------------------------------------------
-  // A ring that trails the pointer inside the journey, with a dot at the
-  // exact position. Mouse-only: touch and reduced-motion never see it.
-  var jr = document.getElementById('journey');
-  if (jr && motion && window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+  // ---- pointer cursor ---------------------------------------------------
+  // A ring that trails the pointer across the whole page, with a dot at the
+  // exact position. Mouse-only: touch and reduced motion never see it, and
+  // the native cursor is only hidden once a real mouse has moved.
+  if (motion && window.matchMedia && window.matchMedia('(hover: hover)').matches) {
     var cur = document.createElement('div');
-    cur.className = 'jcursor';
+    cur.className = 'cursorlayer';
     cur.setAttribute('aria-hidden', 'true');
-    cur.innerHTML = '<span class="jring"></span><span class="jdot"></span><span class="jlabel">explore</span>';
-    jr.appendChild(cur);
-    var jx = 0, jy = 0, rx = 0, ry = 0, riding = false, raf = 0;
+    cur.innerHTML = '<span class="cring"></span><span class="cdot"></span><span class="clabel"></span>';
+    document.body.appendChild(cur);
+    var curLabel = cur.querySelector('.clabel');
+    var jx = 0, jy = 0, rx = 0, ry = 0, started = false, raf = 0;
     var loop = function(){
-      rx += (jx - rx) * 0.18;
-      ry += (jy - ry) * 0.18;
+      rx += (jx - rx) * 0.19;
+      ry += (jy - ry) * 0.19;
       cur.style.setProperty('--rx', rx.toFixed(1) + 'px');
       cur.style.setProperty('--ry', ry.toFixed(1) + 'px');
       cur.style.setProperty('--x', jx + 'px');
       cur.style.setProperty('--y', jy + 'px');
-      if (riding || Math.abs(jx - rx) > .4 || Math.abs(jy - ry) > .4) raf = window.requestAnimationFrame(loop);
-      else raf = 0;
+      raf = (Math.abs(jx - rx) > .3 || Math.abs(jy - ry) > .3)
+        ? window.requestAnimationFrame(loop) : 0;
     };
-    jr.addEventListener('pointermove', function(e){
+    // what the ring says over each kind of target
+    var labelFor = function(el){
+      if (!el || !el.closest) return '';
+      if (el.closest('.steps .card')) return 'explore';
+      if (el.closest('.project .media')) return 'watch';
+      if (el.closest('.avatar')) return 'flip';
+      if (el.closest('.live article')) return 'open';
+      return '';
+    };
+    document.addEventListener('pointermove', function(e){
       if (e.pointerType && e.pointerType !== 'mouse') return;
-      var r = jr.getBoundingClientRect();
-      jx = e.clientX - r.left; jy = e.clientY - r.top;
-      if (!riding) { riding = true; rx = jx; ry = jy; jr.classList.add('cursoring'); }
+      jx = e.clientX; jy = e.clientY;
+      if (!started) { started = true; rx = jx; ry = jy; document.documentElement.classList.add('cursoring'); }
       if (!raf) raf = window.requestAnimationFrame(loop);
-      var over = e.target.closest && e.target.closest('.steps .card');
-      cur.classList.toggle('on-card', !!over);
-      var link = e.target.closest && e.target.closest('a');
-      cur.classList.toggle('on-link', !!link);
-    });
-    jr.addEventListener('pointerleave', function(){
-      riding = false; jr.classList.remove('cursoring');
-    });
+      var t = e.target;
+      var hot = t.closest && t.closest('a,button,summary,input,textarea,select,[role="button"]');
+      cur.classList.toggle('on-hot', !!hot);
+      var text = hot ? '' : labelFor(t);
+      cur.classList.toggle('on-card', !!text);
+      if (curLabel.textContent !== text) curLabel.textContent = text;
+    }, { passive: true });
+    document.addEventListener('pointerdown', function(){ cur.classList.add('pressing'); });
+    document.addEventListener('pointerup', function(){ cur.classList.remove('pressing'); });
+    // leaving the window, or a device without a mouse taking over, hides it
+    document.addEventListener('pointerleave', function(){ cur.classList.add('gone'); });
+    document.addEventListener('pointerenter', function(){ cur.classList.remove('gone'); });
+    window.addEventListener('blur', function(){ cur.classList.add('gone'); });
+    window.addEventListener('focus', function(){ cur.classList.remove('gone'); });
   }
 
   // ---- hero polish ------------------------------------------------------
