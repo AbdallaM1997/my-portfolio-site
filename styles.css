@@ -1,3 +1,18 @@
+/* The palette is registered so the colours themselves can animate: on a
+   theme change every rule that reads one of these variables, gradients
+   included, is repainted each frame rather than snapping. */
+@property --ground{syntax:"<color>";inherits:true;initial-value:#FFFFFF}
+@property --ground-2{syntax:"<color>";inherits:true;initial-value:#F4F4F5}
+@property --ink{syntax:"<color>";inherits:true;initial-value:#0A0A0A}
+@property --teal{syntax:"<color>";inherits:true;initial-value:#4F46E5}
+@property --clay{syntax:"<color>";inherits:true;initial-value:#7C3AED}
+@property --mute{syntax:"<color>";inherits:true;initial-value:#5F5F69}
+@property --screen{syntax:"<color>";inherits:true;initial-value:#0A0A0A}
+@property --line{syntax:"<color>";inherits:true;initial-value:#E4E4E7}
+@property --shadow{syntax:"<color>";inherits:true;initial-value:rgba(10,10,10,.07)}
+@property --tint{syntax:"<color>";inherits:true;initial-value:#EEEEFB}
+@property --scrim{syntax:"<color>";inherits:true;initial-value:rgba(255,255,255,.90)}
+
 :root{
   --ground:#FFFFFF;
   --ground-2:#F4F4F5;
@@ -310,24 +325,28 @@ section[id],article[id]{scroll-margin-top:78px}
 }
 
 /* ---------- theme change ---------- */
-/* A disc in the incoming background colour, grown out of the toggle by the
-   script, covers the page while the theme is swapped underneath it. */
-.themewipe{
-  position:fixed;inset:0;z-index:150;pointer-events:none;
-  will-change:clip-path;
+/* The whole palette eases from one theme to the other, so the page itself
+   changes in front of the reader instead of being covered over. */
+:root.theming{
+  transition:
+    --ground .55s ease,--ground-2 .55s ease,--ink .55s ease,--teal .55s ease,
+    --clay .55s ease,--mute .55s ease,--screen .55s ease,--line .55s ease,
+    --shadow .55s ease,--tint .55s ease,--scrim .55s ease;
 }
+/* Fallback for engines that cannot animate a registered property: the
+   surfaces fade their own colours instead. Harmless where the variables
+   already animate, since both land on the same value at the same time. */
 @media (prefers-reduced-motion:no-preference){
-  /* the toggle's icon turns over as the wipe passes */
-  .masthead .theme svg{transition:transform .5s cubic-bezier(.3,.8,.35,1)}
-  .theming .masthead .theme svg{transform:rotate(180deg) scale(.9)}
-  /* anything the disc does not cover still eases between the palettes */
   .theming body,.theming .masthead,.theming .band,.theming .project,.theming .live article,
   .theming .steps .card,.theming .caps div,.theming .stack li,.theming .tags li,
   .theming .clips button,.theming .rail-btn,.theming .masthead .theme,.theming .navtoggle,
-  .theming .contact,.theming footer,.theming .screen,.theming .viewport{
-    transition:background-color .42s ease,color .42s ease,border-color .42s ease,
-               box-shadow .42s ease,fill .42s ease;
+  .theming .sites article,.theming .contact,.theming footer,.theming .screen,.theming .viewport{
+    transition:background-color .55s ease,color .55s ease,border-color .55s ease,
+               box-shadow .55s ease,fill .55s ease;
   }
+  /* the toggle's icon turns over as the colours cross */
+  .masthead .theme svg{transition:transform .55s cubic-bezier(.3,.8,.35,1)}
+  .theming .masthead .theme svg{transform:rotate(180deg) scale(.9)}
 }
 
 /* ---------- pointer cursor ---------- */
