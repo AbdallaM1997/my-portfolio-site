@@ -309,6 +309,35 @@ section[id],article[id]{scroll-margin-top:78px}
   padding:0 .07em;
 }
 
+/* ---------- theme change ---------- */
+/* The new theme grows out of the toggle as a circle. Only the incoming
+   snapshot is animated; the outgoing one is held still underneath it. */
+@media (prefers-reduced-motion:no-preference){
+  ::view-transition-old(root){animation:none}
+  ::view-transition-new(root){
+    animation:themeWipe .55s cubic-bezier(.3,.8,.35,1) both;
+    mix-blend-mode:normal;
+  }
+  ::view-transition-old(root),::view-transition-new(root){mix-blend-mode:normal}
+  @keyframes themeWipe{
+    from{clip-path:circle(0 at var(--tx,50%) var(--ty,0))}
+    to{clip-path:circle(var(--tr,150vmax) at var(--tx,50%) var(--ty,0))}
+  }
+  /* the toggle itself spins its icon over either way */
+  .masthead .theme svg{transition:transform .5s cubic-bezier(.3,.8,.35,1)}
+  .theming-wipe .masthead .theme svg,.theming .masthead .theme svg{transform:rotate(180deg) scale(.9)}
+
+  /* Fallback for engines without View Transitions: fade the colours for the
+     length of the change rather than snapping them. */
+  .theming body,.theming .masthead,.theming .band,.theming .project,.theming .live article,
+  .theming .steps .card,.theming .caps div,.theming .stack li,.theming .tags li,
+  .theming .clips button,.theming .rail-btn,.theming .masthead .theme,.theming .navtoggle,
+  .theming .contact,.theming footer,.theming .screen,.theming .viewport{
+    transition:background-color .42s ease,color .42s ease,border-color .42s ease,
+               box-shadow .42s ease,fill .42s ease;
+  }
+}
+
 /* ---------- pointer cursor ---------- */
 /* Shown only to a mouse: the script adds .cursoring on the first real
    pointermove, so touch and reduced-motion keep the native cursor. */
