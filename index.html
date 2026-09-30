@@ -1284,49 +1284,68 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       themeBtn.setAttribute('title', dark ? 'Switch to light theme' : 'Switch to dark theme');
       if (meta) meta.setAttribute('content', dark ? '#0F1513' : '#E4E7E4');
     };
-    // Where the new theme should grow from: the centre of the toggle.
-    var setOrigin = function(){
+    // Where the new theme grows from: the centre of the toggle, with the
+    // radius that still reaches the furthest corner from that point.
+    var origin = function(){
       var r = themeBtn.getBoundingClientRect();
       var x = r.left + r.width / 2, y = r.top + r.height / 2;
-      var root = document.documentElement;
-      root.style.setProperty('--tx', x + 'px');
-      root.style.setProperty('--ty', y + 'px');
-      // radius that still covers the furthest corner from that point
-      var far = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-      root.style.setProperty('--tr', far + 'px');
+      return {
+        x: x, y: y,
+        r: Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y))
+      };
     };
     var apply = function(next){
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem('theme', next); } catch (e) {}
       label();
     };
+    // Read what --ground will be under the other theme, without a flash:
+    // the attribute is set and put back inside one task, so nothing paints
+    // in between, and the colour always matches the stylesheet.
+    var groundFor = function(theme){
+      var root = document.documentElement;
+      var had = root.getAttribute('data-theme');
+      root.setAttribute('data-theme', theme);
+      var c = (getComputedStyle(root).getPropertyValue('--ground') || '').trim();
+      if (had === null) root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', had);
+      return c || (theme === 'dark' ? '#0A0A0A' : '#FFFFFF');
+    };
     themeBtn.addEventListener('click', function(){
       var next = current() === 'dark' ? 'light' : 'dark';
-      if (reduce) { apply(next); return; }
       var root = document.documentElement;
-      setOrigin();
-      // The colour fade always runs, so the change is never a hard snap even
-      // where View Transitions are missing (Firefox) or refused.
+      if (reduce || !document.body.animate) { apply(next); return; }
+      var o = origin();
+      // A disc in the incoming background colour grows out of the toggle and
+      // covers the page; the theme is swapped underneath it once it has, so
+      // the switch itself is never visible.
+      var wipe = document.createElement('div');
+      wipe.className = 'themewipe';
+      wipe.setAttribute('aria-hidden', 'true');
+      wipe.style.background = groundFor(next);
+      wipe.style.clipPath = 'circle(0px at ' + o.x + 'px ' + o.y + 'px)';
+      document.body.appendChild(wipe);
       root.classList.add('theming');
-      window.clearTimeout(root._themeT);
-      root._themeT = window.setTimeout(function(){ root.classList.remove('theming'); }, 520);
-      // Where they are supported, the new theme also wipes in as a circle
-      // growing out of the toggle.
-      if (document.startViewTransition) {
-        root.classList.add('theming-wipe');
-        var clear = function(){ root.classList.remove('theming-wipe'); };
-        var vt;
-        try { vt = document.startViewTransition(function(){ apply(next); }); }
-        catch (err) { clear(); apply(next); return; }
-        // every promise needs a handler: an aborted transition rejects them
-        // and an unhandled rejection surfaces as a console error
-        if (vt.ready && vt.ready.catch) vt.ready.catch(function(){});
-        if (vt.updateCallbackDone && vt.updateCallbackDone.catch) vt.updateCallbackDone.catch(function(){});
-        if (vt.finished && vt.finished.then) vt.finished.then(clear, clear);
-        else clear();
-        return;
-      }
-      apply(next);
+      var anim = wipe.animate([
+        { clipPath: 'circle(0px at ' + o.x + 'px ' + o.y + 'px)' },
+        { clipPath: 'circle(' + o.r + 'px at ' + o.x + 'px ' + o.y + 'px)' }
+      ], { duration: 520, easing: 'cubic-bezier(.3,.8,.35,1)', fill: 'forwards' });
+      var settle = function(){
+        apply(next);
+        // hold the cover for one frame so the repaint lands behind it
+        window.requestAnimationFrame(function(){
+          window.requestAnimationFrame(function(){
+            wipe.parentNode && wipe.parentNode.removeChild(wipe);
+            root.classList.remove('theming');
+          });
+        });
+      };
+      if (anim.finished && anim.finished.then) anim.finished.then(settle, settle);
+      else anim.onfinish = settle;
+      // a stalled animation must never leave the page covered
+      window.setTimeout(function(){
+        if (wipe.parentNode) settle();
+      }, 900);
     });
     // follow the system while the visitor has not made a choice of their own
     if (window.matchMedia) {
