@@ -327,29 +327,29 @@ section[id],article[id]{scroll-margin-top:78px}
 }
 
 /* ---------- accent palettes ---------- */
-/* Each palette carries a light and a dark pair: a dark page needs a
-   lighter accent to hold the same weight against its background. */
+/* Seven hues spaced around the wheel, each with a light and a dark pair:
+   a dark page needs the lighter tone to carry the same weight. */
 :root[data-accent="red"]{--teal:#C01526;--clay:#9F1239}
 :root[data-theme="dark"][data-accent="red"]{--teal:#F87171;--clay:#FDA4AF}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="red"]{--teal:#F87171;--clay:#FDA4AF}}
-:root[data-accent="indigo"]{--teal:#4F46E5;--clay:#7C3AED}
-:root[data-theme="dark"][data-accent="indigo"]{--teal:#818CF8;--clay:#A78BFA}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="indigo"]{--teal:#818CF8;--clay:#A78BFA}}
-:root[data-accent="teal"]{--teal:#0D9488;--clay:#0E7490}
+:root[data-accent="orange"]{--teal:#B45309;--clay:#9A3412}
+:root[data-theme="dark"][data-accent="orange"]{--teal:#FBBF24;--clay:#FDBA74}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="orange"]{--teal:#FBBF24;--clay:#FDBA74}}
+:root[data-accent="green"]{--teal:#15803D;--clay:#4D7C0F}
+:root[data-theme="dark"][data-accent="green"]{--teal:#4ADE80;--clay:#A3E635}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="green"]{--teal:#4ADE80;--clay:#A3E635}}
+:root[data-accent="teal"]{--teal:#0F766E;--clay:#0E7490}
 :root[data-theme="dark"][data-accent="teal"]{--teal:#2DD4BF;--clay:#22D3EE}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="teal"]{--teal:#2DD4BF;--clay:#22D3EE}}
-:root[data-accent="emerald"]{--teal:#047857;--clay:#4D7C0F}
-:root[data-theme="dark"][data-accent="emerald"]{--teal:#34D399;--clay:#A3E635}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="emerald"]{--teal:#34D399;--clay:#A3E635}}
-:root[data-accent="amber"]{--teal:#B45309;--clay:#BE185D}
-:root[data-theme="dark"][data-accent="amber"]{--teal:#FBBF24;--clay:#F472B6}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="amber"]{--teal:#FBBF24;--clay:#F472B6}}
-:root[data-accent="purple"]{--teal:#6D28D9;--clay:#A21CAF}
-:root[data-theme="dark"][data-accent="purple"]{--teal:#A78BFA;--clay:#E879F9}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="purple"]{--teal:#A78BFA;--clay:#E879F9}}
-:root[data-accent="sky"]{--teal:#0369A1;--clay:#4338CA}
-:root[data-theme="dark"][data-accent="sky"]{--teal:#38BDF8;--clay:#818CF8}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="sky"]{--teal:#38BDF8;--clay:#818CF8}}
+:root[data-accent="blue"]{--teal:#1D4ED8;--clay:#0369A1}
+:root[data-theme="dark"][data-accent="blue"]{--teal:#60A5FA;--clay:#38BDF8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="blue"]{--teal:#60A5FA;--clay:#38BDF8}}
+:root[data-accent="purple"]{--teal:#6D28D9;--clay:#4338CA}
+:root[data-theme="dark"][data-accent="purple"]{--teal:#A78BFA;--clay:#818CF8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="purple"]{--teal:#A78BFA;--clay:#818CF8}}
+:root[data-accent="magenta"]{--teal:#A21CAF;--clay:#86198F}
+:root[data-theme="dark"][data-accent="magenta"]{--teal:#E879F9;--clay:#F0ABFC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="magenta"]{--teal:#E879F9;--clay:#F0ABFC}}
 
 /* ---------- accent picker ---------- */
 .masthead .palette{
