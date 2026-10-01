@@ -108,7 +108,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <p class="lede sub">Eight years split between an education publisher, a digital marketing agency and a game studio, with work delivered for clients in Egypt, the UAE, Saudi Arabia and Kuwait. Available for remote contract and freelance projects.</p>
 
     <div class="hero-cta">
-      <a class="cta" href="#work">View Projects</a>
+      <a class="cta" href="#live">View Projects</a>
       <a class="cta ghost" href="#contact">Get in touch</a>
     </div>
 
@@ -1160,7 +1160,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     window.addEventListener('load', onScroll);
     window.addEventListener('hashchange', onScroll);
     document.addEventListener('visibilitychange', function(){ ticking = false; onScroll(); });
-    // A deep link (#work) jumps the page after this script runs and does not
+    // A deep link (#live) jumps the page after this script runs and does not
     // always fire a scroll event, so re-sweep a few times early on.
     onScroll();
     setTimeout(onScroll, 0);
