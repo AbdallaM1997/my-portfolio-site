@@ -4,8 +4,8 @@
 @property --ground{syntax:"<color>";inherits:true;initial-value:#FFFFFF}
 @property --ground-2{syntax:"<color>";inherits:true;initial-value:#F4F4F5}
 @property --ink{syntax:"<color>";inherits:true;initial-value:#0A0A0A}
-@property --teal{syntax:"<color>";inherits:true;initial-value:#4F46E5}
-@property --clay{syntax:"<color>";inherits:true;initial-value:#7C3AED}
+@property --teal{syntax:"<color>";inherits:true;initial-value:#C01526}
+@property --clay{syntax:"<color>";inherits:true;initial-value:#9F1239}
 @property --mute{syntax:"<color>";inherits:true;initial-value:#5F5F69}
 @property --screen{syntax:"<color>";inherits:true;initial-value:#0A0A0A}
 @property --line{syntax:"<color>";inherits:true;initial-value:#E4E4E7}
@@ -17,8 +17,8 @@
   --ground:#FFFFFF;
   --ground-2:#F4F4F5;
   --ink:#0A0A0A;
-  --teal:#4F46E5;          /* accent */
-  --clay:#7C3AED;          /* accent 2 */
+  --teal:#C01526;          /* accent */
+  --clay:#9F1239;          /* accent 2 */
   --mute:#5F5F69;
   --screen:#0A0A0A;
   --line:#E4E4E7;
@@ -42,8 +42,8 @@
     --ground:#0A0A0A;
     --ground-2:#141416;
     --ink:#FAFAFA;
-    --teal:#818CF8;
-    --clay:#A78BFA;
+    --teal:#F87171;
+    --clay:#FDA4AF;
     --mute:#A1A1AA;
     --screen:#000000;
     --line:#26262B;
@@ -57,8 +57,8 @@
   --ground:#0A0A0A;
   --ground-2:#141416;
   --ink:#FAFAFA;
-  --teal:#818CF8;
-  --clay:#A78BFA;
+  --teal:#F87171;
+  --clay:#FDA4AF;
   --mute:#A1A1AA;
   --screen:#000000;
   --line:#26262B;
@@ -329,6 +329,9 @@ section[id],article[id]{scroll-margin-top:78px}
 /* ---------- accent palettes ---------- */
 /* Each palette carries a light and a dark pair: a dark page needs a
    lighter accent to hold the same weight against its background. */
+:root[data-accent="red"]{--teal:#C01526;--clay:#9F1239}
+:root[data-theme="dark"][data-accent="red"]{--teal:#F87171;--clay:#FDA4AF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="red"]{--teal:#F87171;--clay:#FDA4AF}}
 :root[data-accent="indigo"]{--teal:#4F46E5;--clay:#7C3AED}
 :root[data-theme="dark"][data-accent="indigo"]{--teal:#818CF8;--clay:#A78BFA}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-accent="indigo"]{--teal:#818CF8;--clay:#A78BFA}}
