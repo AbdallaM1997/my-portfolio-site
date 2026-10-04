@@ -1027,6 +1027,7 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 .fab-item:hover svg{fill:currentColor}
 .fab-item:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .fab-btn{
+  position:relative;
   width:56px;height:56px;border-radius:50%;cursor:pointer;
   display:grid;place-items:center;
   background:var(--teal);color:var(--ground);border:none;
@@ -1039,8 +1040,33 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 .fab.open .fab-btn .i-close{transform:none;opacity:1}
 .fab-btn:hover{box-shadow:0 10px 26px var(--shadow),0 0 0 9px color-mix(in srgb, var(--teal) 20%, transparent)}
 .fab-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* A ring leaving the button every couple of seconds, and a beat under it, so
+   the thing reads as something to press rather than a badge sitting there.
+   Both stop the moment it is hovered, focused or opened: once the reader has
+   found it, the nudge has done its job. */
+.fab-btn::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  border:2px solid var(--teal);opacity:0;pointer-events:none;
+}
+.fab.show .fab-btn{animation:fab-beat 2.6s ease-in-out infinite}
+.fab.show .fab-btn::after{animation:fab-ping 2.6s cubic-bezier(.22,.61,.36,1) infinite}
+.fab.show.open .fab-btn,.fab.show .fab-btn:hover,.fab.show .fab-btn:focus-visible,
+.fab.show.open .fab-btn::after,.fab.show .fab-btn:hover::after,
+.fab.show .fab-btn:focus-visible::after{animation:none;opacity:0}
+.fab.show.open .fab-btn,.fab.show .fab-btn:hover,.fab.show .fab-btn:focus-visible{opacity:1}
+@keyframes fab-ping{
+  0%{transform:scale(1);opacity:.6}
+  65%{transform:scale(1.75);opacity:0}
+  100%{transform:scale(1.75);opacity:0}
+}
+@keyframes fab-beat{
+  0%,82%,100%{transform:scale(1)}
+  40%{transform:scale(1.07)}
+}
 @media (prefers-reduced-motion:reduce){
   .fab,.fab-menu,.fab-btn svg{transition:none}
+  .fab.show .fab-btn,.fab.show .fab-btn::after{animation:none}
 }
 @media (max-width:640px){
   .fab-item{font-size:.82rem;padding:.5rem .85rem .5rem .7rem}
