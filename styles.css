@@ -6,6 +6,7 @@
 @property --ink{syntax:"<color>";inherits:true;initial-value:#0A0A0A}
 @property --teal{syntax:"<color>";inherits:true;initial-value:#C01526}
 @property --clay{syntax:"<color>";inherits:true;initial-value:#9F1239}
+@property --ink-2{syntax:"<color>";inherits:true;initial-value:#3A3A42}
 @property --mute{syntax:"<color>";inherits:true;initial-value:#5F5F69}
 @property --screen{syntax:"<color>";inherits:true;initial-value:#0A0A0A}
 @property --line{syntax:"<color>";inherits:true;initial-value:#E4E4E7}
@@ -17,12 +18,13 @@
   --ground:#FFFFFF;
   --ground-2:#F4F4F5;
   --ink:#0A0A0A;
+  --ink-2:#3A3A42;         /* body copy that sits under a heading */
   --teal:#C01526;          /* accent */
   --clay:#9F1239;          /* accent 2 */
   --mute:#5F5F69;
   --screen:#0A0A0A;
   --line:#E4E4E7;
-  --measure:38rem;
+  --measure:37rem;
   --shadow:rgba(10,10,10,.07);
   --r:10px;                /* corner radius */
   /* accent wash behind pills and icon tiles: mixed from the accent so it
@@ -42,6 +44,7 @@
     --ground:#0A0A0A;
     --ground-2:#141416;
     --ink:#FAFAFA;
+    --ink-2:#D4D4DC;
     --teal:#F87171;
     --clay:#FDA4AF;
     --mute:#A1A1AA;
@@ -57,6 +60,7 @@
   --ground:#0A0A0A;
   --ground-2:#141416;
   --ink:#FAFAFA;
+  --ink-2:#D4D4DC;
   --teal:#F87171;
   --clay:#FDA4AF;
   --mute:#A1A1AA;
@@ -76,8 +80,8 @@ body{
   color:var(--ink);
   font-family:var(--body);
   font-variation-settings:"wdth" 100;
-  font-size:1.02rem;
-  line-height:1.68;
+  font-size:1.08rem;
+  line-height:1.72;
   font-weight:400;
 }
 img,video{display:block;max-width:100%}
@@ -295,7 +299,7 @@ section[id],article[id]{scroll-margin-top:78px}
 .ico{width:1.05em;height:1.05em;fill:currentColor;flex:none}
 .band-head h2 .ico{color:var(--teal)}
 .contact h2 .ico{width:.8em;height:.8em;color:var(--teal);margin-right:.55rem;vertical-align:-.02em;flex:none}
-.band-head p{margin:0;color:var(--mute);max-width:var(--measure);font-size:.96rem}
+.band-head p{margin:0;color:var(--ink-2);max-width:var(--measure);font-size:1.03rem;line-height:1.66}
 
 /* ---------- headings ---------- */
 /* Archivo variable: a heavy weight and a narrowed width make the big type
@@ -316,10 +320,11 @@ section[id],article[id]{scroll-margin-top:78px}
   font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.03em;line-height:1.02;
   font-variation-settings:"wdth" 76;font-weight:850;
 }
-.project h3{font-size:clamp(1.35rem,2.4vw,1.8rem);letter-spacing:-.02em}
-.live h3{font-size:1.18rem;letter-spacing:-.015em}
-.steps h3{font-size:1.1rem;letter-spacing:-.015em}
-.caps h3{font-size:1.02rem;letter-spacing:-.015em}
+.project h3{font-size:clamp(1.5rem,2.7vw,2.05rem);letter-spacing:-.028em;
+  font-variation-settings:"wdth" 80;font-weight:850;line-height:1.08}
+.live h3{font-size:1.3rem;letter-spacing:-.022em;font-variation-settings:"wdth" 82;font-weight:850;line-height:1.14}
+.steps h3{font-size:1.22rem;letter-spacing:-.022em;font-variation-settings:"wdth" 82;font-weight:850}
+.caps h3{font-size:1.12rem;letter-spacing:-.02em;font-variation-settings:"wdth" 84;font-weight:850}
 /* a bar of accent drawn behind the name, the way a marker would */
 .hero h1 .hl{
   background:linear-gradient(var(--teal),var(--teal)) no-repeat 0 84%/100% 28%;
@@ -392,7 +397,7 @@ section[id],article[id]{scroll-margin-top:78px}
    changes in front of the reader instead of being covered over. */
 :root.theming{
   transition:
-    --ground .55s ease,--ground-2 .55s ease,--ink .55s ease,--teal .55s ease,
+    --ground .55s ease,--ground-2 .55s ease,--ink .55s ease,--ink-2 .55s ease,--teal .55s ease,
     --clay .55s ease,--mute .55s ease,--screen .55s ease,--line .55s ease,
     --shadow .55s ease,--tint .55s ease,--scrim .55s ease;
 }
@@ -493,7 +498,7 @@ html.cursoring,html.cursoring *{cursor:none!important}
 }
 .live h3{margin:0 0 .2rem}
 .live .role{font-family:var(--display);font-size:.76rem;color:var(--mute);margin:0 0 .7rem}
-.live p.blurb{margin:0 0 1.1rem;font-size:.95rem}
+.live p.blurb{margin:0 0 1.1rem;font-size:1.01rem;line-height:1.68;color:var(--ink-2)}
 .live .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:.45rem}
 .copy .links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
 .live .links a,.copy .links a{
@@ -520,9 +525,9 @@ html.cursoring,html.cursoring *{cursor:none!important}
 .project:last-of-type{margin-bottom:0}
 .project.flip .media{order:2}
 .project h3{margin:0 0 .3rem}
-.meta{font-family:var(--display);font-size:.8rem;font-weight:500;color:var(--mute);margin:0 0 1rem}
+.meta{font-family:var(--display);font-size:.84rem;font-weight:500;color:var(--mute);margin:0 0 1rem}
 .meta span+span::before{content:" / ";color:var(--line)}
-.project p.desc{margin:0 0 1.1rem;max-width:var(--measure);font-size:.97rem}
+.project p.desc{margin:0 0 1.15rem;max-width:var(--measure);font-size:1.04rem;line-height:1.72;color:var(--ink-2)}
 .stack{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.1rem;padding:0;list-style:none}
 /* plain labels, not buttons: square-ish, no border, no hover, muted ink */
 .stack li{
@@ -588,19 +593,37 @@ html.cursoring,html.cursoring *{cursor:none!important}
 .outlinks a:hover{color:var(--clay)}
 
 /* clip switcher */
-.clips{display:flex;gap:.5rem;margin-top:.7rem;flex-wrap:wrap}
+/* These swap the clip in the frame above, so they are drawn as real buttons:
+   full-strength ink, a play triangle, and a lip underneath that presses in. */
+.clips{display:flex;gap:.55rem;margin-top:.85rem;flex-wrap:wrap}
 .clips button{
-  font-family:var(--display);font-size:.71rem;font-weight:500;
-  background:var(--ground-2);border:1px solid var(--line);color:var(--mute);
-  padding:.3rem .7rem;cursor:pointer;border-radius:999px;
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--display);font-size:.8rem;font-weight:600;letter-spacing:.005em;
+  background:var(--ground-2);border:1px solid var(--line);color:var(--ink);
+  padding:.46rem .92rem;cursor:pointer;border-radius:999px;
+  box-shadow:0 2px 0 var(--line),0 4px 10px var(--shadow);
+}
+.clips button::before{
+  content:"";flex:0 0 auto;width:0;height:0;opacity:.7;
+  border-left:7px solid currentColor;
+  border-top:5px solid transparent;border-bottom:5px solid transparent;
 }
 .clips button:hover{
   border-color:var(--teal);color:var(--teal);background:var(--tint);
-  transform:translateY(-2px);box-shadow:0 5px 14px var(--shadow);
+  transform:translateY(-2px);box-shadow:0 4px 0 var(--teal),0 9px 18px var(--shadow);
 }
-.clips button:active{transform:translateY(0) scale(.97);box-shadow:none}
-.clips button[aria-pressed="true"]:hover{background:var(--teal);color:var(--ground)}
-.clips button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:var(--ground)}
+.clips button:hover::before{opacity:1}
+.clips button:active{transform:translateY(1px);box-shadow:0 1px 0 var(--line)}
+.clips button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.clips button[aria-pressed="true"]{
+  background:var(--teal);border-color:var(--teal);color:var(--ground);
+  box-shadow:0 2px 0 var(--clay),0 4px 10px var(--shadow);
+}
+.clips button[aria-pressed="true"]::before{opacity:1}
+.clips button[aria-pressed="true"]:hover{
+  background:var(--teal);color:var(--ground);
+  box-shadow:0 4px 0 var(--clay),0 9px 18px var(--shadow);
+}
 
 /* ---------- websites ---------- */
 .sites{display:grid;gap:1.4rem}
@@ -620,7 +643,7 @@ html.cursoring,html.cursoring *{cursor:none!important}
 .sites .copy{padding:.2rem .3rem .2rem 0}
 .sites h3{margin:0 0 .2rem}
 .sites .role{font-size:.8rem;font-weight:500;color:var(--mute);margin:0 0 .8rem}
-.sites .blurb{margin:0 0 1.1rem;font-size:.96rem;max-width:var(--measure)}
+.sites .blurb{margin:0 0 1.1rem;font-size:1.02rem;line-height:1.68;color:var(--ink-2);max-width:var(--measure)}
 .sites .links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
 @media (max-width:760px){
   .sites article{grid-template-columns:1fr;gap:1.1rem}
@@ -637,7 +660,7 @@ html.cursoring,html.cursoring *{cursor:none!important}
   background:var(--tint);color:var(--teal);
 }
 .cap-ico .ico{width:17px;height:17px}
-.caps p{margin:0;font-size:.94rem;color:var(--mute);max-width:26rem}
+.caps p{margin:0;font-size:1rem;line-height:1.66;color:var(--ink-2);max-width:26rem}
 .caps div{
   border:1px solid var(--line);border-radius:var(--r);
   background:var(--ground-2);padding:1.1rem 1.15rem;
@@ -715,7 +738,7 @@ html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
 .steps > li:nth-of-type(odd) .what{padding-right:2.6rem}
 .steps > li:nth-of-type(even) .what{padding-left:2.6rem}
 .steps h3{margin:0 0 .45rem;line-height:1.35}
-.steps p{margin:0;font-size:.95rem;color:var(--mute)}
+.steps p{margin:0;font-size:1.01rem;line-height:1.68;color:var(--ink-2)}
 .steps p a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px;font-family:var(--display);font-size:.8rem;white-space:nowrap}
 .steps p a:hover{color:var(--teal)}
 .steps .stack{margin:1.15rem 0 .1rem;gap:.42rem}
@@ -960,4 +983,64 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1!important;transform:none!important}
+}
+
+
+/* ---------- floating contact ---------- */
+/* Fixed to the corner, kept out of the way: it only appears once the hero has
+   scrolled past, and it takes itself off the screen again while the contact
+   section is in view, so it never sits on top of the thing it duplicates. */
+.fab{
+  position:fixed;z-index:60;
+  right:max(1rem,env(safe-area-inset-right));
+  bottom:max(1rem,env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:flex-end;gap:.55rem;
+  /* the wrapper is only a frame: the closed menu leaves an invisible gap
+     above the button, and nothing there should swallow a click */
+  pointer-events:none;
+  opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .3s ease,transform .3s cubic-bezier(.22,.61,.36,1),visibility .3s;
+}
+.fab.show{opacity:1;visibility:visible;transform:none}
+.fab-menu{
+  display:flex;flex-direction:column;align-items:flex-end;gap:.45rem;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(10px) scale(.96);transform-origin:100% 100%;
+  transition:opacity .2s ease,transform .24s cubic-bezier(.22,.61,.36,1),visibility .24s;
+}
+.fab.open .fab-menu{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.fab-btn,.fab-item{pointer-events:auto}
+.fab-item{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:var(--display);font-size:.86rem;font-weight:600;
+  background:var(--ground-2);color:var(--ink);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;
+  padding:.56rem .95rem .56rem .78rem;
+  box-shadow:0 6px 18px var(--shadow);
+  white-space:nowrap;
+}
+.fab-item svg{width:18px;height:18px;flex:0 0 auto;fill:var(--teal)}
+.fab-item:hover{border-color:var(--teal);background:var(--tint);color:var(--teal)}
+.fab-item:hover svg{fill:currentColor}
+.fab-item:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.fab-btn{
+  width:56px;height:56px;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;
+  background:var(--teal);color:var(--ground);border:none;
+  box-shadow:0 8px 22px var(--shadow),0 0 0 6px color-mix(in srgb, var(--teal) 16%, transparent);
+}
+.fab-btn svg{width:26px;height:26px;fill:currentColor;grid-area:1/1;
+  transition:transform .24s cubic-bezier(.22,.61,.36,1),opacity .18s ease}
+.fab-btn .i-close{transform:rotate(-90deg) scale(.6);opacity:0}
+.fab.open .fab-btn .i-chat{transform:rotate(90deg) scale(.6);opacity:0}
+.fab.open .fab-btn .i-close{transform:none;opacity:1}
+.fab-btn:hover{box-shadow:0 10px 26px var(--shadow),0 0 0 9px color-mix(in srgb, var(--teal) 20%, transparent)}
+.fab-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  .fab,.fab-menu,.fab-btn svg{transition:none}
+}
+@media (max-width:640px){
+  .fab-item{font-size:.82rem;padding:.5rem .85rem .5rem .7rem}
+  .fab-btn{width:52px;height:52px}
+  .fab-btn svg{width:24px;height:24px}
 }
