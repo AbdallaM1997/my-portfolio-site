@@ -46,7 +46,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;display=swap"></noscript>
 <!-- The version is bumped whenever styles.css changes: Pages caches assets for
      ten minutes, and without it a new page can load against the old stylesheet. -->
-<link rel="stylesheet" href="styles.css?v=20261012a">
+<link rel="stylesheet" href="styles.css?v=20261012c">
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div>
@@ -77,14 +77,15 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
     <span class="spring"></span>
     <button type="button" class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="bar1" d="M4 12h16"/><path class="bar2" d="M4 12h16"/><path class="bar3" d="M4 12h16"/></svg></button>
     <nav class="mainnav" id="mainnav" aria-label="Pages">
-      <a href="index.html" class="here" aria-current="page">Home</a>
-      <a href="about.html">About</a>
+      <a href="#services">Services</a>
+      <a href="#journey">Journey</a>
+      <a href="#live">Live</a>
       <a href="ar.html">AR</a>
       <a href="vr.html">VR</a>
       <a href="interactive.html">Interactive</a>
       <a href="unreal.html">Unreal</a>
       <a href="websites.html">Web</a>
-      <a href="contact.html">Contact</a>
+      <a href="#contact">Contact</a>
     </nav>
     <span class="pickwrap"><button type="button" class="palette" aria-label="Change accent colour" aria-expanded="false" aria-haspopup="true" aria-controls="swatches"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></button><div class="swatches" id="swatches" role="group" aria-label="Accent colour"><button type="button" data-accent="red" style="--sw:#C01526" aria-pressed="false" aria-label="Red" title="Red"></button><button type="button" data-accent="orange" style="--sw:#B45309" aria-pressed="false" aria-label="Orange" title="Orange"></button><button type="button" data-accent="green" style="--sw:#15803D" aria-pressed="false" aria-label="Green" title="Green"></button><button type="button" data-accent="teal" style="--sw:#0F766E" aria-pressed="false" aria-label="Teal" title="Teal"></button><button type="button" data-accent="blue" style="--sw:#1D4ED8" aria-pressed="false" aria-label="Blue" title="Blue"></button><button type="button" data-accent="purple" style="--sw:#6D28D9" aria-pressed="false" aria-label="Purple" title="Purple"></button><button type="button" data-accent="magenta" style="--sw:#A21CAF" aria-pressed="false" aria-label="Magenta" title="Magenta"></button></div></span>
     <button type="button" class="theme" aria-label="Switch to dark theme"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg><span class="lab lab-light">Dark</span><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg><span class="lab lab-dark">Light</span></button>
@@ -140,7 +141,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
 
     <div class="hero-cta">
       <a class="cta" href="#work">View Projects</a>
-      <a class="cta ghost" href="contact.html">Get in touch</a>
+      <a class="cta ghost" href="#contact">Get in touch</a>
     </div>
 
     <nav class="hero-social" aria-label="Profiles">
@@ -153,62 +154,141 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
   </div>
 </section>
 
-<section class="band" id="work">
+<section class="band" id="services">
   <div class="wrap">
     <div class="band-head">
-      <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg>Selected work</h2>
-      <p>Each area has its own page, with the clips and the detail behind every project.</p>
+      <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>What I take on</h2>
+      <p>The kinds of work I can take from first prototype to the build running on site.</p>
     </div>
-    <div class="workgrid">
-      <a class="workcard" href="ar.html">
-        <span class="thumb"><img src="media/webar-doctor.jpg" alt="" loading="lazy" decoding="async"></span>
-        <span class="body">
-          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.5 8 12 11.82 4.5 8 12 4.18zM4 9.62l7 3.5v6.76l-7-3.5V9.62zm9 10.26v-6.76l7-3.5v6.76l-7 3.5z"/></svg>Augmented reality</span>
-          <span class="blurb">Web AR from a QR code, textbooks that come alive, safety briefings on a desk.</span>
-          <span class="more">5 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
-        </span>
-      </a>
-      <a class="workcard" href="vr.html">
-        <span class="thumb"><img src="media/vr-skillbanks.jpg" alt="" loading="lazy" decoding="async"></span>
-        <span class="body">
-          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 6h-17C2.67 6 2 6.67 2 7.5v9c0 .83.67 1.5 1.5 1.5h4.05c.57 0 1.09-.32 1.34-.83l1.22-2.44c.37-.74 1.43-.74 1.8 0l1.22 2.44c.25.51.77.83 1.34.83h4.03c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5z"/></svg>Virtual reality</span>
-          <span class="blurb">Soft-skills, patient education and safety training on Quest and Cardboard.</span>
-          <span class="more">6 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
-        </span>
-      </a>
-      <a class="workcard" href="interactive.html">
-        <span class="thumb"><img src="media/3d-momentum.jpg" alt="" loading="lazy" decoding="async"></span>
-        <span class="body">
-          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg>Interactive & real-time</span>
-          <span class="blurb">Booth games, touch walls, AI hosts and games that shipped to stores.</span>
-          <span class="more">11 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
-        </span>
-      </a>
-      <a class="workcard" href="unreal.html">
-        <span class="thumb"><img src="media/ue-office.jpg" alt="" loading="lazy" decoding="async"></span>
-        <span class="body">
-          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0a12 12 0 1012 12A12 12 0 0012 0zm0 23.52A11.52 11.52 0 1123.52 12 11.52 11.52 0 0112 23.52zm7.13-9.791c-.206.997-1.126 3.557-4.06 4.942l-1.179-1.325-1.988 2a7.338 7.338 0 01-5.804-2.978 2.859 2.859 0 00.65.123c.326.006.678-.114.678-.66v-5.394a.89.89 0 00-1.116-.89c-.92.212-1.656 2.509-1.656 2.509a7.304 7.304 0 012.528-5.597 7.408 7.408 0 013.73-1.721c-1.006.573-1.57 1.507-1.57 2.29 0 1.262.76 1.109.984.923v7.28a1.157 1.157 0 00.148.256 1.075 1.075 0 00.88.445c.76 0 1.747-.868 1.747-.868V9.172c0-.6-.452-1.324-.905-1.572 0 0 .838-.149 1.484.346a5.537 5.537 0 01.387-.425c1.508-1.48 2.929-1.902 4.112-2.112 0 0-2.151 1.69-2.151 3.96 0 1.687.043 5.801.043 5.801.799.771 1.986-.342 3.059-1.441Z"/></svg>Unreal Engine</span>
-          <span class="blurb">Real-time interiors and walkthroughs built in Unreal.</span>
-          <span class="more">1 project <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
-        </span>
-      </a>
-      <a class="workcard" href="websites.html">
-        <span class="thumb"><img src="media/site-self.jpg" alt="" loading="lazy" decoding="async"></span>
-        <span class="body">
-          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.99 7.99 0 0 1 5.08 16zm2.95-8H5.08a7.99 7.99 0 0 1 4.33-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>Websites</span>
-          <span class="blurb">Portfolios designed and hand-built end to end.</span>
-          <span class="more">2 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
-        </span>
-      </a>
-      <a class="workcard" href="about.html">
-        <span class="thumb"><img src="media/adhd-vr.jpg" alt="" loading="lazy" decoding="async"></span>
-        <span class="body">
-          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>How I got here</span>
-          <span class="blurb">Eight years, from a Cardboard headset at university to safety training on real sites.</span>
-          <span class="more">Read the story <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
-        </span>
-      </a>
+    <div class="caps">
+      <div>
+        <h3><span class="cap-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 6h-17C2.67 6 2 6.67 2 7.5v9c0 .83.67 1.5 1.5 1.5h4.05c.57 0 1.09-.32 1.34-.83l1.22-2.44c.37-.74 1.43-.74 1.8 0l1.22 2.44c.25.51.77.83 1.34.83h4.03c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5z"/></svg></span>VR training and simulation</h3>
+        <p>Branching scenarios, scoring and performance feedback on Meta Quest, OpenXR and SteamVR.</p>
+      </div>
+      <div>
+        <h3><span class="cap-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.5 8 12 11.82 4.5 8 12 4.18zM4 9.62l7 3.5v6.76l-7-3.5V9.62zm9 10.26v-6.76l7-3.5v6.76l-7 3.5z"/></svg></span>AR for products and learning</h3>
+        <p>Marker and surface tracking, runtime 3D, interactive lessons with AR Foundation, Vuforia and ARCore.</p>
+      </div>
+      <div>
+        <h3><span class="cap-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6l-2 2v1h10v-1l-2-2h6c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></span>Installations and events</h3>
+        <p>Touch-screen games, multi-device setups and mobile-to-PC experiences linked over a local network.</p>
+      </div>
+      <div>
+        <h3><span class="cap-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg></span>Unity systems work</h3>
+        <p>Arabic and English localisation with full right-to-left layout, Addressables, DOTween interfaces, Photon multiplayer.</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="band journey" id="journey">
+  <div class="wrap">
+    <div class="band-head">
+      <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>How I got here</h2>
+      <p>From a Cardboard headset built for a university grade to safety training running on real sites. The thread through all of it: education first, then a marketing agency, and a game studio on the side.</p>
+    </div>
+    <ol class="steps">
+      <svg class="trail" aria-hidden="true" focusable="false"><path class="trail-bg"/><path class="trail-ink"/><circle class="trail-halo" r="18"/><circle class="trail-dot" r="9"/></svg>
+      <li>
+        <span class="when">2018</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/xenon-blade.mp4" data-sm="media/xenon-blade-sm.mp4" poster="media/xenon-blade.jpg" muted loop playsinline preload="none" aria-label="Xenon Blade gameplay"></video>
+          <div class="what">
+            <h3>The first game: Xenon Blade</h3>
+            <p>Before any client work there was a game made for its own sake. With ChillMaze I built a survival hack-and-slash: a blade-wielding robot against waves of machines, with upgrades banked between runs. I got it onto Google Play. It was where I learned to finish something and ship it. <a href="interactive.html#p-xenon">See the game</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-b="csharp"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>C#</li><li data-b="android"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>Android</li></ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="when">2019</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/ar-tiger.mp4" poster="media/ar-tiger.jpg" muted loop playsinline preload="none" aria-label="AR tiger standing on a printed page"></video>
+          <div class="what">
+            <h3>First job, still a student</h3>
+            <p>Arabtesting hired me while I was finishing my degree, on the strength of that game. I built an AR colouring book with Vuforia and OpenCV that turned a child&rsquo;s scanned drawing into a live 3D model, and shipped a Cardboard VR animals app to Google Play, my first thing on a store. <a href="ar.html#p-animals">See the animal book</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-b="vuforia"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h6v2H5v4H3V3zm12 0h6v6h-2V5h-4V3zM3 15h2v4h4v2H3v-6zm16 0h2v6h-6v-2h4v-4zM9 9h6v6H9V9z"/></svg>Vuforia</li><li data-b="google"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.087 4.235a3.07 3.07 0 0 0-2.183.91A3.133 3.133 0 0 0 0 7.35v9.296a3.13 3.13 0 0 0 .903 2.206 3.066 3.066 0 0 0 2.184.913h4.28a3.078 3.078 0 0 0 2.713-1.645l1.209-2.276a.785.785 0 0 1 .703-.42.783.783 0 0 1 .701.42l1.21 2.276a3.08 3.08 0 0 0 2.718 1.645h4.292a3.07 3.07 0 0 0 2.184-.913A3.13 3.13 0 0 0 24 16.646V7.35c0-.825-.324-1.618-.904-2.205a3.065 3.065 0 0 0-2.183-.91zm3.495 5.656c1.138 0 2.06.937 2.06 2.092 0 1.157-.922 2.093-2.06 2.093-1.139 0-2.061-.936-2.061-2.093 0-1.155.922-2.092 2.06-2.092zm10.832 0c1.139 0 2.061.937 2.061 2.092 0 1.157-.922 2.093-2.06 2.093-1.14 0-2.063-.936-2.063-2.093 0-1.155.923-2.092 2.062-2.092z"/></svg>Google Cardboard</li></ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="when">2020</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/adhd-vr.mp4" data-sm="media/adhd-vr-sm.mp4" poster="media/adhd-vr.jpg" muted loop playsinline preload="none" aria-label="The ADHD VR bedroom in stereo view"></video>
+          <div class="what">
+            <h3>Graduation project: ADHD VR</h3>
+            <p>A virtual bedroom a child explores through a Cardboard headset, with tasks designed to surface attention and hyperactivity indicators for the adult watching alongside. Graded excellent at the Higher Technological Institute, and the moment I decided XR was the work I wanted to do. <a href="vr.html#p-adhd">See the project</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-b="google"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.087 4.235a3.07 3.07 0 0 0-2.183.91A3.133 3.133 0 0 0 0 7.35v9.296a3.13 3.13 0 0 0 .903 2.206 3.066 3.066 0 0 0 2.184.913h4.28a3.078 3.078 0 0 0 2.713-1.645l1.209-2.276a.785.785 0 0 1 .703-.42.783.783 0 0 1 .701.42l1.21 2.276a3.08 3.08 0 0 0 2.718 1.645h4.292a3.07 3.07 0 0 0 2.184-.913A3.13 3.13 0 0 0 24 16.646V7.35c0-.825-.324-1.618-.904-2.205a3.065 3.065 0 0 0-2.183-.91zm3.495 5.656c1.138 0 2.06.937 2.06 2.092 0 1.157-.922 2.093-2.06 2.093-1.139 0-2.061-.936-2.061-2.093 0-1.155.922-2.092 2.06-2.092zm10.832 0c1.139 0 2.061.937 2.061 2.092 0 1.157-.922 2.093-2.06 2.093-1.14 0-2.063-.936-2.063-2.093 0-1.155.923-2.092 2.062-2.092z"/></svg>Google Cardboard</li><li data-c="vr"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 6h-17C2.67 6 2 6.67 2 7.5v9c0 .83.67 1.5 1.5 1.5h4.05c.57 0 1.09-.32 1.34-.83l1.22-2.44c.37-.74 1.43-.74 1.8 0l1.22 2.44c.25.51.77.83 1.34.83h4.03c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5z"/></svg>Stereoscopic rendering</li></ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="when">2020&ndash;23</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/ar-pendulum.mp4" data-sm="media/ar-pendulum-sm.mp4" poster="media/ar-pendulum.jpg" muted loop playsinline preload="none" aria-label="AR pendulum experiment on a textbook page"></video>
+          <div class="what">
+            <h3>Learning projects at an education publisher</h3>
+            <p>Nahdet Misr Publishing Group brought me in to make printed books do more. The AR science textbook came out of this, with a pendulum, a thermometer and a neuron building themselves on the desk off a page, along with pop-up story dioramas. It taught me to build for teachers and content staff, not just for developers. <a href="ar.html#p-textbook">See the textbook</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-b="vuforia"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h6v2H5v4H3V3zm12 0h6v6h-2V5h-4V3zM3 15h2v4h4v2H3v-6zm16 0h2v6h-6v-2h4v-4zM9 9h6v6H9V9z"/></svg>Vuforia</li><li data-c="ar"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h6v2H5v4H3V3zm12 0h6v6h-2V5h-4V3zM3 15h2v4h4v2H3v-6zm16 0h2v6h-6v-2h4v-4zM9 9h6v6H9V9z"/></svg>Marker tracking</li><li data-b="android"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>Android</li></ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="when">2021</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/booth-sanofi.mp4" poster="media/booth-sanofi.jpg" muted loop playsinline preload="none" aria-label="Booth game on an event floor"></video>
+          <div class="what">
+            <h3>Evenings at a digital marketing agency</h3>
+            <p>Eye Advertising took me on part-time alongside the publisher. Agency work is a different discipline: booth games that survive eight hours of strangers, mobile AR feeding a PC over the local network, pharmaceutical clients who need it right the first time. Four years of doing both at once. <a href="interactive.html#p-booth">See the booth games</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-c="ui"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/></svg>Touch and kiosk</li><li data-b="arduino"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.087 6.146c-.3 0-.607.017-.907.069-2.532.367-4.23 2.239-5.18 3.674-.95-1.435-2.648-3.307-5.18-3.674a6.49 6.49 0 0 0-.907-.069C2.648 6.146 0 8.77 0 12s2.656 5.854 5.913 5.854c.3 0 .607-.017.916-.069 2.531-.376 4.23-2.247 5.18-3.683.949 1.436 2.647 3.307 5.18 3.683.299.043.607.069.915.069C21.344 17.854 24 15.23 24 12s-2.656-5.854-5.913-5.854zM6.53 15.734a3.837 3.837 0 0 1-.625.043c-2.148 0-3.889-1.7-3.889-3.777 0-2.085 1.749-3.777 3.898-3.777.208 0 .416.017.624.043 2.39.35 3.847 2.768 4.347 3.734-.508.974-1.974 3.384-4.355 3.734zm11.558.043c-.208 0-.416-.017-.624-.043-2.39-.35-3.856-2.768-4.347-3.734.491-.966 1.957-3.384 4.347-3.734.208-.026.416-.043.624-.043 2.149 0 3.89 1.7 3.89 3.777 0 2.085-1.75 3.777-3.89 3.777zm1.65-4.404v1.134h-1.205v1.182h-1.156v-1.182H16.17v-1.134h1.206V10.19h1.156v1.183h1.206zM4.246 12.498H7.82v-1.125H4.245v1.125z"/></svg>Arduino input</li></ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="when">2023&ndash;25</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/vr-ppe.mp4" data-sm="media/vr-ppe-sm.mp4" poster="media/vr-ppe.jpg" muted loop playsinline preload="none" aria-label="PPE inspection in VR"></video>
+          <div class="what">
+            <h3>Running R&amp;D, and safety training in VR</h3>
+            <p>Promoted to senior developer and R&amp;D team admin at Nahdet Misr, coordinating developers, artists and content specialists. The work widened: 3D and AR for NEOM in Saudi Arabia, occupational-safety VR for construction crews, a browser physics lab, web 3D lessons for Rwandan schools. Alongside it, a contract with Gigaverse to build Kuwaitar to the Kuwaiti primary curriculum. <a href="vr.html#p-ppe">See the PPE inspection</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-c="vr"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 6h-17C2.67 6 2 6.67 2 7.5v9c0 .83.67 1.5 1.5 1.5h4.05c.57 0 1.09-.32 1.34-.83l1.22-2.44c.37-.74 1.43-.74 1.8 0l1.22 2.44c.25.51.77.83 1.34.83h4.03c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5z"/></svg>VR headset</li><li data-c="gfx"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.5 8 12 11.82 4.5 8 12 4.18zM4 9.62l7 3.5v6.76l-7-3.5V9.62zm9 10.26v-6.76l7-3.5v6.76l-7 3.5z"/></svg>Real-time 3D</li></ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="when">2024</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/hero-reel.mp4" data-sm="media/hero-reel-sm.mp4" poster="media/hero-reel.jpg" muted loop playsinline preload="none" aria-label="Shara71 tile-matching game"></video>
+          <div class="what">
+            <h3>A game studio, and a game on both stores</h3>
+            <p>ExaRoll Studio in Dubai asked me to lead development and design. Shara71, a tile-matching puzzle across the seven emirates, went from design document to the App Store and Google Play, with post-launch updates still going. <a href="#live">See it live</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-b="csharp"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>C#</li><li data-b="android"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>Android</li></ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="when">2025</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/vr-quest-clinic.mp4" poster="media/vr-quest-clinic.jpg" muted loop playsinline preload="none" aria-label="Patient-education VR clinic scene"></video>
+          <div class="what">
+            <h3>Full-time at the agency</h3>
+            <p>Eye Advertising became the main job. Patient-education VR with branching scripts a medical team can edit, oncology VR for clinicians, web AR that runs from a QR code, virtual exhibition stands and a conversational 3D avatar. Owning delivery end to end, prototype to on-site. <a href="vr.html#p-patient">See the patient VR</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-c="ar"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h6v2H5v4H3V3zm12 0h6v6h-2V5h-4V3zM3 15h2v4h4v2H3v-6zm16 0h2v6h-6v-2h4v-4zM9 9h6v6H9V9z"/></svg>Web AR</li><li data-c="sys"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>ScriptableObjects</li></ul>
+          </div>
+        </div>
+      </li>
+      <li class="now">
+        <span class="when">Now</span>
+        <div class="card">
+          <video class="pic" data-lazy src="media/vr-skillbanks.mp4" data-sm="media/vr-skillbanks-sm.mp4" poster="media/vr-skillbanks.jpg" muted loop playsinline preload="none" aria-label="SkillBanks VR meeting scene"></video>
+          <div class="what">
+            <h3>AR safety briefings and SkillBanks VR</h3>
+            <p>The two most recent: a wind turbine that stands up on a desk with every hazard pinned to the part it belongs to, and a VR soft-skills scenario where you sit at a table with colleagues who push back while trust and collaboration meters move with your answers. Both are the same idea the ADHD room started with: put the person inside the situation and let them handle it. <a href="ar.html#p-safety">AR safety briefings</a> &middot; <a href="vr.html#p-skillbanks">SkillBanks VR</a></p>
+            <ul class="stack"><li data-b="unity"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>Unity</li><li data-b="meta"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg>Meta Quest</li><li data-c="sys"><svg class="tico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 13v8h8v-8h-8zM3 21h8v-8H3v8zM3 3v8h8V3H3zm13.66-1.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65z"/></svg>Branching dialogue</li></ul>
+          </div>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -261,6 +341,57 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
   </div>
 </section>
 
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="band-head">
+      <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg>Selected work</h2>
+      <p>Each area has its own page, with the clips and the detail behind every project.</p>
+    </div>
+    <div class="workgrid">
+      <a class="workcard" href="ar.html">
+        <span class="thumb"><img src="media/webar-doctor.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="body">
+          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.5 8 12 11.82 4.5 8 12 4.18zM4 9.62l7 3.5v6.76l-7-3.5V9.62zm9 10.26v-6.76l7-3.5v6.76l-7 3.5z"/></svg>Augmented reality</span>
+          <span class="blurb">Web AR from a QR code, textbooks that come alive, safety briefings on a desk.</span>
+          <span class="more">5 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
+        </span>
+      </a>
+      <a class="workcard" href="vr.html">
+        <span class="thumb"><img src="media/vr-skillbanks.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="body">
+          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 6h-17C2.67 6 2 6.67 2 7.5v9c0 .83.67 1.5 1.5 1.5h4.05c.57 0 1.09-.32 1.34-.83l1.22-2.44c.37-.74 1.43-.74 1.8 0l1.22 2.44c.25.51.77.83 1.34.83h4.03c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5z"/></svg>Virtual reality</span>
+          <span class="blurb">Soft-skills, patient education and safety training on Quest and Cardboard.</span>
+          <span class="more">6 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
+        </span>
+      </a>
+      <a class="workcard" href="interactive.html">
+        <span class="thumb"><img src="media/3d-momentum.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="body">
+          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg>Interactive & real-time</span>
+          <span class="blurb">Booth games, touch walls, AI hosts and games that shipped to stores.</span>
+          <span class="more">11 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
+        </span>
+      </a>
+      <a class="workcard" href="unreal.html">
+        <span class="thumb"><img src="media/ue-office.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="body">
+          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0a12 12 0 1012 12A12 12 0 0012 0zm0 23.52A11.52 11.52 0 1123.52 12 11.52 11.52 0 0112 23.52zm7.13-9.791c-.206.997-1.126 3.557-4.06 4.942l-1.179-1.325-1.988 2a7.338 7.338 0 01-5.804-2.978 2.859 2.859 0 00.65.123c.326.006.678-.114.678-.66v-5.394a.89.89 0 00-1.116-.89c-.92.212-1.656 2.509-1.656 2.509a7.304 7.304 0 012.528-5.597 7.408 7.408 0 013.73-1.721c-1.006.573-1.57 1.507-1.57 2.29 0 1.262.76 1.109.984.923v7.28a1.157 1.157 0 00.148.256 1.075 1.075 0 00.88.445c.76 0 1.747-.868 1.747-.868V9.172c0-.6-.452-1.324-.905-1.572 0 0 .838-.149 1.484.346a5.537 5.537 0 01.387-.425c1.508-1.48 2.929-1.902 4.112-2.112 0 0-2.151 1.69-2.151 3.96 0 1.687.043 5.801.043 5.801.799.771 1.986-.342 3.059-1.441Z"/></svg>Unreal Engine</span>
+          <span class="blurb">Real-time interiors and walkthroughs built in Unreal.</span>
+          <span class="more">1 project <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
+        </span>
+      </a>
+      <a class="workcard" href="websites.html">
+        <span class="thumb"><img src="media/site-self.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="body">
+          <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.99 7.99 0 0 1 5.08 16zm2.95-8H5.08a7.99 7.99 0 0 1 4.33-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>Websites</span>
+          <span class="blurb">Portfolios designed and hand-built end to end.</span>
+          <span class="more">2 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="contact wrap" id="contact">
   <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 9h10v2H7V9zm6 5H7v-2h6v2zm4-6H7V6h10v2z"/></svg>Tell me what you're building.</h2>
   <p>Send the rough idea and I'll tell you honestly whether it's a fit, what it would take, and where the hard parts are. My working day overlaps fully with Europe and catches mornings on the US East Coast.</p>
@@ -277,17 +408,19 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
 <footer class="wrap">
   <nav class="footnav" aria-label="Pages">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <a href="#services">Services</a>
+    <a href="#journey">Journey</a>
+    <a href="#live">Live</a>
     <a href="ar.html">AR</a>
     <a href="vr.html">VR</a>
     <a href="interactive.html">Interactive</a>
     <a href="unreal.html">Unreal</a>
     <a href="websites.html">Web</a>
-    <a href="contact.html">Contact</a>
+    <a href="#contact">Contact</a>
   </nav>
   <p>Abdallah Mahmoud Shabaan &middot; Egypt</p>
 </footer>
 
-<script src="site.js?v=20261012a"></script>
+<script src="site.js?v=20261012b"></script>
 </body>
 </html>

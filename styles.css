@@ -1103,10 +1103,28 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 }
 /* the band right under a page header continues it rather than starting afresh */
 .pagehead + .band{border-top:0;padding-top:clamp(1rem,2.5vw,1.75rem)}
-.pagehead + .contact{border-top:0;padding-top:.5rem}
 
 /* the current page in the header nav */
 .mainnav a[aria-current="page"]{color:var(--teal);background:var(--tint)}
+/* nine links: tighten them on mid-size screens so the header stays one row
+   until the phone menu takes over at 640px */
+@media (min-width:641px) and (max-width:1120px){
+  .masthead .wrap{gap:.6rem}
+  .mainnav{gap:0}
+  .mainnav a{padding:.4rem .45rem;font-size:.76rem}
+  .masthead .theme .lab{display:none!important}
+  .masthead .theme{padding:0;width:34px;margin-left:.25rem}
+}
+@media (min-width:641px) and (max-width:900px){
+  .masthead .where{display:none}
+}
+@media (min-width:641px) and (max-width:780px){
+  .masthead .wrap{gap:.35rem}
+  .mainnav a{padding:.4rem .3rem;font-size:.7rem}
+  .wordmark{font-size:.86rem}
+  .masthead .palette{width:32px;height:32px}
+  .masthead .theme{width:32px;height:32px}
+}
 
 /* ---------- multi-page: work cards on the home page ---------- */
 .workgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem}

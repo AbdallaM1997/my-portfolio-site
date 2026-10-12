@@ -222,6 +222,17 @@
     var t = document.getElementById(a.getAttribute('href').slice(1));
     if (t) sections.push({ link: a, el: t });
   });
+  // sections with no nav link of their own (Selected work) still count, so
+  // reaching one clears the highlight instead of leaving the one above lit
+  if (sections.length) {
+    each(document.querySelectorAll('main > section[id]'), function(el){
+      for (var i = 0; i < sections.length; i++) if (sections[i].el === el) return;
+      sections.push({ link: null, el: el });
+    });
+    sections.sort(function(a, b){
+      return a.el.compareDocumentPosition(b.el) & 4 ? -1 : 1;
+    });
+  }
   function spy(){
     if (!sections.length) return;
     var line = (window.innerHeight || 0) * 0.3;
@@ -234,6 +245,7 @@
     var d = document.documentElement;
     if (d.scrollTop + d.clientHeight >= d.scrollHeight - 4) cur = sections[sections.length - 1];
     each(sections, function(s){
+      if (!s.link) return;
       var on = (s === cur);
       if (on && s.link.className.indexOf('here') === -1) s.link.className += ' here';
       else if (!on) s.link.className = s.link.className.replace(/\s*here/g, '');
