@@ -408,7 +408,7 @@ section[id],article[id]{scroll-margin-top:78px}
   .theming body,.theming .masthead,.theming .band,.theming .project,.theming .live article,
   .theming .steps .card,.theming .caps div,.theming .stack li,.theming .tags li,
   .theming .clips button,.theming .rail-btn,.theming .masthead .theme,.theming .navtoggle,
-  .theming .sites article,.theming .contact,.theming footer,.theming .screen,.theming .viewport{
+  .theming .sites article,.theming .workcard,.theming .pager a,.theming .contact,.theming footer,.theming .screen,.theming .viewport{
     transition:background-color .55s ease,color .55s ease,border-color .55s ease,
                box-shadow .55s ease,fill .55s ease;
   }
@@ -1073,3 +1073,87 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
   .fab-btn{width:52px;height:52px}
   .fab-btn svg{width:24px;height:24px}
 }
+
+/* ---------- multi-page: inner page header ---------- */
+.pagehead{position:relative;overflow:hidden;padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.4rem,3vw,2.2rem)}
+/* a soft accent wash in the corner, so an inner page still opens with colour */
+.pagehead::before{
+  content:"";position:absolute;top:-40%;right:-10%;width:min(620px,80vw);aspect-ratio:1;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--teal) 14%,transparent),transparent);
+  pointer-events:none;
+}
+.pagehead .wrap{position:relative}
+.crumbs{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:0 0 1rem;
+  font-family:var(--display);font-size:.78rem;font-weight:500;color:var(--mute);
+}
+.crumbs a{color:var(--mute);text-decoration:none}
+.crumbs a:hover{color:var(--teal)}
+.crumbs span{opacity:.5}
+.pagehead h1{
+  display:flex;align-items:center;gap:.9rem;margin:0 0 1rem;
+  font-family:var(--head);font-size:clamp(2.3rem,6.5vw,4.4rem);line-height:.98;letter-spacing:-.03em;
+  font-variation-settings:"wdth" 76;font-weight:850;
+}
+.pagehead h1 .ico{width:.78em;height:.78em;color:var(--teal)}
+.pagehead .lead{margin:0;max-width:var(--measure);font-size:1.12rem;line-height:1.66;color:var(--ink-2)}
+.pagehead .count{
+  display:inline-block;margin:1.2rem 0 0;padding:.35rem .8rem;border-radius:999px;
+  font-family:var(--display);font-size:.76rem;font-weight:600;color:var(--teal);background:var(--tint);
+}
+/* the band right under a page header continues it rather than starting afresh */
+.pagehead + .band{border-top:0;padding-top:clamp(1rem,2.5vw,1.75rem)}
+.pagehead + .contact{border-top:0;padding-top:.5rem}
+
+/* the current page in the header nav */
+.mainnav a[aria-current="page"]{color:var(--teal);background:var(--tint)}
+
+/* ---------- multi-page: work cards on the home page ---------- */
+.workgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem}
+@media (max-width:400px){.workgrid{grid-template-columns:1fr}}
+.workcard{
+  display:flex;flex-direction:column;text-decoration:none;color:inherit;
+  background:var(--ground-2);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease,border-color .25s ease;
+}
+.workcard:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 18px 40px -18px var(--shadow)}
+.workcard .thumb{display:block;aspect-ratio:16/9;background:var(--screen);overflow:hidden}
+.workcard .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.workcard:hover .thumb img{transform:scale(1.05)}
+.workcard .body{display:flex;flex-direction:column;gap:.5rem;padding:1.1rem 1.2rem 1.25rem;flex:1}
+.workcard .ttl{
+  display:flex;align-items:center;gap:.55rem;
+  font-family:var(--head);font-size:1.3rem;font-weight:850;letter-spacing:-.022em;
+  font-variation-settings:"wdth" 82;line-height:1.14;
+}
+.workcard .ttl .ico{color:var(--teal);width:1em;height:1em}
+.workcard .blurb{font-size:.98rem;line-height:1.6;color:var(--ink-2)}
+.workcard .more{
+  margin-top:auto;padding-top:.4rem;display:inline-flex;align-items:center;gap:.3rem;
+  font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--teal);
+}
+.workcard .more svg{width:18px;height:18px;fill:currentColor;transition:transform .2s ease}
+.workcard:hover .more svg{transform:translateX(4px)}
+
+/* ---------- multi-page: previous / next ---------- */
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:0 0 clamp(2.5rem,6vw,4rem)}
+.pager a{
+  display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;
+  border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink);
+  font-family:var(--head);font-size:1.12rem;font-weight:800;letter-spacing:-.02em;font-variation-settings:"wdth" 84;
+  transition:border-color .2s ease,background .2s ease,transform .2s ease;
+}
+.pager a:hover{border-color:var(--teal);background:var(--tint);transform:translateY(-2px)}
+.pager a.next{justify-content:flex-end;text-align:right;grid-column:2}
+.pager small{display:block;font-family:var(--display);font-size:.72rem;font-weight:500;letter-spacing:.02em;color:var(--mute);margin-bottom:.15rem}
+.pager svg{width:22px;height:22px;fill:var(--teal);flex:none}
+@media (max-width:560px){
+  .pager{grid-template-columns:1fr}
+  .pager a.next{grid-column:1}
+  .pager > span{display:none}
+}
+
+/* ---------- multi-page: footer links ---------- */
+.footnav{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;margin:0 0 .9rem}
+.footnav a{color:var(--mute);text-decoration:none}
+.footnav a:hover{color:var(--teal)}
