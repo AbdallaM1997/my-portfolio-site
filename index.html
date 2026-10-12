@@ -46,7 +46,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;display=swap"></noscript>
 <!-- The version is bumped whenever styles.css changes: Pages caches assets for
      ten minutes, and without it a new page can load against the old stylesheet. -->
-<link rel="stylesheet" href="styles.css?v=20261012d">
+<link rel="stylesheet" href="styles.css?v=20261012e">
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div>
@@ -365,7 +365,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
     </div>
     <div class="workgrid">
       <a class="workcard" href="ar.html">
-        <span class="thumb"><img src="media/webar-doctor.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="thumb"><video data-lazy src="media/ar-reel-sm.mp4" poster="media/ar-reel.jpg" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video></span>
         <span class="body">
           <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.5 8 12 11.82 4.5 8 12 4.18zM4 9.62l7 3.5v6.76l-7-3.5V9.62zm9 10.26v-6.76l7-3.5v6.76l-7 3.5z"/></svg>Augmented reality</span>
           <span class="blurb">Web AR from a QR code, textbooks that come alive, safety briefings on a desk.</span>
@@ -373,7 +373,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
         </span>
       </a>
       <a class="workcard" href="vr.html">
-        <span class="thumb"><img src="media/vr-skillbanks.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="thumb"><video data-lazy src="media/vr-skillbanks-sm.mp4" poster="media/vr-skillbanks.jpg" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video></span>
         <span class="body">
           <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 6h-17C2.67 6 2 6.67 2 7.5v9c0 .83.67 1.5 1.5 1.5h4.05c.57 0 1.09-.32 1.34-.83l1.22-2.44c.37-.74 1.43-.74 1.8 0l1.22 2.44c.25.51.77.83 1.34.83h4.03c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5z"/></svg>Virtual reality</span>
           <span class="blurb">Soft-skills, patient education and safety training on Quest and Cardboard.</span>
@@ -381,7 +381,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
         </span>
       </a>
       <a class="workcard" href="interactive.html">
-        <span class="thumb"><img src="media/3d-momentum.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="thumb"><video data-lazy src="media/3d-momentum-sm.mp4" poster="media/3d-momentum.jpg" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video></span>
         <span class="body">
           <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg>Interactive & real-time</span>
           <span class="blurb">Booth games, touch walls, AI hosts and games that shipped to stores.</span>
@@ -389,7 +389,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
         </span>
       </a>
       <a class="workcard" href="unreal.html">
-        <span class="thumb"><img src="media/ue-office.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="thumb"><video data-lazy src="media/ue-office-sm.mp4" poster="media/ue-office.jpg" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video></span>
         <span class="body">
           <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0a12 12 0 1012 12A12 12 0 0012 0zm0 23.52A11.52 11.52 0 1123.52 12 11.52 11.52 0 0112 23.52zm7.13-9.791c-.206.997-1.126 3.557-4.06 4.942l-1.179-1.325-1.988 2a7.338 7.338 0 01-5.804-2.978 2.859 2.859 0 00.65.123c.326.006.678-.114.678-.66v-5.394a.89.89 0 00-1.116-.89c-.92.212-1.656 2.509-1.656 2.509a7.304 7.304 0 012.528-5.597 7.408 7.408 0 013.73-1.721c-1.006.573-1.57 1.507-1.57 2.29 0 1.262.76 1.109.984.923v7.28a1.157 1.157 0 00.148.256 1.075 1.075 0 00.88.445c.76 0 1.747-.868 1.747-.868V9.172c0-.6-.452-1.324-.905-1.572 0 0 .838-.149 1.484.346a5.537 5.537 0 01.387-.425c1.508-1.48 2.929-1.902 4.112-2.112 0 0-2.151 1.69-2.151 3.96 0 1.687.043 5.801.043 5.801.799.771 1.986-.342 3.059-1.441Z"/></svg>Unreal Engine</span>
           <span class="blurb">Real-time interiors and walkthroughs built in Unreal.</span>
@@ -437,6 +437,6 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
   <p>Abdallah Mahmoud Shabaan &middot; Egypt</p>
 </footer>
 
-<script src="site.js?v=20261012b"></script>
+<script src="site.js?v=20261012c"></script>
 </body>
 </html>

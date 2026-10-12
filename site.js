@@ -527,10 +527,15 @@
 
   function setSpeed(v){ try { v.playbackRate = SPEED; } catch (e) {} }
 
+  // Work-card previews sit inside a link, so they never get controls of
+  // their own: if they cannot play, the poster simply stays.
+  function isThumb(v){ return (' ' + v.parentNode.className + ' ').indexOf(' thumb ') !== -1; }
+  function giveControls(v){ if (!isThumb(v)) v.setAttribute('controls',''); }
+
   function tryPlay(v){
     setSpeed(v);
     var p;
-    try { p = v.play(); } catch (err) { v.setAttribute('controls',''); return; }
+    try { p = v.play(); } catch (err) { giveControls(v); return; }
     // Autoplay can still be refused (iOS Low Power Mode, strict settings), so
     // fall back to a normal play button rather than a frozen poster. An
     // AbortError only means a new load interrupted this play (switching clips),
@@ -540,7 +545,7 @@
         setTimeout(function(){ if (v.paused && !v.hasAttribute('controls')) tryPlay(v); }, 250);
         return;
       }
-      v.setAttribute('controls','');
+      giveControls(v);
     });
   }
 
@@ -563,7 +568,7 @@
   } else {
     // No IntersectionObserver, or the visitor asked for reduced motion:
     // load the poster and give everyone ordinary controls.
-    each(vids, function(v){ v.setAttribute('controls',''); });
+    each(vids, giveControls);
   }
 
   each(document.querySelectorAll('.clips'), function(group){
