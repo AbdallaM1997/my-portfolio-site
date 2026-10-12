@@ -7,7 +7,7 @@ No build step, no framework, no dependencies to install.
 index.html                     home: hero, services, how I got here, live
                                products, selected work, contact
 ar.html, vr.html,              one page per area of work, each ending in
-interactive.html,              previous / next links
+interactive.html, games.html,  previous / next links
 unreal.html, websites.html
 site.js                        the one shared script (every page loads it)
 styles.css                     all the styling
@@ -52,7 +52,7 @@ materially more professional than a `.netlify.app` subdomain. Worth the money.
 
 Each page is its own `.html` file, styling is in `styles.css`, and the shared
 script is `site.js`. The header nav, floating contact button and footer are
-repeated in every page, so a change to one of those goes in all six files. Open them in any text editor (VS Code is free).
+repeated in every page, so a change to one of those goes in all seven files. Open them in any text editor (VS Code is free).
 
 Colours, fonts and the corner radius are the `:root` variables at the top of
 `styles.css`; the dark palette is the two blocks right below it. Change
