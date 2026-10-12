@@ -651,7 +651,10 @@ html.cursoring,html.cursoring *{cursor:none!important}
 }
 
 /* ---------- capability list ---------- */
-.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+/* eight services: four across, two across, or one, so no row is left half empty */
+.caps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media (max-width:1000px){.caps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.caps{grid-template-columns:1fr}}
 .caps h3{margin:0 0 .4rem}
 .caps h3{display:flex;align-items:center;gap:.68rem}
 .cap-ico{
