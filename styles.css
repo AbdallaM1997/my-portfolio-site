@@ -261,6 +261,28 @@ section[id],article[id]{scroll-margin-top:78px}
 @media (max-width:640px){
   .hero-social a{width:44px;height:44px}
 }
+/* wide screens: copy on the left, reading top to bottom, and the avatar
+   large on the right, instead of one centered column */
+@media (min-width:900px){
+  .hero .wrap{
+    display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+    column-gap:clamp(2rem,6vw,6rem);align-content:center;align-items:start;
+    text-align:left;
+  }
+  .hero .wrap > *{grid-column:1}
+  .hero .wrap > .avatar{
+    grid-column:2;grid-row:1 / span 7;align-self:center;justify-self:center;
+    width:clamp(260px,30vw,460px);margin:0;border-width:4px;
+  }
+  .hero .avatar::after{width:22px;height:22px;right:12%;bottom:12%;border-width:3px}
+  /* sized so the longest typed phrase stays on one line in this column;
+     a wrap mid-typing would make the whole hero jump */
+  .hero .wrap h1{font-size:clamp(3rem,5.6vw,6.6rem)}
+  .hero h1 .typed{white-space:nowrap}
+  .tags,.hero-cta,.hero-social{justify-content:flex-start}
+  .hero .lede{margin:0 0 1rem;max-width:40rem}
+  .hero-social{margin-left:-.6rem}
+}
 
 /* ---------- viewport (the AR bracket motif) ---------- */
 .viewport{position:relative;padding:11px}
