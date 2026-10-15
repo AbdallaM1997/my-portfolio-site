@@ -87,8 +87,8 @@ body{
 img,video{display:block;max-width:100%}
 a{color:inherit}
 
-.wrap{width:min(1180px,100% - 2.5rem);max-width:100%;
-  margin-left:auto;margin-right:auto;margin-inline:auto}
+.wrap{width:100%;max-width:100%;
+  padding-inline:clamp(1.25rem,4vw,4rem)}
 
 /* ---------- masthead ---------- */
 .masthead{
@@ -101,7 +101,7 @@ a{color:inherit}
 }
 .masthead .wrap{
   display:flex;align-items:center;gap:1.25rem;
-  padding:.7rem 0;flex-wrap:wrap;
+  padding-block:.7rem;flex-wrap:wrap;
 }
 .brand{
   display:flex;flex-direction:column;gap:.1rem;
@@ -175,7 +175,7 @@ section[id],article[id]{scroll-margin-top:78px}
   min-height:calc(100svh - 62px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;gap:0;
-  padding:clamp(2.5rem,6vw,4rem) 0 clamp(3rem,7vw,5rem);
+  padding-block:clamp(2.5rem,6vw,4rem) clamp(3rem,7vw,5rem);
 }
 .avatar{
   width:clamp(116px,15vw,168px);aspect-ratio:1;border-radius:50%;
@@ -774,7 +774,7 @@ html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
 }
 
 /* ---------- contact ---------- */
-.contact{border-top:1px solid var(--line);padding:clamp(3rem,7vw,5.5rem) 0 3.5rem}
+.contact{border-top:1px solid var(--line);padding-block:clamp(3rem,7vw,5.5rem) 3.5rem}
 .contact h2{margin:0 0 1rem;max-width:20ch}
 .contact p{max-width:var(--measure);margin:0 0 1.6rem}
 .contact-links{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.7rem 1.6rem}
@@ -924,7 +924,7 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
    share the first row, the role drops underneath, and the tap targets grow. */
 @media (max-width:640px){
   /* one row only: wordmark, theme, hamburger. The dropdown carries the links */
-  .masthead .wrap{gap:.3rem .5rem;padding:.5rem 0;flex-wrap:nowrap}
+  .masthead .wrap{gap:.3rem .5rem;padding-block:.5rem;flex-wrap:nowrap}
   .brand{min-width:0}
   .masthead .where{font-size:.68rem}
   /* icons get their own row; the negative margin optically lines the first
@@ -1157,7 +1157,7 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 .workcard:hover .more svg{transform:translateX(4px)}
 
 /* ---------- multi-page: previous / next ---------- */
-.pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:0 0 clamp(2.5rem,6vw,4rem)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-block:0 clamp(2.5rem,6vw,4rem)}
 .pager a{
   display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;
   border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink);
