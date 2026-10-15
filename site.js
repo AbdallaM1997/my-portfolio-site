@@ -50,8 +50,8 @@
       ['.project .copy', 90],
       ['.sites article', 0],
       ['.caps div', 70],
-      ['.contact h2', 0],
-      ['.contact p', 90]
+      ['.contact-copy > *', 70],
+      ['.contact-links li', 60]
     ];
     each(groups, function(g){
       each(document.querySelectorAll(g[0]), function(el, i){

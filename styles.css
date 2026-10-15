@@ -430,7 +430,7 @@ section[id],article[id]{scroll-margin-top:78px}
   .theming body,.theming .masthead,.theming .band,.theming .project,.theming .live article,
   .theming .steps .card,.theming .caps div,.theming .stack li,.theming .tags li,
   .theming .clips button,.theming .rail-btn,.theming .masthead .theme,.theming .navtoggle,
-  .theming .sites article,.theming .workcard,.theming .pager a,.theming .contact,.theming footer,.theming .screen,.theming .viewport{
+  .theming .sites article,.theming .workcard,.theming .pager a,.theming .contact,.theming .contact-card,.theming .contact-links .tile,.theming footer,.theming .screen,.theming .viewport{
     transition:background-color .55s ease,color .55s ease,border-color .55s ease,
                box-shadow .55s ease,fill .55s ease;
   }
@@ -797,17 +797,97 @@ html:not(.anim) .trail-dot,html:not(.anim) .trail-halo{display:none}
 
 /* ---------- contact ---------- */
 .contact{border-top:1px solid var(--line);padding-block:clamp(3rem,7vw,5.5rem) 3.5rem}
-.contact h2{margin:0 0 1rem;max-width:20ch}
-.contact p{max-width:var(--measure);margin:0 0 1.6rem}
-.contact-links{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.7rem 1.6rem}
-.contact-links a{
-  font-family:var(--display);font-weight:500;font-size:.85rem;text-decoration:none;
-  padding-bottom:2px;
-  background-image:linear-gradient(var(--teal),var(--teal));
-  background-size:100% 2px;background-repeat:no-repeat;background-position:0 100%;
-  transition:background-size .28s cubic-bezier(.22,.61,.36,1);
+/* one panel in the accent: a soft wash from the corner, the copy on one side
+   and a tile for each way to reach me on the other */
+.contact-card{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:grid;gap:clamp(1.8rem,4vw,3rem);
+  padding:clamp(1.5rem,4vw,3.25rem);
+  border:1px solid color-mix(in srgb,var(--teal) 28%,var(--line));border-radius:20px;
+  background:
+    radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--teal) 16%,transparent),transparent 60%),
+    radial-gradient(80% 70% at 0% 100%,color-mix(in srgb,var(--clay) 10%,transparent),transparent 65%),
+    var(--ground-2);
+  box-shadow:0 24px 60px -30px var(--shadow);
 }
-.contact-links a:hover{background-size:0% 2px;background-position:100% 100%}
+/* the AR bracket motif in the corners */
+.contact-card::before,.contact-card::after{
+  content:"";position:absolute;width:34px;height:34px;z-index:-1;
+  border:2px solid var(--teal);opacity:.55;pointer-events:none;
+}
+.contact-card::before{top:14px;left:14px;border-right:0;border-bottom:0;border-top-left-radius:8px}
+.contact-card::after{bottom:14px;right:14px;border-left:0;border-top:0;border-bottom-right-radius:8px}
+.contact .avail{
+  display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1.2rem;
+  padding:.4rem .85rem .4rem .7rem;border-radius:999px;
+  background:var(--tint);color:var(--teal);border:1px solid color-mix(in srgb,var(--teal) 35%,transparent);
+  font-family:var(--display);font-size:.76rem;font-weight:600;letter-spacing:.01em;
+}
+.contact .pulse{position:relative;width:8px;height:8px;border-radius:50%;background:#22C55E;flex:none}
+.contact .pulse::after{
+  content:"";position:absolute;inset:-4px;border-radius:50%;background:#22C55E;opacity:.35;
+}
+.anim .contact .pulse::after{animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.5}80%,100%{transform:scale(1.9);opacity:0}}
+.contact h2{margin:0 0 1rem;max-width:20ch}
+.contact .pitch{max-width:var(--measure);margin:0 0 1.1rem;font-size:1.08rem;line-height:1.66;color:var(--ink-2)}
+.contact .hours{
+  display:flex;align-items:flex-start;gap:.55rem;max-width:var(--measure);margin:0;
+  font-size:.92rem;line-height:1.55;color:var(--mute);
+}
+.contact .hours svg{width:18px;height:18px;flex:none;fill:var(--teal);margin-top:.12rem}
+
+.contact-links{
+  list-style:none;padding:0;margin:0;align-self:center;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;
+}
+.contact-links li:first-child{grid-column:1 / -1}
+.contact-links .tile{
+  display:flex;align-items:center;gap:.85rem;height:100%;
+  padding:.85rem .9rem;border-radius:14px;text-decoration:none;color:var(--ink);
+  background:var(--ground);border:1px solid var(--line);
+  transition:transform .2s cubic-bezier(.22,.61,.36,1),border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.contact-links .ic{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  width:42px;height:42px;border-radius:11px;background:var(--tint);color:var(--teal);
+  transition:background .2s ease,color .2s ease;
+}
+.contact-links .ic svg{width:21px;height:21px;fill:currentColor}
+.contact-links .txt{display:flex;flex-direction:column;min-width:0;gap:.1rem}
+.contact-links strong{font-family:var(--display);font-size:.95rem;font-weight:650;line-height:1.25}
+.contact-links small{
+  font-size:.8rem;color:var(--mute);line-height:1.3;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.contact-links .go{margin-left:auto;display:inline-flex;flex:none;color:var(--mute);transition:transform .2s ease,color .2s ease}
+.contact-links .go svg{width:18px;height:18px;fill:currentColor}
+.contact-links .tile:hover{
+  transform:translateY(-3px);border-color:var(--teal);
+  box-shadow:0 14px 30px -14px var(--shadow);
+}
+.contact-links .tile:hover .ic{background:var(--teal);color:var(--ground)}
+.contact-links .tile:hover .go{color:var(--teal);transform:translate(2px,-2px)}
+/* email is the main way in, so it carries the accent */
+.contact-links .tile.primary{background:var(--teal);border-color:var(--teal);color:var(--ground);padding:1.05rem 1.1rem}
+.contact-links .tile.primary .ic{background:color-mix(in srgb,var(--ground) 18%,transparent);color:var(--ground)}
+.contact-links .tile.primary small{color:color-mix(in srgb,var(--ground) 82%,transparent)}
+.contact-links .tile.primary strong{font-size:1.08rem}
+.contact-links .tile.primary .go{color:var(--ground)}
+.contact-links .tile.primary:hover{background:var(--clay);border-color:var(--clay)}
+.contact-links .tile.primary:hover .ic{background:color-mix(in srgb,var(--ground) 26%,transparent);color:var(--ground)}
+.contact-links .tile.primary:hover .go{color:var(--ground)}
+@media (max-width:520px){
+  .contact-links{grid-template-columns:1fr}
+  .contact-card{padding:2rem 1.25rem 1.5rem}
+  .contact-card::before,.contact-card::after{width:20px;height:20px}
+  .contact-card::before{top:9px;left:9px}
+  .contact-card::after{bottom:9px;right:9px}
+  .contact .avail{font-size:.72rem}
+}
+@media (min-width:1000px){
+  .contact-card{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:clamp(2.5rem,5vw,5rem)}
+}
 footer{border-top:1px solid var(--line);padding:1.4rem 0 2.5rem;font-family:var(--display);font-size:.76rem;color:var(--mute)}
 
 
@@ -928,7 +1008,7 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 
 
 /* underline sweep on the text links */
-.outlinks a,.contact ul a{
+.outlinks a{
   position:relative;border-bottom:0;padding-bottom:2px;
   background-image:linear-gradient(var(--clay),var(--clay));
   background-size:100% 2px;background-repeat:no-repeat;background-position:0 100%;
@@ -1209,18 +1289,6 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
   /* six work cards: three by two rather than five and an orphan */
   .workgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .caps p{max-width:none}
-  /* contact copy on the left, the links stacked on the right */
-  .contact{
-    display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
-    column-gap:clamp(2rem,6vw,6rem);align-items:start;
-  }
-  .contact h2,.contact p{grid-column:1}
-  .contact p{margin-bottom:0}
-  .contact-links{
-    grid-column:2;grid-row:1 / span 2;align-self:center;
-    flex-direction:column;align-items:flex-start;gap:1rem;
-  }
-  .contact-links a{font-size:1.05rem}
 }
 @media (min-width:1200px){
   /* the four live cards share the row instead of stopping at 320px each */
