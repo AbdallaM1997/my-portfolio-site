@@ -1200,3 +1200,42 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 .footnav{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;margin:0 0 .9rem}
 .footnav a{color:var(--mute);text-decoration:none}
 .footnav a:hover{color:var(--teal)}
+
+/* ---------- wide screens ----------
+   The layout spans the whole window, so on big monitors each block spreads
+   its content across that width instead of leaving one side empty, while
+   text keeps a readable line length. */
+@media (min-width:1000px){
+  /* six work cards: three by two rather than five and an orphan */
+  .workgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .caps p{max-width:none}
+  /* contact copy on the left, the links stacked on the right */
+  .contact{
+    display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+    column-gap:clamp(2rem,6vw,6rem);align-items:start;
+  }
+  .contact h2,.contact p{grid-column:1}
+  .contact p{margin-bottom:0}
+  .contact-links{
+    grid-column:2;grid-row:1 / span 2;align-self:center;
+    flex-direction:column;align-items:flex-start;gap:1rem;
+  }
+  .contact-links a{font-size:1.05rem}
+}
+@media (min-width:1200px){
+  /* the four live cards share the row instead of stopping at 320px each */
+  .live article{flex-basis:max(255px,calc((100% - 3rem) / 4))}
+}
+@media (min-width:1400px){
+  /* media takes the larger share; the copy column fits its text */
+  .project{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+  .project.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
+  .sites article{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+  .project p.desc,.sites .blurb{max-width:42rem}
+  /* journey: the path gets a wider lane and each card keeps to a readable
+     width, pushed out toward the page edges */
+  .steps > li{column-gap:clamp(14rem,18vw,26rem)}
+  .steps .card{max-width:46rem;width:100%}
+  .steps > li:nth-of-type(odd) .card{justify-self:start}
+  .steps > li:nth-of-type(even) .card{justify-self:end}
+}
