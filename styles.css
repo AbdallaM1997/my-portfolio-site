@@ -239,16 +239,16 @@ section[id],article[id]{scroll-margin-top:78px}
 .hero .lede.sub{color:var(--mute);font-size:.97rem;margin-bottom:0}
 
 .hero-cta{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;margin-top:1.7rem}
-.hero .cta{
+.hero .cta,.studio .cta{
   display:inline-block;margin:0;
   font-family:var(--display);font-weight:500;font-size:.88rem;
   text-decoration:none;background:var(--teal);color:var(--ground);
   padding:.82rem 1.7rem;border-radius:var(--r);
   border:1px solid var(--teal);
 }
-.hero .cta:hover{background:transparent;color:var(--teal)}
-.hero .cta.ghost{background:transparent;color:var(--teal)}
-.hero .cta.ghost:hover{background:var(--teal);color:var(--ground)}
+.hero .cta:hover,.studio .cta:hover{background:transparent;color:var(--teal)}
+.hero .cta.ghost,.studio .cta.ghost{background:transparent;color:var(--teal)}
+.hero .cta.ghost:hover,.studio .cta.ghost:hover{background:var(--teal);color:var(--ground)}
 
 .hero-social{display:flex;gap:.35rem;justify-content:center;margin-top:1.5rem}
 .hero-social a{
@@ -1280,6 +1280,79 @@ html:not(.anim) .band-head h2::after{transform:scaleX(1)}
 .footnav{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;margin:0 0 .9rem}
 .footnav a{color:var(--mute);text-decoration:none}
 .footnav a:hover{color:var(--teal)}
+
+/* ---------- home: AmA Studio ----------
+   The studio is the headline asset, so it gets its own panel straight after
+   the hero. The brand tile keeps the studio's own yellow, red and ink in both
+   themes, the way a logo would. */
+.studio-card{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.25rem,2.5vw,2rem);
+  padding:clamp(1.1rem,2.5vw,1.75rem);
+  border:1px solid color-mix(in srgb,var(--teal) 45%,var(--line));border-radius:16px;
+  background:var(--ground-2);
+}
+.studio-brand{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:220px;border-radius:12px;text-decoration:none;
+  background:#FFE783;color:#181818;
+  transition:transform .25s ease;
+}
+.studio-brand:hover{transform:translateY(-3px)}
+.studio-brand .mark{
+  font-family:var(--head);font-weight:900;font-variation-settings:"wdth" 70;
+  font-size:clamp(4.2rem,9vw,6.4rem);line-height:.86;letter-spacing:-.04em;
+}
+.studio-brand .word{
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(.95rem,1.8vw,1.2rem);letter-spacing:.42em;margin:.35rem 0 0 .42em;
+}
+.studio-brand .sq{position:absolute;z-index:-1;background:#F4473A}
+.studio-brand .s1{width:56px;height:56px;top:12%;left:9%;transform:rotate(-14deg)}
+.studio-brand .s2{width:30px;height:30px;bottom:14%;right:12%;transform:rotate(22deg)}
+.studio-brand .s3{width:16px;height:16px;top:10%;right:14%;background:#181818}
+.studio-copy{display:flex;flex-direction:column;justify-content:center}
+.studio-copy .kicker{
+  margin:0 0 .5rem;font-family:var(--display);font-size:.74rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--teal);
+}
+.studio-copy h3{
+  margin:0 0 .7rem;font-family:var(--head);font-weight:900;font-variation-settings:"wdth" 78;
+  font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.02;letter-spacing:-.03em;
+}
+.studio-copy .desc{margin:0 0 1.3rem;max-width:var(--measure);font-size:1.04rem;line-height:1.7;color:var(--ink-2)}
+.studio-cta{display:flex;flex-wrap:wrap;gap:.7rem}
+.studio-game{
+  display:flex;flex-direction:column;overflow:hidden;
+  border:1px solid var(--line);border-radius:12px;background:var(--ground);
+  color:var(--ink);text-decoration:none;
+  transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+}
+.studio-game:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 16px 36px -16px var(--shadow)}
+.studio-game .art{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--screen)}
+.studio-game .art img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.studio-game:hover .art img{transform:scale(1.04)}
+.studio-game .info{display:flex;align-items:flex-start;gap:.85rem;padding:1rem 1.1rem 1.1rem}
+.studio-game .icon{width:56px;height:56px;border-radius:13px;flex:none;box-shadow:0 4px 12px var(--shadow)}
+.studio-game .txt{display:flex;flex-direction:column;gap:.22rem;min-width:0;flex:1}
+.studio-game .badge{font-family:var(--display);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.studio-game strong{font-family:var(--head);font-size:1.35rem;font-weight:850;letter-spacing:-.022em;font-variation-settings:"wdth" 82;line-height:1.1}
+.studio-game .tag{font-size:.95rem;line-height:1.55;color:var(--ink-2)}
+.studio-game .plat{font-family:var(--display);font-size:.76rem;color:var(--mute)}
+.studio-game .go svg{width:22px;height:22px;fill:var(--teal);transition:transform .2s ease}
+.studio-game:hover .go svg{transform:translate(2px,-2px)}
+@media (min-width:700px){
+  .studio-card{grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}
+  .studio-game{grid-column:1 / -1;flex-direction:row}
+  .studio-game .art{flex:0 0 48%;aspect-ratio:auto;min-height:220px}
+  .studio-game .info{align-self:center}
+}
+@media (min-width:1150px){
+  .studio-card{grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.15fr);align-items:stretch}
+  .studio-game{grid-column:auto;flex-direction:column}
+  .studio-game .art{flex:none;aspect-ratio:16/10;min-height:0}
+  .studio-game .info{align-self:stretch}
+}
 
 /* ---------- wide screens ----------
    The layout spans the whole window, so on big monitors each block spreads

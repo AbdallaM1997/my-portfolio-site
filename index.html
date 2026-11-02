@@ -46,7 +46,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;display=swap"></noscript>
 <!-- The version is bumped whenever styles.css changes: Pages caches assets for
      ten minutes, and without it a new page can load against the old stylesheet. -->
-<link rel="stylesheet" href="styles.css?v=20261015h">
+<link rel="stylesheet" href="styles.css?v=20261102a">
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div>
@@ -77,6 +77,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
     <span class="spring"></span>
     <button type="button" class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="bar1" d="M4 12h16"/><path class="bar2" d="M4 12h16"/><path class="bar3" d="M4 12h16"/></svg></button>
     <nav class="mainnav" id="mainnav" aria-label="Pages">
+      <a href="#studio">Studio</a>
       <a href="#services">Services</a>
       <a href="#journey">Journey</a>
       <a href="#live">Live</a>
@@ -152,6 +153,44 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
         <a href="https://github.com/AbdallaM1997" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
         <a href="Abdallah_Mahmoud_Resume.pdf" download aria-label="Download CV (PDF)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
     </nav>
+  </div>
+</section>
+
+<section class="band studio" id="studio">
+  <div class="wrap">
+    <div class="band-head">
+      <h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.26L22 9.27l-5.2 4.9 1.3 7.03L12 17.77 5.9 21.2l1.3-7.03L2 9.27l7.1-1.01z"/></svg>My studio</h2>
+      <p>AmA Studio is the game studio I founded in Cairo. It is where my own games get made.</p>
+    </div>
+    <div class="studio-card">
+      <a class="studio-brand" href="https://amastudios.net/" aria-label="Visit the AmA Studio website">
+        <span class="sq s1" aria-hidden="true"></span><span class="sq s2" aria-hidden="true"></span><span class="sq s3" aria-hidden="true"></span>
+        <span class="mark">AmA</span>
+        <span class="word">Studio</span>
+      </a>
+      <div class="studio-copy">
+        <p class="kicker">Founder &middot; Game studio &middot; Cairo, Egypt</p>
+        <h3>Serious about fun.</h3>
+        <p class="desc">AmA Studio makes small, bright games for everyday breaks: easy to learn in a minute, built in Unity and tested until they feel just right. No dark tricks, just games that respect your time.</p>
+        <div class="studio-cta">
+          <a class="cta" href="https://amastudios.net/">Visit AmA Studio</a>
+          <a class="cta ghost" href="https://amastudios.net/games/">All studio games</a>
+        </div>
+      </div>
+      <a class="studio-game" href="https://amastudios.net/games/kinfold/">
+        <span class="art"><img src="media/kinfold-key-art.jpg" width="1200" height="750" alt="Kinfold key art: the game's logo over the pyramids and the Nile" loading="lazy" decoding="async"></span>
+        <span class="info">
+          <img class="icon" src="media/kinfold-icon.png" width="64" height="64" alt="" loading="lazy" decoding="async">
+          <span class="txt">
+            <span class="badge">First game &middot; Coming soon</span>
+            <strong>Kinfold</strong>
+            <span class="tag">A bright category card puzzle set in Egypt. Match every card to its group and clear the board.</span>
+            <span class="plat">iOS &amp; Android &middot; Free to play</span>
+          </span>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6.4 18 5 16.6 14.6 7H6V5h12v12h-2V8.4z"/></svg></span>
+        </span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -393,8 +432,8 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
         <span class="thumb"><video data-lazy src="media/liworld-combat-sm.mp4" poster="media/liworld-combat.jpg" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video></span>
         <span class="body">
           <span class="ttl"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>Games</span>
-          <span class="blurb">LiWorld and Xenon Blade: action games with touch controls and an upgrade loop between runs.</span>
-          <span class="more">2 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
+          <span class="blurb">Kinfold from my studio AmA Studio, plus LiWorld and Xenon Blade, action games with an upgrade loop between runs.</span>
+          <span class="more">3 projects <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4L13.2 12z"/></svg></span>
         </span>
       </a>
       <a class="workcard" href="unreal.html">
@@ -439,6 +478,7 @@ if(a&&/^[a-z]+$/.test(a))document.documentElement.setAttribute('data-accent',a);
 <footer class="wrap">
   <nav class="footnav" aria-label="Pages">
     <a href="index.html">Home</a>
+    <a href="#studio">Studio</a>
     <a href="#services">Services</a>
     <a href="#journey">Journey</a>
     <a href="#live">Live</a>
